@@ -1,0 +1,32 @@
+{
+  "home": {
+    "about": {
+      "hint": "Acerca de",
+      "title": "Nosotros",
+      "description": {
+        "p1": "Nos especializamos en la prevención, control, ajuste y liquidación de siniestros. Apostamos por la innovación, invirtiendo en tecnología avanzada y personal altamente capacitado para optimizar la gestión de casos con ética y precisión.",
+        "p2": "Somos un equipo que opera bajo procesos certificados y recertificados conforme a la norma ISO 9001:2015, avalados por Lloyd's de Londres."
+      },
+      "button": "Conócenos más",
+      "images": [
+        "Team managing cases",
+        "Staff working at office",
+        "Claims evaluation process"
+      ]
+    },
+    "team": {
+      "hint": "Nuestro",
+      "title": "Equipo",
+      "description": "El activo más valioso de nuestra organización, compuesto por más de 40 profesionales y 25 colaboradores exclusivos.",
+      "button": "Conócenos más"
+    },
+    "divisions": {
+      "title": "Divisiones Operativas",
+      "button": "Ver más"
+    },
+    "location": {
+      "title": "Ubicación",
+      "address": "C. Los Sauces 325, San Isidro, Lima, Perú"
+    }
+  }
+}

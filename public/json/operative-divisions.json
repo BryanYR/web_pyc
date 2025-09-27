@@ -1,0 +1,22 @@
+[
+  {
+    "imageUrl": "/images/divisions/division1.webp",
+    "title": "Prevención de Pérdidas",
+    "description": "Prevención, control y supervisión de carga/descarga en transporte marítimo y aéreo. Gestión de la carga importada o exportada para prevenir pérdidas y controlar daños."
+  },
+  {
+    "imageUrl": "/images/divisions/division2.webp",
+    "title": "Siniestros",
+    "description": "Inspección, peritaje, ajuste y liquidación de siniestros en las áreas de Responsabilidad Civil y D&O, Riesgos Generales y Aviación, Transportes y Cascos."
+  },
+  {
+    "imageUrl": "/images/divisions/division3.webp",
+    "title": "Recuperos y Salvamento",
+    "description": "En cuanto a recuperos, nuestra labor se enfoca en recuperar las pérdidas económicas en los servicios de transporte de aquellos que resulten responsables, ya sea por la vía extra judicial o judicial. En cuanto a los salvamentos, nuestra labor se enfoca en promocionar, colocar, vender o destruir la mercadería o productos dañados o rechazados."
+  },
+  {
+    "imageUrl": "/images/divisions/division4.webp",
+    "title": "Gerenciamiento de Riesgos",
+    "description": "Actuamos gestionando actividades enfocadas en identificar y evaluar los riesgos que pueden afectar la continuidad de una organización con el objetivo de controlarlos, reducirlos o eliminarlos."
+  }
+]

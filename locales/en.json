@@ -1,0 +1,32 @@
+{
+  "home": {
+    "about": {
+      "hint": "About",
+      "title": "Us",
+      "description": {
+        "p1": "We specialize in the prevention, control, adjustment, and settlement of claims. We focus on innovation, investing in advanced technology and highly trained staff to optimize case management with ethics and precision.",
+        "p2": "We are a team that operates under certified and re-certified processes according to ISO 9001:2015, endorsed by Lloyd's of London."
+      },
+      "button": "Learn more",
+      "images": [
+        "Team managing cases",
+        "Staff working at office",
+        "Claims evaluation process"
+      ]
+    },
+    "team": {
+      "hint": "Our",
+      "title": "Team",
+      "description": "The most valuable asset of our organization, made up of over 40 professionals and 25 exclusive collaborators.",
+      "button": "Meet us"
+    },
+    "divisions": {
+      "title": "Operational Divisions",
+      "button": "See more"
+    },
+    "location": {
+      "title": "Location",
+      "address": "Los Sauces St. 325, San Isidro, Lima, Peru"
+    }
+  }
+}

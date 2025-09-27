@@ -1,0 +1,20 @@
+[
+  { "specialty": "Tec. Policía", "qty": 1 },
+  { "specialty": "Ing. Sistemas", "qty": 1 },
+  { "specialty": "Ing. Minas", "qty": 1 },
+  { "specialty": "Ing. Metalúrgica", "qty": 1 },
+  { "specialty": "Ing. Mecánico electricista", "qty": 1 },
+  { "specialty": "Ing. Materiales", "qty": 1 },
+  { "specialty": "Ing. Electrónica", "qty": 1 },
+  { "specialty": "Ing. Económico", "qty": 1 },
+  { "specialty": "Ing. Ecológico", "qty": 1 },
+  { "specialty": "Ing. Aero mecánico", "qty": 1 },
+  { "specialty": "Tec. Inspector", "qty": 2 },
+  { "specialty": "Ing. Químico", "qty": 2 },
+  { "specialty": "Licenciados", "qty": 5 },
+  { "specialty": "Ing. Seguridad laboral", "qty": 3 },
+  { "specialty": "Ing.Mecánico", "qty": 3 },
+  { "specialty": "Ing. Civil", "qty": 6 },
+  { "specialty": "Ing. Ambiental", "qty": 9 },
+  { "specialty": "Ing. Industrial", "qty": 12 }
+]

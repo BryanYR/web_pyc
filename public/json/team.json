@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Gonzalo De Romaña",
+    "position": "Presidente Ejecutivo",
+    "email": "gderomana@pyc.pe",
+    "phone": "968 490 362",
+    "linkedin": "https://www.linkedin.com/in/gonzalo-de-roma%C3%B1a-garc%C3%ADa-92395730/",
+    "photo": "/images/team/gonzalo.webp",
+    "description": "Administrador con especialización en empresas de seguros. Técnico asegurador experto en análisis de riesgos, con más de 46 años de experiencia en el campo de los ajustes de pérdidas. Especialización en seguros de ingeniería. Ajustador con autorización general de ajustes de la SBS No. AN-220. Presidente Ejecutivo de PyC, fundador y presidente de la Fundación De Romaña, y director del Grupo Acme, conjuntamente con sus 5 empresas agrupadas."
+  },
+  {
+    "name": "Alberto Crespo V.",
+    "position": "Gerente General Director de Operaciones, Siniestros y Recuperaciones",
+    "email": "acrespo@pyc.pe",
+    "phone": "963 525 142",
+    "linkedin": "https://www.linkedin.com/in/alberto-crespo-558aa073/",
+    "photo": "/images/team/crespo.webp",
+    "description": "Abogado con 30 años de experiencia en el campo del derecho de Seguros y Transporte Marítimo. Ajustador con autorización general de ajustes de la SBS No. AN-353.Experto en Responsabilidad Civil General, D&O, líneas financieras y reclamos por daños materiales y lesiones. Especializado en el campo de recupero marítimo. Dirige el área de Operaciones, Siniestros y Recuperos y es Director del Grupo Acme."
+  },
+  {
+    "name": "Oscar Colmenares",
+    "position": "Director de Ingeniería",
+    "email": "ocolmenares@pyc.pe",
+    "phone": "999 840 187",
+    "linkedin": "https://www.linkedin.com/in/oscar-colmenares-zapata-20774513/",
+    "photo": "/images/team/colmenares.webp",
+    "description": "Ingeniero Civil, graduado en Noruega y la UNI en Perú. Más de 40 años de experiencia en el mercado asegurador, como perito valuador, ajustador, asegurador, árbitro técnico y profesor de ingeniería de seguros y riesgos. Amplia experiencia en ingeniería estructural, ferrovías, túneles, edificaciones, obras viales y puentes, obras hidráulicas, etc."
+  },
+  {
+    "name": "Carlos Caro C.",
+    "position": "Director de Transportes y Cascos",
+    "email": "omcaro@pyc.pe",
+    "phone": "957 854 631",
+    "linkedin": "https://www.linkedin.com/in/carlosmiguelcaro/",
+    "photo": "/images/team/carlos.webp",
+    "description": "Especialista en Evaluación de Riesgos de Mercancías con más de 15 años de experiencia. Certificado a nivel internacio- nal como: Senior Lead Implementer ISO 28000, Lead Risk Manager ISO 31000, Business Continuity ISO 22301, Organizational Resilience Manager - CORM, Ajustador de Seguros Marítimo y de Transporte registrado en la Superinten- dencia de Banca, Seguros y AFP de Perú."
+  },
+  {
+    "name": "Frank Sinarahua C.",
+    "position": "Director de Riesgos",
+    "email": "fsinarahua@pyc.pe",
+    "phone": "980 587 922",
+    "linkedin": "https://www.linkedin.com/in/frank-sinarahua-chung-3729ab12/",
+    "photo": "/images/team/frank.webp",
+    "description": "Ingeniero de minas con más de 30 años de experiencia en diversas áreas de la gestión de riesgos. Graduado en la Universidad Nacional Mayor de San Marcos, Universidad de Santiago de Chile y Universidad Rey Juan Carlos de España. Experiencia en la implementación y auditorías de Sistemas de Gestión de Seguridad y Salud en el Trabajo en diversas actividades económicas."
+  },
+  {
+    "name": "Roossevelt Flórez P.",
+    "position": "Director de Tecnología",
+    "email": "rflorez@pyc.pe",
+    "phone": "968 230 118",
+    "linkedin": "https://www.linkedin.com/in/roossevelt-fl%C3%B3rez-pacheco-72295262/",
+    "photo": "/images/team/ruso.webp",
+    "description": "Ingeniero de Sistemas, egresado de la Universidad de San Martín de Porres, con más de 10 años de experiencia en redes y comunicaciones. Especialista en diseño e implementación de soluciones tecnológicas seguras, orientadas a garantizar sistemas robustos y eficientes que impulsan el crecimiento y la seguridad organizacional."
+  },
+  {
+    "name": "Dante Sebastiani P.",
+    "position": "Abogado Ajustador",
+    "email": "dsebastiani@pyc.pe",
+    "phone": "994079262",
+    "linkedin": "https://www.linkedin.com/in/dante-sebastiani-43bb0310b/",
+    "photo": "/images/team/dante.webp",
+    "description": "Abogado con 30 años de experiencia en el campo de los reclamos marítimos. Ajustador con autorización general de ajustes de la SBS No. AN-406. Especializado en el campo de los Recuperos de Carga, y en los reclamos de Responsabili- dad Civil General. Dirige el área Legal de P&C y atiende los reclamos de Daños y Lesiones."
+  },
+  {
+    "name": "Mauricio Chavez A.",
+    "position": "Ajustador de Riesgos Generales",
+    "email": "mchavez@pyc.pe",
+    "phone": "956300179",
+    "linkedin": "https://www.linkedin.com/in/mauricio-martin-chavez-arzubiaga-585568266/",
+    "photo": "/images/team/mauricio.webp",
+    "description": "Ajustador de Riesgos Generales, con autorización general de ajustes de la SBS No. AN-354, y más de siete años de experiencia en la evaluación y gestión de siniestros. Especializado en la inspección de daños, análisis de coberturas y determinación de responsabilidades."
+  },
+  {
+    "name": "Willebaldo Vargas R.",
+    "position": "Ajustador Seguros Transporte",
+    "email": "wvargas@pyc.pe",
+    "phone": "974519268",
+    "linkedin": "https://www.linkedin.com/in/willy-vargas-560799340/",
+    "photo": "/images/team/baldo.webp",
+    "description": "Ajustador con autorización general de ajustes de la SBS No. AN-367, con más de 10 años de experiencia en inspecciones de daños a mercancías, análisis de coberturas y atención de siniestros en transporte terrestre e internacional."
+  },
+  {
+    "name": "Diego Ato Alvarez",
+    "position": "Ejecutivo Siniestros de Transporte",
+    "email": "dato@pyc.pe",
+    "phone": "923962699",
+    "linkedin": "https://www.linkedin.com/in/diegoatoalvarez/",
+    "photo": "/images/team/ato.webp",
+    "description": ""
+  },
+  {
+    "name": "Angel Quispe B.",
+    "position": "Ejecutivo de Siniestros",
+    "email": "aquispe@pyc.pe",
+    "phone": "943803304",
+    "linkedin": "https://www.linkedin.com/in/angel-quispe-boramendiz-b99801337/",
+    "photo": "/images/team/angel.webp",
+    "description": ""
+  },
+  {
+    "name": "Jaime Suárez",
+    "position": "Ejecutivo de Siniestros",
+    "email": "jsuarez@pyc.pe",
+    "phone": "920440472",
+    "linkedin": "https://www.linkedin.com/in/jaime-suarez-del-pino-631381213/",
+    "photo": "/images/team/jaime.webp",
+    "description": ""
+  },
+  {
+    "name": "Melody Blas",
+    "position": "Ejecutiva de Siniestros",
+    "email": "mblas@pyc.pe",
+    "phone": "943803220",
+    "linkedin": "https://www.linkedin.com/in/melody-blas-zapata-99019330a/",
+    "photo": "/images/team/melody.webp",
+    "description": ""
+  },
+  {
+    "name": "Roxana Velasco",
+    "position": "Ejecutiva de Siniestros",
+    "email": "rvelasco@pyc.pe",
+    "phone": "943802767",
+    "linkedin": "https://www.linkedin.com/in/luisa-roxana-velasco-fanas-699938338/",
+    "photo": "/images/team/roxana.webp",
+    "description": ""
+  },
+  {
+    "name": "Gabriela Urruchi",
+    "position": "Ejecutiva de Siniestros",
+    "email": "gurruchi@pyc.pe",
+    "phone": "943150135",
+    "linkedin": "https://www.linkedin.com/in/luisa-roxana-velasco-fanas-699938338/",
+    "photo": "/images/team/gabriela.webp",
+    "description": ""
+  }
+]
