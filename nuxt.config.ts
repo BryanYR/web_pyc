@@ -5,20 +5,33 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "PYC",
-      // Load preflight script from /theme-preflight.js to avoid inline typing issues
       script: [{ src: "/theme-preflight.js" }],
     },
   },
   modules: [
     "@nuxt/eslint",
-    "@nuxtjs/i18n", // 👈 solo se declara aquí
+    "@nuxtjs/i18n",
   ],
+  i18n: {
+    strategy: "no_prefix",
+    defaultLocale: "es",
+    langDir: 'locales',
+    locales: [
+      { code: "es", iso: "es-ES", file: "es.json", name: "Español" },
+      { code: "en", iso: "en-US", file: "en.json", name: "English" },
+    ],
+    vueI18n: './i18n/i18n.config.ts',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      fallbackLocale: "es",
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  plugins: [],
   css: ["~/assets/css/main.css"],
-});
+})

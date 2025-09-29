@@ -19,7 +19,6 @@ const imgClasses = "w-full h-[15rem] object-cover lg:w-80 lg:h-60 rounded-3xl";
 
 <template>
   <section id="aboutUs" class="bg-white dark:bg-gray-900 py-8 md:py-16 px-10">
-    <p>Idioma actual: {{ $i18n.locale }}</p>
     <div class="pyc-container-section mx-auto flex flex-col gap-10">
       <!-- Información -->
       <SectionInformation

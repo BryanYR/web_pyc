@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useNuxtApp } from '#app'
 
-// use the global scope to ensure we change the app-wide locale (especially with lazy loading)
-const { locale } = useI18n({ useScope: 'global' })
+type Language = 'es' | 'en'
+const selectorLanguage = ref<Language>('es')
+const nuxtApp = useNuxtApp()
 
-function setLocale(l: 'es' | 'en') {
-  locale.value = l // updates global locale and triggers lazy load
+async function setLocale(l: Language) {
+  // Esto asegura que Nuxt cargue el archivo JSON correspondiente
+  await nuxtApp.$i18n.setLocale(l)
+  console.log("Locale cambiado a:", l)
 }
 </script>
 
 <template>
-  <div class="flex gap-2 items-center">
-    <button @click="setLocale('es')" :aria-pressed="locale==='es'">ES</button>
-    <button @click="setLocale('en')" :aria-pressed="locale==='en'">EN</button>
-  </div>
+  <select v-model="selectorLanguage" @change="setLocale(selectorLanguage)">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+  </select>
 </template>
