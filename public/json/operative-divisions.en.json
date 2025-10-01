@@ -1,0 +1,22 @@
+[
+  {
+    "imageUrl": "/images/divisions/division1.webp",
+    "title": "Loss Prevention",
+    "description": "Prevention, control, and supervision of cargo loading/unloading in maritime and air transport. Management of imported or exported cargo to prevent losses and control damages."
+  },
+  {
+    "imageUrl": "/images/divisions/division2.webp",
+    "title": "Claims",
+    "description": "Inspection, assessment, adjustment, and settlement of claims in the areas of Civil Liability and D&O, General Risks and Aviation, Transport, and Hulls."
+  },
+  {
+    "imageUrl": "/images/divisions/division3.webp",
+    "title": "Recoveries and Salvage",
+    "description": "Regarding recoveries, our work focuses on recovering economic losses in transport services from those found responsible, whether through out-of-court or judicial proceedings. Regarding salvage, our work focuses on promoting, placing, selling, or disposing of damaged or rejected goods or products."
+  },
+  {
+    "imageUrl": "/images/divisions/division4.webp",
+    "title": "Risk Management",
+    "description": "We manage activities aimed at identifying and assessing risks that may affect an organization’s continuity, with the objective of controlling, reducing, or eliminating them."
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Gonzalo De Romaña",
+    "position": "Executive President",
+    "email": "gderomana@pyc.pe",
+    "phone": "968 490 362",
+    "linkedin": "https://www.linkedin.com/in/gonzalo-de-roma%C3%B1a-garc%C3%ADa-92395730/",
+    "photo": "/images/team/gonzalo.webp",
+    "description": "Administrator specialized in insurance companies. Insurance technician and risk analysis expert, with more than 46 years of experience in the field of loss adjusting. Specialized in engineering insurance. General adjuster authorized by SBS No. AN-220. Executive President of PyC, founder and president of the De Romaña Foundation, and director of the Acme Group, together with its 5 affiliated companies."
+  },
+  {
+    "name": "Alberto Crespo V.",
+    "position": "General Manager - Director of Operations, Claims and Recoveries",
+    "email": "acrespo@pyc.pe",
+    "phone": "963 525 142",
+    "linkedin": "https://www.linkedin.com/in/alberto-crespo-558aa073/",
+    "photo": "/images/team/crespo.webp",
+    "description": "Lawyer with 30 years of experience in Insurance Law and Maritime Transport. General adjuster authorized by SBS No. AN-353. Expert in General Liability, D&O, financial lines, and property damage and injury claims. Specialized in maritime recovery. Leads the Operations, Claims and Recoveries area and is Director of the Acme Group."
+  },
+  {
+    "name": "Oscar Colmenares",
+    "position": "Engineering Director",
+    "email": "ocolmenares@pyc.pe",
+    "phone": "999 840 187",
+    "linkedin": "https://www.linkedin.com/in/oscar-colmenares-zapata-20774513/",
+    "photo": "/images/team/colmenares.webp",
+    "description": "Civil Engineer, graduated in Norway and from UNI in Peru. Over 40 years of experience in the insurance market as a valuer, adjuster, underwriter, technical arbitrator, and professor of insurance and risk engineering. Extensive experience in structural engineering, railways, tunnels, buildings, roads and bridges, hydraulic works, etc."
+  },
+  {
+    "name": "Carlos Caro C.",
+    "position": "Director of Transport and Hulls",
+    "email": "omcaro@pyc.pe",
+    "phone": "957 854 631",
+    "linkedin": "https://www.linkedin.com/in/carlosmiguelcaro/",
+    "photo": "/images/team/carlos.webp",
+    "description": "Specialist in Cargo Risk Assessment with more than 15 years of experience. Internationally certified as: Senior Lead Implementer ISO 28000, Lead Risk Manager ISO 31000, Business Continuity ISO 22301, Organizational Resilience Manager - CORM. Registered Maritime and Transport Insurance Adjuster with the Superintendency of Banking, Insurance and AFP of Peru."
+  },
+  {
+    "name": "Frank Sinarahua C.",
+    "position": "Risk Director",
+    "email": "fsinarahua@pyc.pe",
+    "phone": "980 587 922",
+    "linkedin": "https://www.linkedin.com/in/frank-sinarahua-chung-3729ab12/",
+    "photo": "/images/team/frank.webp",
+    "description": "Mining Engineer with more than 30 years of experience in various areas of risk management. Graduated from the National University of San Marcos, University of Santiago de Chile, and Rey Juan Carlos University of Spain. Experienced in implementing and auditing Occupational Health and Safety Management Systems across various economic activities."
+  },
+  {
+    "name": "Roossevelt Flórez P.",
+    "position": "Technology Director",
+    "email": "rflorez@pyc.pe",
+    "phone": "968 230 118",
+    "linkedin": "https://www.linkedin.com/in/roossevelt-fl%C3%B3rez-pacheco-72295262/",
+    "photo": "/images/team/ruso.webp",
+    "description": "Systems Engineer, graduated from the University of San Martín de Porres, with more than 10 years of experience in networks and communications. Specialist in the design and implementation of secure technological solutions, focused on ensuring robust and efficient systems that drive organizational growth and security."
+  },
+  {
+    "name": "Dante Sebastiani P.",
+    "position": "Lawyer - Adjuster",
+    "email": "dsebastiani@pyc.pe",
+    "phone": "994079262",
+    "linkedin": "https://www.linkedin.com/in/dante-sebastiani-43bb0310b/",
+    "photo": "/images/team/dante.webp",
+    "description": "Lawyer with 30 years of experience in maritime claims. General adjuster authorized by SBS No. AN-406. Specialized in Cargo Recovery and General Liability claims. Leads the Legal area of P&C and handles Property Damage and Injury claims."
+  },
+  {
+    "name": "Mauricio Chavez A.",
+    "position": "General Risks Adjuster",
+    "email": "mchavez@pyc.pe",
+    "phone": "956300179",
+    "linkedin": "https://www.linkedin.com/in/mauricio-martin-chavez-arzubiaga-585568266/",
+    "photo": "/images/team/mauricio.webp",
+    "description": "General Risks Adjuster, authorized by SBS No. AN-354, with more than seven years of experience in claims evaluation and management. Specialized in damage inspection, coverage analysis, and liability determination."
+  },
+  {
+    "name": "Willebaldo Vargas R.",
+    "position": "Transport Insurance Adjuster",
+    "email": "wvargas@pyc.pe",
+    "phone": "974519268",
+    "linkedin": "https://www.linkedin.com/in/willy-vargas-560799340/",
+    "photo": "/images/team/baldo.webp",
+    "description": "General adjuster authorized by SBS No. AN-367, with more than 10 years of experience in cargo damage inspections, coverage analysis, and handling land and international transport claims."
+  },
+  {
+    "name": "Diego Ato Alvarez",
+    "position": "Transport Claims Executive",
+    "email": "dato@pyc.pe",
+    "phone": "923962699",
+    "linkedin": "https://www.linkedin.com/in/diegoatoalvarez/",
+    "photo": "/images/team/ato.webp",
+    "description": ""
+  },
+  {
+    "name": "Angel Quispe B.",
+    "position": "Claims Executive",
+    "email": "aquispe@pyc.pe",
+    "phone": "943803304",
+    "linkedin": "https://www.linkedin.com/in/angel-quispe-boramendiz-b99801337/",
+    "photo": "/images/team/angel.webp",
+    "description": ""
+  },
+  {
+    "name": "Jaime Suárez",
+    "position": "Claims Executive",
+    "email": "jsuarez@pyc.pe",
+    "phone": "920440472",
+    "linkedin": "https://www.linkedin.com/in/jaime-suarez-del-pino-631381213/",
+    "photo": "/images/team/jaime.webp",
+    "description": ""
+  },
+  {
+    "name": "Melody Blas",
+    "position": "Claims Executive",
+    "email": "mblas@pyc.pe",
+    "phone": "943803220",
+    "linkedin": "https://www.linkedin.com/in/melody-blas-zapata-99019330a/",
+    "photo": "/images/team/melody.webp",
+    "description": ""
+  },
+  {
+    "name": "Roxana Velasco",
+    "position": "Claims Executive",
+    "email": "rvelasco@pyc.pe",
+    "phone": "943802767",
+    "linkedin": "https://www.linkedin.com/in/luisa-roxana-velasco-fanas-699938338/",
+    "photo": "/images/team/roxana.webp",
+    "description": ""
+  },
+  {
+    "name": "Gabriela Urruchi",
+    "position": "Claims Executive",
+    "email": "gurruchi@pyc.pe",
+    "phone": "943150135",
+    "linkedin": "https://www.linkedin.com/in/luisa-roxana-velasco-fanas-699938338/",
+    "photo": "/images/team/gabriela.webp",
+    "description": ""
+  }
+]

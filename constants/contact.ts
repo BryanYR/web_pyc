@@ -5,26 +5,26 @@ import Email from "@/assets/icons/Email.vue";
 export const contactInfo = [
   {
     icon: Point,
-    title: "Sede Principal",
-    titleOptional: "Oficina",
+    key: "main_office",        // corresponde a home.info_contact.main_office
+    keyOptional: "office",     // corresponde a footer.office
     content: ["Calle Los Sauces #325", "San Isidro, Lima."],
   },
   {
     icon: Phone,
-    title: "Central Telefónica",
-    titleOptional: "Central",
+    key: "phone_center",       // corresponde a home.info_contact.phone_center
+    keyOptional: "center",     // corresponde a footer.center
     content: [
-      "Emergencia 24 Horas:",
+      "emergency",
       "(511) 6159898 (WA) 999998889",
-      "Central Administrativa:",
+      "admin_center",
       "(511) 615.9800",
     ],
-    strongIndex: [2], // marcar como <strong>
+    strongIndex: [0, 2],
   },
   {
     icon: Email,
-    title: "Correo Electrónico",
-    titleOptional: "Correo",
+    key: "email",              // corresponde a home.info_contact.email
+    keyOptional: "email",      // corresponde a footer.email
     content: ["emergencia@pyc.pe", "pyc@pyc.pe"],
   },
 ];

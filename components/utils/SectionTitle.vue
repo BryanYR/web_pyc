@@ -25,9 +25,9 @@ const rest = computed(() => {
         v-if="type === 'compact'"
         class="font-normal text-primary-700 dark:text-white"
       >
-        <div v-if="props?.hint" class="text-base">{{ hint }}</div>
+        <div v-if="props?.hint" class="text-base" :class="[classHint]">{{ hint }}</div>
         <div v-if="props?.title" class="text-xl font-bold">
-          <span class="border-b-4 border-primary-500">{{ firstThree }}</span>
+          <span class="border-b-4 border-primary-500" :class="[classTitle]">{{ firstThree }}</span>
           <span>{{ rest }}</span>
         </div>
       </h4>
@@ -36,10 +36,10 @@ const rest = computed(() => {
         v-else
         class="flex shrink-0 flex-col font-normal gap-2 text-primary-700 dark:text-white"
       >
-        <span v-if="props?.hint" class="relative top-2 text-xl md:text-2xl">
+        <span v-if="props?.hint" class="relative top-2 text-xl md:text-2xl" :class="[classHint]">
           {{ hint }}
         </span>
-        <span class="text-3xl md:text-5xl font-bold">
+        <span class="text-3xl lg:text-4xl xl:text-5xl font-bold" :class="[classTitle]">
           <span class="border-b-4 border-primary-500 dark:border-white">{{
             firstThree
           }}</span>

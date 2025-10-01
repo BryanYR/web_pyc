@@ -1,5 +1,18 @@
 {
+  "header": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "team": "Equipo",
+    "services": "Servicios",
+    "blog": "Blog",
+    "contact": "Contáctanos"
+  },
   "home": {
+    "banner": {
+      "title": "Prevención y Control",
+      "subtitle": "Ajustadores y Peritos de Seguros",
+      "button": "Conócenos más"
+    },
     "about": {
       "hint": "Acerca de",
       "title": "Nosotros",
@@ -24,9 +37,288 @@
       "title": "Divisiones Operativas",
       "button": "Ver más"
     },
-    "location": {
-      "title": "Ubicación",
-      "address": "C. Los Sauces 325, San Isidro, Lima, Perú"
+    "info_contact": {
+      "main_office": "Sede Principal",
+      "phone_center": "Central Telefónica",
+      "office": "Oficina",
+      "center": "Central",
+      "admin_center": "Central Administrativa",
+      "email": "Correo",
+      "emergency": "Emergencia 24 Horas"
+    }
+  },
+  "team": {
+    "management": {
+      "hint": "Equipo",
+      "title": "Directivo"
+    },
+    "adjusters": {
+      "hint": "Equipo de",
+      "title": "Ajustadores y Equipo"
+    },
+    "inspectors": {
+      "hint": "Red nacional de",
+      "title": "Inspectores"
+    }
+  },
+  "aboutUs": {
+    "about": {
+      "hint": "Acerca de",
+      "title": "Nosotros",
+      "description": "Somos Prevención y Control, Ajustadores y Peritos de Seguros, una empresa peruana que hace parte del grupo económico DRC. Nos especializamos en la prevención, control, ajuste y liquidación de siniestros.",
+      "title_image": "PENSAMOS DISTINTO",
+      "title_image_p2": "Y TRABAJAMOS DIFERENTE",
+      "subtitle_image": "Personas Trabajando con Personas"
+    },
+    "certification": {
+      "hint": "Nuestra",
+      "title": "Certificación ISO",
+      "description": "Contamos con la certificación y acreditación en la norma ISO 9001:2015, que garantiza la eficiencia y transparencia de nuestros procesos dentro del sistema de gestión de calidad.",
+      "subtitle": "Políticas de Calidad",
+      "policies": {
+        "p1": "La satisfacción de las necesidades de nuestros clientes.",
+        "p2": "Inversión en nuestros colaboradores y sus competencias, en tecnología, comunicaciones e infraestructura que garantiza la continuidad de nuestra operación de forma segura y continua.",
+        "p3": "El cumplimiento estricto de los requisitos aplicables y legales.",
+        "p4": "La mejora continua de nuestro Sistema de Gestión de la Calidad y procesos"
+      },
+      "buttons": {
+        "see_policie": "Ver Política de Calidad",
+        "see_certification": "Ver Certificado"
+      }
+    },
+    "alliance": {
+      "hint": "Nuestra Alianza",
+      "title": "Estratégica",
+      "description": "R&G Espinosa International Adjusters, una prestigiosa firma internacional de ajuste de seguros y reaseguros con una sólida presencia en el mercado latinoamericano. Fundada en 2006, con oficinas en México, Miami (EE. UU.), Londres, Puerto Rico, Colombia, República Dominicana, Ecuador, Argentina, Chile, Uruguay, Paraguay, Bolivia y, ahora, Perú.",
+      "phrase": "Conocimiento local con estándares internacionales",
+      "ceo": {
+        "name": "RICARDO ESPINOSA",
+        "position": "Presidente y CEO de R&G Espinosa International Ajustadores.",
+        "experience": "Ajustador Internacional con certificación Dip CII (Claims) del Chartered Insurance Institute (CII) de Inglaterra con más de 30 años de experiencia en siniestros catastróficos y reaseguro."
+      }
+    },
+    "our_values": {
+      "hint": "Nuestros",
+      "title": "Valores",
+      "person": {
+        "title": "La Persona",
+        "description": "Un ser humano, lo más importante y el motor de una organización.",
+        "key": "person"
+      },
+      "respect": {
+        "title": "Respeto",
+        "description": "Reconocemos el valor de todos y de cada uno.",
+        "key": "respect"
+      },
+      "integrity": {
+        "title": "Integridad",
+        "description": "Actuamos siempre con transparencia y la verdad.",
+        "key": "integrity"
+      },
+      "solidarity": {
+        "title": "Solidaridad",
+        "description": "Damos lo mejor de nosotros por el bien de otros.",
+        "key": "solidarity"
+      },
+      "loyalty": {
+        "title": "Lealtad",
+        "description": "Nos adherimos con firmeza a nuestro equipo, clientes e ideas, con base en los compromisos que asumimos.",
+        "key": "loyalty"
+      },
+      "collaboration": {
+        "title": "Colaboración",
+        "description": "Potenciamos el talento del equipo.",
+        "key": "collaboration"
+      },
+      "gratitude": {
+        "title": "Gratitud",
+        "description": "Reconocemos y apreciamos lo que es bueno.",
+        "key": "gratitude"
+      },
+      "innovation": {
+        "title": "Innovación",
+        "description": "Pensamos distinto y lo hacemos diferente.",
+        "key": "innovation"
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "description": "Nos exigimos lo mayor para dar lo mejor.",
+        "key": "excellence"
+      },
+      "passion": {
+        "title": "Pasión",
+        "description": "Estamos comprometidos con lo que hacemos y lo hacemos con convicción.",
+        "key": "passion"
+      },
+      "message": "“Pensamos distinto y trabajamos diferente"
+    },
+    "our_number": {
+      "hint": "Nuestros",
+      "title": "Números",
+      "inspections": {
+        "title": "Inspecciones realizadas",
+        "value": "80000",
+        "key": "inspections"
+      },
+      "sinister": {
+        "title": "Siniestros Atendidos",
+        "value": "8000",
+        "key": "sinister"
+      },
+      "imports": {
+        "title": "Importaciones Verificadas",
+        "value": "50000",
+        "key": "imports"
+      },
+      "invesments": {
+        "title": "Invertidos en Tecnología",
+        "value": "350000",
+        "key": "invesments"
+      }
+    }
+  },
+  "services": {
+    "operational_divisions": {
+      "hint": "Divisiones",
+      "title": "Operativas",
+      "loss_prevention": {
+        "title": "Prevención de Pérdidas",
+        "description": "Prevención, control y supervicion de carga/descarga en transporte marítimo y aéreo. Gestión de la carga importada o exportada para prevenir pérdidas y controlar daños.",
+        "icon": "lossprevention"
+      },
+      "sinister": {
+        "title": "Siniestros",
+        "description": "Inspección, peritaje, ajuste y liquidación de pérdidas amparadas bajo pólizas de seguros.",
+        "icon": "sinister"
+      },
+      "recoveries_salvage": {
+        "title": "Recuperos y Salvamento",
+        "description": "División legal enfocada en reclamaciones de carga y recuperación de pérdidas económicas de aquellos que resulten responsables.",
+        "icon": "recoveries"
+      },
+      "risk_management": {
+        "title": "Gerencia de Riesgo",
+        "description": "Inspección de riesgos, análisis y cuantificación del impacto y pronóstico de pérdidas, en base a normas ISO 31000 e ISO 28000.",
+        "icon": "risk"
+      }
+    },
+    "loss_prevention": {
+      "hint": "Divisions",
+      "title": "Prevención de pérdidas",
+      "description": "Actuamos bajo un conjunto de procesos y actividades enfocadas en PREVENIR, dentro de lo posible, cualquier eventualidad con la mercadería importada o exportada.",
+      "p1": "Los procesos controlados son:",
+      "supervision": {
+        "title": "Supervisión de descarga",
+        "icon": "prevention_1"
+      },
+      "control_entry": {
+        "title": "Control de ingreso y permanencia",
+        "icon": "prevention_2"
+      },
+      "control_inspection": {
+        "title": "Control de aforo",
+        "icon": "prevention_3"
+      },
+      "control_exit": {
+        "title": "Control de salida",
+        "icon": "prevention_4"
+      },
+      "inspection": {
+        "title": "Inspección Final",
+        "icon": "prevention_5"
+      }
+    },
+    "sinister": {
+      "hint": "",
+      "title": "Siniestros",
+      "description": "Inspección, peritaje, ajuste y liquidación de siniestros en las áreas de:",
+      "civil_liability": {
+        "title": "Responsabilidad Civil y D&O",
+        "icon": "sinister_1"
+      },
+      "general_risks": {
+        "title": "Riesgos Generales y Aviación",
+        "icon": "sinister_2"
+      },
+      "transport": {
+        "title": "Transportes y Cascos",
+        "icon": "sinister_3"
+      }
+    },
+    "recoveries_salvage": {
+      "hint": "Divisiones",
+      "title": "Recuperos y Salvamento",
+      "description": "",
+      "recoveries": {
+        "title": "En cuanto a recuperos, nuestra labor se enfoca en recuperar las pérdidas económicas en los servicios de transporte de aquellos que resulten responsables, ya sea por la vía extra judicial o judicial.",
+        "icon": "recoveries_1"
+      },
+      "salvage": {
+        "title": "En cuanto a los salvamentos, nuestra labor se enfoca en promocionar, colocar, vender o destruir la mercadería o productos dañados o rechazados.",
+        "icon": "recoveries_2"
+      }
+    },
+    "risk_management": {
+      "hint": "Divisiones",
+      "title": "Gerenciamiento de Riesgo",
+      "description": "Actuamos gestionando actividades enfocadas en identificar y evaluar los riesgos que pueden afectar la continuidad de una organización con el objetivo de controlarlos, reducirlos o eliminarlos.",
+      "supply_chain": {
+        "title": "Cadena de Suministros",
+        "icon": "magnament_1"
+      },
+      "transport_security": {
+        "title": "Seguridad en el Transporte y Logística",
+        "icon": "magnament_2"
+      },
+      "operational_risk": {
+        "title": "Gestión de Riesgos Operacionales",
+        "icon": "magnament_3"
+      },
+      "fire_theft": {
+        "title": "Prevención de Riesgos de Incendios, Robo y/o Deshonestidad",
+        "icon": "magnament_4"
+      }
+    },
+    "support_units": {
+      "hint": "Unidades de",
+      "title": "Apoyo",
+      "description": "PyC se soporta en 9 unidades especializadas.",
+      "inspections": {
+        "title": "Inspecciones",
+        "icon": "support_1"
+      },
+      "engineering": {
+        "title": "Ingeniería",
+        "icon": "support_2"
+      },
+      "medical_auditing": {
+        "title": "Auditoría Médica",
+        "icon": "support_3"
+      },
+      "logistics": {
+        "title": "Logística",
+        "icon": "support_4"
+      },
+      "technology": {
+        "title": "Tecnología y Comunicaciones",
+        "icon": "support_5"
+      },
+      "legal": {
+        "title": "Legales",
+        "icon": "support_6"
+      },
+      "criminalistics": {
+        "title": "Criminalista",
+        "icon": "support_7"
+      },
+      "forensic_accounting": {
+        "title": "Contabilidad Forense",
+        "icon": "support_8"
+      },
+      "spill_cleaning": {
+        "title": "Derrames Limpieza y Remediación",
+        "icon": "support_9"
+      }
     }
   }
 }

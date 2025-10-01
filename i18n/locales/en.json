@@ -1,5 +1,18 @@
 {
+  "header": {
+    "home": "Home",
+    "about": "About Us",
+    "team": "Team",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact Us"
+  },
   "home": {
+    "banner": {
+      "title": "Prevention and Control",
+      "subtitle": "Insurance Adjusters and Experts",
+      "button": "Learn more about us"
+    },
     "about": {
       "hint": "About",
       "title": "Us",
@@ -18,15 +31,294 @@
       "hint": "Our",
       "title": "Team",
       "description": "The most valuable asset of our organization, made up of over 40 professionals and 25 exclusive collaborators.",
-      "button": "Meet us"
+      "button": "Learn more about us"
     },
     "divisions": {
       "title": "Operational Divisions",
       "button": "See more"
     },
-    "location": {
-      "title": "Location",
-      "address": "Los Sauces St. 325, San Isidro, Lima, Peru"
+    "info_contact": {
+      "main_office": "Head Office",
+      "phone_center": "Telephone Center",
+      "admin_center": "Administrative Center",
+      "email": "Email",
+      "office": "Office",
+      "center": "Center",
+      "emergency": "24-Hour Emergency"
+    }
+  },
+  "team": {
+    "management": {
+      "hint": "Team",
+      "title": "Management"
+    },
+    "adjusters": {
+      "hint": "Team of",
+      "title": "Adjusters"
+    },
+    "inspectors": {
+      "hint": "National network of",
+      "title": "Inspectors"
+    }
+  },
+  "aboutUs": {
+    "about": {
+      "hint": "About",
+      "title": "Us",
+      "description": "We are Prevention and Control, Insurance Adjusters and Experts, a Peruvian company that is part of the DRC economic group. We specialize in the prevention, control, adjustment, and settlement of claims.",
+      "title_image": "WE THINK DIFFERENTLY",
+      "title_image_p2": "AND WORK DIFFERENTLY",
+      "subtitle_image": "People Working with People"
+    },
+    "certification": {
+      "hint": "Our",
+      "title": "ISO Certification",
+      "description": "We hold the ISO 9001:2015 certification and accreditation, which ensures the efficiency and transparency of our processes within the quality management system.",
+      "subtitle": "Quality Policies",
+      "policies": {
+        "p1": "Customer satisfaction is our priority.",
+        "p2": "Investment in employees, technology, and infrastructure.",
+        "p3": "Strict compliance with applicable legal requirements.",
+        "p4": "Continuous improvement of our quality management system."
+      },
+      "buttons": {
+        "see_policie": "View Quality Policy",
+        "see_certification": "View Certificate"
+      }
+    },
+    "alliance": {
+      "hint": "Our Alliance",
+      "title": "Strategic",
+      "description": "R&G Espinosa International Adjusters, a prestigious international insurance and reinsurance adjusting firm with a strong presence in the Latin American market. Founded in 2006, with offices in Mexico, Miami (USA), London, Puerto Rico, Colombia, Dominican Republic, Ecuador, Argentina, Chile, Uruguay, Paraguay, Bolivia, and now Peru.",
+      "phrase": "Local knowledge with international standards",
+      "ceo": {
+        "name": "RICARDO ESPINOSA",
+        "position": "President and CEO of R&G Espinosa International Adjusters.",
+        "experience": "International Adjuster certified Dip CII (Claims) by the Chartered Insurance Institute (CII) of England, with over 30 years of experience in catastrophic claims and reinsurance."
+      }
+    },
+    "our_values": {
+      "hint": "Our",
+      "title": "Values",
+      "person": {
+        "title": "The Person",
+        "description": "A human being, the most important element and the driving force of an organization.",
+        "key": "person"
+      },
+      "respect": {
+        "title": "Respect",
+        "description": "We recognize the value of everyone and each individual.",
+        "key": "respect"
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "We always act with transparency and truth.",
+        "key": "integrity"
+      },
+      "solidarity": {
+        "title": "Solidarity",
+        "description": "We give our best for the good of others.",
+        "key": "solidarity"
+      },
+      "loyalty": {
+        "title": "Loyalty",
+        "description": "We firmly adhere to our team, clients, and ideas, based on the commitments we make.",
+        "key": "loyalty"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "We enhance the talent of the team.",
+        "key": "collaboration"
+      },
+      "gratitude": {
+        "title": "Gratitude",
+        "description": "We recognize and appreciate what is good.",
+        "key": "gratitude"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We think differently and do things differently.",
+        "key": "innovation"
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We demand the most from ourselves to deliver the best.",
+        "key": "excellence"
+      },
+      "passion": {
+        "title": "Passion",
+        "description": "We are committed to what we do and we do it with conviction.",
+        "key": "passion"
+      },
+      "message": "“We think differently and work differently”"
+    },
+    "our_number": {
+      "hint": "Our",
+      "title": "Numbers",
+      "inspections": {
+        "title": "Inspections carried out",
+        "value": "80000",
+        "key": "inspections"
+      },
+      "sinister": {
+        "title": "Claims Handled",
+        "value": "8000",
+        "key": "sinister"
+      },
+      "imports": {
+        "title": "Imports Verified",
+        "value": "50000",
+        "key": "imports"
+      },
+      "invesments": {
+        "title": "Invested in Technology",
+        "value": "350000",
+        "key": "invesments"
+      }
+    }
+  },
+  "services": {
+    "operational_divisions": {
+      "hint": "Divisions",
+      "title": "Operational",
+      "loss_prevention": {
+        "title": "Loss Prevention",
+        "description": "Prevention, control, and supervision of loading/unloading in maritime and air transport. Management of imported or exported cargo to prevent losses and control damages.",
+        "icon": "lossprevention"
+      },
+      "sinister": {
+        "title": "Claims",
+        "description": "Inspection, appraisal, adjustment, and settlement of losses covered under insurance policies.",
+        "icon": "sinister"
+      },
+      "recoveries_salvage": {
+        "title": "Recoveries and Salvage",
+        "description": "Legal division focused on cargo claims and the recovery of economic losses from those found responsible.",
+        "icon": "recoveries"
+      },
+      "risk_management": {
+        "title": "Risk Management",
+        "description": "Risk inspections, analysis, impact quantification, and loss forecasting, based on ISO 31000 and ISO 28000 standards.",
+        "icon": "risk"
+      }
+    },
+    "loss_prevention": {
+      "hint": "Divisions",
+      "title": "Loss Prevention",
+      "description": "We operate under a set of processes and activities focused on PREVENTING, as much as possible, any eventuality with imported or exported goods.",
+      "p1": "The controlled processes are:",
+      "supervision": {
+        "title": "Unloading Supervision",
+        "icon": "prevention_1"
+      },
+      "control_entry": {
+        "title": "Entry and Stay Control",
+        "icon": "prevention_2"
+      },
+      "control_inspection": {
+        "title": "Customs Inspection Control",
+        "icon": "prevention_3"
+      },
+      "control_exit": {
+        "title": "Exit Control",
+        "icon": "prevention_4"
+      },
+      "inspection": {
+        "title": "Final Inspection",
+        "icon": "prevention_5"
+      }
+    },
+    "sinister": {
+      "hint": "",
+      "title": "Claims",
+      "description": "Inspection, appraisal, adjustment, and settlement of claims in the following areas:",
+      "civil_liability": {
+        "title": "Civil Liability and D&O",
+        "icon": "sinister_1"
+      },
+      "general_risks": {
+        "title": "General Risks and Aviation",
+        "icon": "sinister_2"
+      },
+      "transport": {
+        "title": "Transport and Hull",
+        "icon": "sinister_3"
+      }
+    },
+    "recoveries_salvage": {
+      "hint": "Divisions",
+      "title": "Recoveries and Salvage",
+      "description": "",
+      "recoveries": {
+        "title": "Regarding recoveries, our work focuses on recovering economic losses in transportation services from those found responsible, either through extrajudicial or judicial proceedings.",
+        "icon": "recoveries_1"
+      },
+      "salvage": {
+        "title": "Regarding salvage, our work focuses on promoting, placing, selling, or destroying damaged or rejected goods or products.",
+        "icon": "recoveries_2"
+      }
+    },
+    "risk_management": {
+      "hint": "Divisions",
+      "title": "Risk Management",
+      "description": "We manage activities focused on identifying and assessing risks that may affect the continuity of an organization, with the objective of controlling, reducing, or eliminating them.",
+      "supply_chain": {
+        "title": "Supply Chain",
+        "icon": "magnament_1"
+      },
+      "transport_security": {
+        "title": "Transportation and Logistics Security",
+        "icon": "magnament_2"
+      },
+      "operational_risk": {
+        "title": "Operational Risk Management",
+        "icon": "magnament_3"
+      },
+      "fire_theft": {
+        "title": "Prevention of Fire, Theft, and/or Dishonesty Risks",
+        "icon": "magnament_4"
+      }
+    },
+    "support_units": {
+      "hint": "Support",
+      "title": "Units",
+      "description": "PyC is supported by 9 specialized units.",
+      "inspections": {
+        "title": "Inspections",
+        "icon": "support_1"
+      },
+      "engineering": {
+        "title": "Engineering",
+        "icon": "support_2"
+      },
+      "medical_auditing": {
+        "title": "Medical Auditing",
+        "icon": "support_3"
+      },
+      "logistics": {
+        "title": "Logistics",
+        "icon": "support_4"
+      },
+      "technology": {
+        "title": "Technology and Communications",
+        "icon": "support_5"
+      },
+      "legal": {
+        "title": "Legal",
+        "icon": "support_6"
+      },
+      "criminalistics": {
+        "title": "Criminalistics",
+        "icon": "support_7"
+      },
+      "forensic_accounting": {
+        "title": "Forensic Accounting",
+        "icon": "support_8"
+      },
+      "spill_cleaning": {
+        "title": "Spill Cleaning and Remediation",
+        "icon": "support_9"
+      }
     }
   }
 }

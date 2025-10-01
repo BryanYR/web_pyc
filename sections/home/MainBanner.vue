@@ -13,10 +13,10 @@ const router = useRouter()
   >
   <div class="absolute top-0 left-0 right-0 bg-black/40 h-full w-full"></div>
     <div class="text-white px-4 py-10 pyc-container mx-auto z-10 gap-4 flex flex-col">
-      <h1 class="uppercase text-4xl lg:text-6xl font-bold">Prevención y Control</h1>
-      <h2 class="text-2xl lg:text-4xl font-normal">Ajustadores y Peritos de Seguros</h2>
+      <h1 class="uppercase text-4xl lg:text-6xl font-bold">{{ $t('home.banner.title') }}</h1>
+      <h2 class="text-2xl lg:text-4xl font-normal">{{ $t('home.banner.subtitle') }}</h2>
       <div>
-        <ButtonBase class="py-2 px-6"  to="/nosotros"> Cónocenos más </ButtonBase>
+        <ButtonBase class="py-2 px-6"  to="/nosotros"> {{ $t('home.banner.button') }} </ButtonBase>
       </div>
     </div>
   </div>

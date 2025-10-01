@@ -19,7 +19,7 @@ import { contactInfo } from '@/constants/contact';
             class="flex flex-col gap-2 pt-4 lg:pt-0 lg:pl-4 border-t lg:border-t-0 lg:border-l border-primary-700"
           >
             <h4 class="text-base lg:text-xl font-bold text-gray-900">
-              {{ item.title }}
+               {{ $t(`home.info_contact.${item.key}`) }}
             </h4>
             <template v-for="(text, j) in item.content" :key="j">
               <p
@@ -29,7 +29,7 @@ import { contactInfo } from '@/constants/contact';
                 {{ text }}
               </p>
               <strong v-else class="text-sm text-gray-600">
-                {{ text }}
+                {{ $t(`home.info_contact.${text}`) }} :
               </strong>
             </template>
           </div>

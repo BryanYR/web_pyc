@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { useLocalizedJson } from '@/composables/useLocalizedJson'
 import SectionInformation from "@/components/utils/SectionInformation.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, EffectCreative, Autoplay } from "swiper/modules";
@@ -13,20 +13,15 @@ import "swiper/css/effect-creative";
 
 const modules = [Pagination, Navigation, EffectCreative, Autoplay];
 
-const divisions = ref<DivisionInfo[]>([]);
-
-onMounted(async () => {
-  const res = await fetch("/json/operative-divisions.json");
-  divisions.value = await res.json();
-});
+const { data: divisions } = useLocalizedJson<DivisionInfo[]>('operative-divisions')
 </script>
 
 <template>
-  <section id="services" class="bg-white dark:bg-gray-900 py-8 md:py-16 px-10">
+  <section id="services" class="bg-white dark:bg-primary-900 py-8 md:py-16 px-10">
     <div class="pyc-container-section mx-auto flex flex-col gap-10">
-      <SectionInformation title="Divisiones Operativas" />
+      <SectionInformation :title="$t('home.divisions.title')" />
 
-      <div v-if="divisions.length" class="relative py-8">
+      <div v-if="divisions && divisions.length" class="relative py-8">
         <!-- Botones custom -->
         <div class="absolute -top-6 right-0 flex gap-3 z-20">
           <button
@@ -86,7 +81,7 @@ onMounted(async () => {
                   to="/servicios"
                   class="w-auto inline-block px-6 py-2 bg-primary-600 text-white font-medium rounded-lg shadow hover:bg-primary-700 transition-colors"
                 >
-                  Ver más
+                  {{ $t('home.divisions.button') }}
                 </NuxtLink>
               </div>
             </div>

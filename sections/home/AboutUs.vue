@@ -18,7 +18,7 @@ const imgClasses = "w-full h-[15rem] object-cover lg:w-80 lg:h-60 rounded-3xl";
 </script>
 
 <template>
-  <section id="aboutUs" class="bg-white dark:bg-gray-900 py-8 md:py-16 px-10">
+  <section id="aboutUs" class="bg-white dark:bg-primary-900 py-8 md:py-16 px-10">
     <div class="pyc-container-section mx-auto flex flex-col gap-10">
       <!-- Información -->
       <SectionInformation

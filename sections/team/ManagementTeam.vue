@@ -1,33 +1,27 @@
 <script setup lang="ts">
-import type { PersonInfo } from "@/interfaces/general";
-import SectionInformation from "@/components/utils/SectionInformation.vue";
-import { ref, onMounted } from "vue";
-import Email from "@/assets/icons/Email.vue";
-import Phone from "@/assets/icons/Phone.vue";
-import Arrow from "@/assets/icons/Arrow.vue";
+import type { PersonInfo } from '@/interfaces/general'
+import SectionInformation from '@/components/utils/SectionInformation.vue'
+import { useLocalizedJson } from '@/composables/useLocalizedJson'
+import Email from '@/assets/icons/Email.vue'
+import Phone from '@/assets/icons/Phone.vue'
+import Arrow from '@/assets/icons/Arrow.vue'
 
 // Import Swiper
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 
-const modules = [Pagination, Navigation, Autoplay];
+const modules = [Pagination, Navigation, Autoplay]
 
-const team = ref<PersonInfo[]>([]);
-
-onMounted(async () => {
-  const res = await fetch("/json/team.json");
-  team.value = await res.json();
-});
+const { data: team } = useLocalizedJson<PersonInfo[]>('team')
 </script>
 
 <template>
-  <section class=" py-8 md:py-16 px-10">
+  <section class="py-8 md:py-16 px-10">
     <div class="pyc-container-section mx-auto flex flex-col gap-10">
-      <SectionInformation hint="Equipo" title="Directivo">
-      </SectionInformation>
+      <SectionInformation :hint="$t('team.management.hint')" :title="$t('team.management.title')"> </SectionInformation>
 
       <div class="relative pt-8">
         <!-- Botones de navegación -->
@@ -53,7 +47,7 @@ onMounted(async () => {
             1280: { slidesPerView: 4 },
           }"
           :autoplay="{ delay: 3000 }"
-          loop 
+          loop
           :pagination="{ clickable: true }"
           :navigation="{
             nextEl: '.custom-button-next',
@@ -61,63 +55,71 @@ onMounted(async () => {
           }"
           class="!pb-12 items-stretch"
         >
-          <SwiperSlide v-for="(member, i) in team.slice(0, 6)" :key="i" class="h-full flex">
-            <div
-              class="group relative bg-white rounded-2xl shadow-md overflow-hidden transition-all hover:shadow-xl flex flex-col h-full w-full"
+          <template v-if="team">
+            <SwiperSlide
+              v-for="(member, i) in team.slice(0, 6)"
+              :key="i"
+              class="h-full flex"
             >
-              <!-- Imagen -->
-              <img
-                :src="member.photo"
-                :alt="member.name"
-                class="w-full h-72 md:h-64 object-cover"
-                loading="lazy"
-              />
-
-              <!-- Info básica -->
-              <div class="p-4 text-center flex-grow flex flex-col">
-                <h3 class="text-lg font-semibold text-gray-900">
-                  {{ member.name }}
-                </h3>
-                <p class="text-sm text-gray-500">{{ member.position }}</p>
-              </div>
-
-              <!-- Overlay con info extra -->
               <div
-                class="absolute inset-0 bg-white p-6 flex flex-col justify-center text-center items-center opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
+                class="group relative bg-white rounded-2xl shadow-md overflow-hidden transition-all hover:shadow-xl flex flex-col h-full w-full"
               >
-                <h3 class="text-xl font-semibold text-primary-700">
-                  {{ member.name }}
-                </h3>
-                <p class="text-xs text-gray-700 text-justify line-clamp-6 my-2">
-                  {{ member.description }}
-                </p>
+                <!-- Imagen -->
+                <img
+                  :src="member.photo"
+                  :alt="member.name"
+                  class="w-full h-72 md:h-64 object-cover"
+                  loading="lazy"
+                />
+
+                <!-- Info básica -->
+                <div class="p-4 text-center flex-grow flex flex-col">
+                  <h3 class="text-lg font-semibold text-gray-900">
+                    {{ member.name }}
+                  </h3>
+                  <p class="text-sm text-gray-500">{{ member.position }}</p>
+                </div>
+
+                <!-- Overlay con info extra -->
                 <div
-                  class="flex gap-2 text-xs items-center w-full my-2 justify-center"
+                  class="absolute inset-0 bg-white p-6 flex flex-col justify-center text-center items-center opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
                 >
-                  <Email class="h-4 w-4 text-primary-700" />
-                  <a :href="`mailto:${member.email}`">
-                    {{ member.email }}
+                  <h3 class="text-xl font-semibold text-primary-700">
+                    {{ member.name }}
+                  </h3>
+                  <p
+                    class="text-xs text-gray-700 text-justify line-clamp-6 my-2"
+                  >
+                    {{ member.description }}
+                  </p>
+                  <div
+                    class="flex gap-2 text-xs items-center w-full my-2 justify-center"
+                  >
+                    <Email class="h-4 w-4 text-primary-700" />
+                    <a :href="`mailto:${member.email}`">
+                      {{ member.email }}
+                    </a>
+                  </div>
+                  <div
+                    class="flex gap-2 text-xs items-center w-full justify-center"
+                  >
+                    <Phone class="h-4 w-4 text-primary-700" />
+                    <a :href="`tel:${member.phone}`">
+                      {{ member.phone }}
+                    </a>
+                  </div>
+                  <a
+                    v-if="member.linkedin"
+                    :href="member.linkedin"
+                    target="_blank"
+                    class="mt-4 inline-block bg-primary-700 text-white text-sm font-medium rounded-2xl px-4 py-2"
+                  >
+                    Ver LinkedIn
                   </a>
                 </div>
-                <div
-                  class="flex gap-2 text-xs items-center w-full justify-center"
-                >
-                  <Phone class="h-4 w-4 text-primary-700" />
-                  <a :href="`tel:${member.phone}`">
-                    {{ member.phone }}
-                  </a>
-                </div>
-                <a
-                  v-if="member.linkedin"
-                  :href="member.linkedin"
-                  target="_blank"
-                  class="mt-4 inline-block bg-primary-700 text-white text-sm font-medium rounded-2xl px-4 py-2"
-                >
-                  Ver LinkedIn
-                </a>
               </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          </template>
         </Swiper>
       </div>
     </div>

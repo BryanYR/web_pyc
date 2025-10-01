@@ -9,7 +9,7 @@ import Inspectors from '@/sections/team/Inspectors.vue';
 </script>
 
 <template>
-    <div class="w-full py-8">
+    <div class="w-full py-16">
         <ManagementTeam />
         <AdjusterTeam />
         <Inspectors />

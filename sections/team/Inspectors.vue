@@ -14,7 +14,7 @@ onMounted(async () => {
 <template>
   <section class="py-8 md:pb-16 px-10">
     <div class="pyc-container-section mx-auto flex flex-col gap-10">
-      <SectionInformation hint="Red Nacional de" title="Inspectores">
+      <SectionInformation :hint="$t('team.inspectors.hint')" :title="$t('team.inspectors.title')">
       </SectionInformation>
       <div class="relative grid md:grid-cols-2">
         <div class="col-span-1 hidden w-full sm:flex justify-center items-center">
