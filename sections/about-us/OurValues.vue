@@ -38,11 +38,12 @@ function getCellClass(index: number) {
     <div class="pyc-container-section mx-auto">
       <div class="grid sm:grid-cols-2 md:grid-cols-4">
         <!-- bloque de título -->
-        <div class="bg-[#f2f2f2] dark:bg-primary-800 p-4 lg:p-8 flex items-center transition-transform duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl">
+        <div class="bg-[#f2f2f2] dark:bg-slate-500 p-4 lg:p-8 flex items-center transition-transform duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl">
           <SectionTitle
             :hint="t('aboutUs.our_values.hint')"
             :title="t('aboutUs.our_values.title')"
-            class-title="!text-4xl"
+            class-title="!text-4xl "
+           
           />
         </div>
 

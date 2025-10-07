@@ -9,6 +9,7 @@ import SectionInformation from "@/components/utils/SectionInformation.vue";
         :hint="$t('aboutUs.about.hint')"
         :title="$t('aboutUs.about.title')"
         mode="block"
+        class-description="text-justify"
       >
         <p>{{ $t("aboutUs.about.description") }}</p>
       </SectionInformation>

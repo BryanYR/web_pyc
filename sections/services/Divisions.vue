@@ -32,7 +32,7 @@ const infoDivisions = ref(rawInfo)
 </script>
 
 <template>
-  <section id="divisions" class="bg-white dark:bg-primary-900 py-8 md:pt-16 px-10">
+  <section id="divisions" class="bg-white dark:bg-primary-800 py-8 md:pt-16 px-10">
     <div class="pyc-container-section mx-auto flex flex-col gap-6">
       <SectionInformation
         :hint="$t('services.operational_divisions.hint')"
@@ -44,7 +44,7 @@ const infoDivisions = ref(rawInfo)
         <div
           v-for="item in infoDivisions"
           :key="item.key"
-          class="flex flex-col items-center text-center dark:bg-primary-900  rounded-2xl bg-[#f2f2f2] transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+          class="flex flex-col items-center text-center dark:bg-primary-800  rounded-2xl bg-[#f2f2f2] transition-transform duration-300 hover:scale-105 hover:shadow-xl"
         >
           <div
             class="flex flex-col gap-4 p-6 w-full justify-center items-start text-justify h-full"

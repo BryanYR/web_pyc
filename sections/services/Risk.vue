@@ -34,8 +34,8 @@ const infoRisk = ref(rawInfo)
         :hint="$t('services.risk_management.hint')"
         :title="$t('services.risk_management.title')"
         mode="block"
-        class-description="!font-normal !text-white"
-        class-title="!text-white"
+        class-description="!font-normal !text-white "
+        class-title="!text-white !border-white"
         class-hint="!text-white"
       >
         <p>{{ $t('services.risk_management.description') }}</p>

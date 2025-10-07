@@ -40,7 +40,7 @@ const rest = computed(() => {
           {{ hint }}
         </span>
         <span class="text-3xl lg:text-4xl xl:text-5xl font-bold" :class="[classTitle]">
-          <span class="border-b-4 border-primary-500 dark:border-white">{{
+          <span class="border-b-4 border-primary-500 dark:border-white" :class="[classTitle]">{{
             firstThree
           }}</span>
           <span>{{ rest }}</span>

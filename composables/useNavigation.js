@@ -1,25 +1,17 @@
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 export function useNavigation() {
   const router = useRouter();
-  const route = useRoute();
 
   const navigateToSection = async (id = "", path = "/") => {
-    console.log('id', id, path)
     if (!id) {
       // Si no tiene id, solo navega normal
       router.push(path);
       return;
     }
 
-    if (route.path === "/") {
-      // Ya estamos en la página, solo scrollea
-      scrollToId(id);
-    } else {
-      // Primero navega, luego scrollea
-      await router.push(path);
-      setTimeout(() => scrollToId(id), 300); // pequeño delay
-    }
+    await router.push(path);
+    setTimeout(() => scrollToId(id), 300); // pequeño delay
   };
 
   const scrollToId = (id) => {

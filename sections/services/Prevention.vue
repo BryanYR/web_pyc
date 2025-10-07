@@ -45,11 +45,11 @@ const infoPreventions = ref(rawInfo)
         <div
           v-for="(item, index) in infoPreventions"
           :key="item.key"
-          class="flex flex-col items-center gap-4 p-4 border border-primary-700 rounded-lg shadow-sm bg-white"
+          class="flex flex-col items-center gap-4 p-4 border border-primary-700 rounded-lg shadow-sm bg-white dark:bg-primary-700"
           :class="index === (infoPreventions.length - 1) ? 'lg:col-span-2' : ''"
         >
-          <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16 text-primary-700" />
-          <div class="text-sm lg:text-base font-medium text-gray-800">{{ item.title }}</div>
+          <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16 text-primary-700 dark:text-white" />
+          <div class="text-sm lg:text-base font-medium text-gray-800 dark:text-white">{{ item.title }}</div>
         </div>
       </div>
     </div>

@@ -73,7 +73,7 @@ const { data: divisions } = useLocalizedJson<DivisionInfo[]>('operative-division
               <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                 {{ division.title }}
               </h3>
-              <p class="text-gray-600 mb-6">
+              <p class="text-gray-600 mb-6 w-full text-justify">
                 {{ division.description }}
               </p>
               <div>

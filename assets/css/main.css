@@ -149,3 +149,11 @@
     /* Firefox */
   }
 }
+
+
+.dark .swiper-pagination-bullet{
+  background-color: white;
+}
+.dark .swiper-pagination-bullet.swiper-pagination-bullet-active{
+  background-color: white;
+}

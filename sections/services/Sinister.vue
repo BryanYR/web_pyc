@@ -34,7 +34,7 @@ const infoSinister = ref(rawInfo)
         :title="$t('services.sinister.title')"
         mode="block"
         class-description="!font-normal !text-white"
-        class-title="!text-white"
+        class-title="!text-white !border-white"
         class-hint="!text-white"
       >
         <p>{{ $t('services.sinister.description') }}</p>

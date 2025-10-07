@@ -40,10 +40,10 @@ const infoRecoveries = ref(rawInfo)
           <div
             v-for="item in infoRecoveries"
             :key="item.key"
-            class="flex items-center gap-4 px-4 py-6 rounded-lg shadow-sm bg-white"
+            class="flex items-center gap-4 px-4 py-6 rounded-lg shadow-sm  bg-white dark:bg-primary-700"
           >
-            <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16 text-primary-700 shrink-0" />
-            <div class="text-sm font-medium text-gray-800">{{ item.title }}</div>
+            <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16 text-primary-700 dark:text-white shrink-0" />
+            <div class="text-sm font-medium text-gray-800 dark:text-white">{{ item.title }}</div>
           </div>
         </div>
       </div>

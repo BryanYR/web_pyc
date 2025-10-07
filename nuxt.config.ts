@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxtjs/i18n",
   ],
+  plugins: [
+    '~/plugins/pinia'
+  ],
   i18n: {
     strategy: "no_prefix",
     defaultLocale: "es",

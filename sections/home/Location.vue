@@ -3,7 +3,7 @@ import { contactInfo } from '@/constants/contact';
 </script>
 
 <template>
-  <section class="py-8 md:py-16 px-10">
+  <section class="py-8 md:py-16 px-10 dark:bg-primary-800">
     <div class="pyc-container-section mx-auto grid grid-cols-1 lg:grid-cols-3">
       <!-- Columna de Contactos -->
       <div
