@@ -36,7 +36,9 @@ const hasPrimaryBg = computed(() => {
   >
     <div class="pyc-container mx-auto px-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <LogoWhite class="h-12 text-white" />
+        <NuxtLink to="/">
+          <LogoWhite class="h-12 text-white" />
+        </NuxtLink>
         <LanguageSelector />
       </div>
 
@@ -46,6 +48,7 @@ const hasPrimaryBg = computed(() => {
           <li v-for="link in navLinks" :key="link.key">
             <button
               class="hover:opacity-75 transition-opacity duration-300 ease-in-out"
+              :class="[link.key === 'contact' ? 'font-semibold' : 'font-normal']"
               @click="navigateToSection(link.id, link.path)"
             >
               {{ t(`header.${link.key}`) }}

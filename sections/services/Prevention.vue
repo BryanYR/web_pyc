@@ -45,7 +45,7 @@ const infoPreventions = ref(rawInfo)
         <div
           v-for="(item, index) in infoPreventions"
           :key="item.key"
-          class="flex flex-col items-center gap-4 p-4 border border-primary-700 rounded-lg shadow-sm bg-white dark:bg-primary-700"
+          class="flex flex-col items-center gap-4 p-4 hover:scale-105 duration-300 ease-in-out border border-primary-700 rounded-lg shadow-sm bg-white dark:bg-primary-700"
           :class="index === (infoPreventions.length - 1) ? 'lg:col-span-2' : ''"
         >
           <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16 text-primary-700 dark:text-white" />

@@ -3,7 +3,8 @@
     xmlns="http://www.w3.org/2000/svg"
     id="Capa_2"
     data-name="Capa 2"
-    class="w-full"
+    class="w-full map-svg"
+    ref="svgEl"
     viewBox="0 0 431.21 381.04"
   >
     <g id="Capa_1-2" data-name="Capa 1">
@@ -429,6 +430,99 @@
     </g>
   </svg>
 </template>
+
+<script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+
+const svgEl = ref<SVGSVGElement | null>(null)
+let cleanupFns: Array<() => void> = []
+
+type Gfx = SVGGraphicsElement
+
+function getCenter(el: Gfx) {
+  const b = el.getBBox()
+  return { x: b.x + b.width / 2, y: b.y + b.height / 2 }
+}
+
+onMounted(() => {
+  const svg = svgEl.value
+  if (!svg) return
+
+  const polygons = Array.from(svg.querySelectorAll<SVGPolygonElement>('polygon'))
+  const texts = Array.from(svg.querySelectorAll<SVGTextElement>('text'))
+
+  // Map each polygon to its nearest text label
+  const polyToTexts = new Map<SVGPolygonElement, SVGTextElement[]>()
+  for (const poly of polygons) {
+    const pc = getCenter(poly)
+    let nearest: SVGTextElement | null = null
+    let min = Number.POSITIVE_INFINITY
+    for (const t of texts) {
+      const tc = getCenter(t)
+      const dx = pc.x - tc.x
+      const dy = pc.y - tc.y
+      const d = Math.hypot(dx, dy)
+      if (d < min) {
+        min = d
+        nearest = t
+      }
+    }
+    if (nearest) polyToTexts.set(poly, [nearest])
+  }
+
+  const addHover = (poly: SVGPolygonElement) => {
+    poly.classList.add('is-hover')
+    const linked = polyToTexts.get(poly) || []
+    for (const t of linked) t.classList.add('is-hover')
+  }
+  const removeHover = (poly: SVGPolygonElement) => {
+    poly.classList.remove('is-hover')
+    const linked = polyToTexts.get(poly) || []
+    for (const t of linked) t.classList.remove('is-hover')
+  }
+
+  for (const poly of polygons) {
+    const onEnter = () => addHover(poly)
+    const onLeave = () => removeHover(poly)
+    poly.addEventListener('mouseenter', onEnter)
+    poly.addEventListener('mouseleave', onLeave)
+    cleanupFns.push(() => {
+      poly.removeEventListener('mouseenter', onEnter)
+      poly.removeEventListener('mouseleave', onLeave)
+    })
+  }
+})
+
+onBeforeUnmount(() => {
+  cleanupFns.forEach((fn) => fn())
+  cleanupFns = []
+})
+</script>
+
+<style scoped>
+/* Smooth lift for polygons and their labels */
+.map-svg polygon {
+  transition: transform 200ms ease, filter 200ms ease, fill 200ms ease;
+  transform-box: fill-box;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.map-svg text {
+  transition: transform 200ms ease, fill 200ms ease;
+  pointer-events: none; /* keep hover on polygon */
+}
+
+.map-svg .is-hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+}
+
+/* Dark mode: make labels white for contrast */
+:global(.dark) .map-svg text {
+  fill: #fff !important;
+}
+</style>
 <style>
 .cls-1 {
   stroke: #004393;

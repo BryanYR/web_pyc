@@ -14,7 +14,7 @@ const aboutImages = [
 
 
 // Clases comunes para todas las imágenes
-const imgClasses = "w-full h-[15rem] object-cover lg:w-80 lg:h-60 rounded-3xl";
+const imgClasses = "w-full h-[15rem] object-cover lg:w-80 lg:h-60 rounded-tr-2xl rounded-bl-2xl";
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const imgClasses = "w-full h-[15rem] object-cover lg:w-80 lg:h-60 rounded-3xl";
         <figure
           v-for="(img, i) in aboutImages"
           :key="i"
-          class="flex justify-center"
+          class="flex justify-center "
         >
           <img
             :src="img.src"

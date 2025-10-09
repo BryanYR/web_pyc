@@ -37,7 +37,7 @@ import { contactInfo } from '@/constants/contact';
       </div>
 
       <!-- Mapa -->
-      <div class="md:col-span-2 w-full">
+      <div class="md:col-span-2 w-full hover:scale-105 transition-transform duration-300 ease-in-out">
         <iframe
           title="Ubicación PYC"
           aria-label="Mapa de la sede principal de PYC en San Isidro, Lima"

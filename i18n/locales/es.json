@@ -5,7 +5,7 @@
     "team": "Equipo",
     "services": "Servicios",
     "blog": "Blog",
-    "contact": "Contáctanos"
+    "contact": "Contacto"
   },
   "home": {
     "banner": {
@@ -150,7 +150,7 @@
         "description": "Estamos comprometidos con lo que hacemos y lo hacemos con convicción.",
         "key": "passion"
       },
-      "message": "“Pensamos distinto y trabajamos diferente"
+      "message": "“Pensamos distinto y trabajamos diferente”"
     },
     "our_number": {
       "hint": "Nuestros",

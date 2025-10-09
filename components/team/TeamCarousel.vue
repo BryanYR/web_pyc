@@ -142,7 +142,7 @@ onBeforeUnmount(() => {
           :slides-per-view="1"
           :space-between="20"
           :breakpoints="{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 }, 1280: { slidesPerView: 4 } }"
-          :autoplay="{ delay: props.autoplayDelay, disableOnInteraction: false }"
+          :autoplay="{ delay: props.autoplayDelay, pauseOnMouseEnter: true }"
           loop
           :pagination="{ clickable: true }"
           :navigation="{ nextEl: '.custom-button-next', prevEl: '.custom-button-prev' }"
@@ -181,7 +181,7 @@ onBeforeUnmount(() => {
               </div>
               <div class="absolute inset-0 bg-white p-6 flex flex-col justify-center text-center items-center opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
                 <h3 class="text-xl font-semibold text-primary-700">{{ member.name }}</h3>
-                <p class="text-xs text-gray-700 text-justify line-clamp-6 my-2">{{ member.description }}</p>
+                <p class="text-xs text-gray-700 text-justify line-clamp-8 my-2">{{ member.description }}</p>
                 <div class="flex gap-2 text-xs items-center w-full my-2 justify-center">
                   <Email class="h-4 w-4 text-primary-700" />
                   <a :href="`mailto:${member.email}`" class="text-gray-900">{{ member.email }}</a>

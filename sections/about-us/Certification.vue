@@ -26,7 +26,7 @@ const policies = computed(() =>
       </SectionInformation>
 
       <div class="py-4 flex flex-col">
-        <strong>{{ $t('aboutUs.certification.subtitle') }}</strong>
+        <strong class="text-lg">{{ $t('aboutUs.certification.subtitle') }}</strong>
         <div class="grid md:grid-cols-2 gap-4 mt-4">
           <div
             v-for="(policy, index) in policies"

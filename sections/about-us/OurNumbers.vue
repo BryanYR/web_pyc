@@ -2,6 +2,7 @@
 import SectionInformation from '@/components/utils/SectionInformation.vue'
 import { numbersIcons } from '@/constants/about-us'
 import { useI18n } from 'vue-i18n'
+import type { ComponentPublicInstance } from 'vue'
 
 const { t } = useI18n()
 
@@ -33,6 +34,17 @@ const infoNumbers = ref(
   }))
 )
 
+// control de animación por elemento
+const itemEls = ref<HTMLElement[]>([])
+const hasAnimated = ref<boolean[]>(rawInfo.map(() => false))
+let observer: IntersectionObserver | null = null
+
+function setItemEl(index: number) {
+  return (el: Element | ComponentPublicInstance | null) => {
+    if (el instanceof HTMLElement) itemEls.value[index] = el
+  }
+}
+
 function animateValue(
   index: number,
   start: number,
@@ -55,9 +67,30 @@ function animateValue(
 }
 
 onMounted(() => {
-  infoNumbers.value.forEach((item, i) => {
-    animateValue(i, 0, item.target, 4000) // 6 segundos
-  })
+  // Observa cada card y anima cuando entre al viewport
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const idx = itemEls.value.indexOf(entry.target as HTMLElement)
+          if (idx !== -1 && !hasAnimated.value[idx]) {
+            hasAnimated.value[idx] = true
+            animateValue(idx, 0, rawInfo[idx].target, 2000)
+            observer?.unobserve(entry.target)
+          }
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+
+  // comenzar a observar los elementos ya montados
+  itemEls.value.forEach((el) => observer?.observe(el))
+})
+
+onBeforeUnmount(() => {
+  observer?.disconnect()
+  observer = null
 })
 </script>
 
@@ -72,8 +105,9 @@ onMounted(() => {
 
       <div class="w-full grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div
-          v-for="item in infoNumbers"
+          v-for="(item, i) in infoNumbers"
           :key="item.key"
+          :ref="setItemEl(i)"
           class="flex flex-col items-center text-center bg-white dark:bg-primary-800  rounded-2xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl"
         >
           <!-- imagen -->
@@ -94,11 +128,11 @@ onMounted(() => {
 
             <!-- número con + -->
             <span class="text-3xl font-bold text-primary-700 dark:text-white mb-2">
-              +{{ item.value }}
+              +{{ formatNumber(item.value) }}
             </span>
 
             <!-- título -->
-            <p class="text-gray-700 font-medium dark:text-white">
+            <p class="text-secondary-800 font-medium dark:text-white">
               {{ item.title }}
             </p>
           </div>
