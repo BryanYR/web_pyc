@@ -7,6 +7,14 @@
     "blog": "Blog",
     "contact": "Contact Us"
   },
+  "blog": {
+    "banner": {
+      "title": "The Prevention & Control Insurance Blog",
+      "subtitle": "Our specialists share their knowledge in the world of insurance",
+      "cta": "View Articles"
+    },
+    "readingList": "Your Reading List"
+  },
   "home": {
     "banner": {
       "title": "Prevention and Control",
@@ -84,6 +92,10 @@
       "buttons": {
         "see_policie": "View Quality Policy",
         "see_certification": "View Certificate"
+      },
+      "images": {
+        "quality_policy": "Quality Policy",
+        "iso_certificate": "ISO Certificate"
       }
     },
     "alliance": {

@@ -34,16 +34,21 @@ function getCellClass(index: number) {
 </script>
 
 <template>
-  <section id="aboutUs" class="bg-white dark:bg-primary-900 py-8 md:py-16 px-10">
+  <section
+    id="aboutUs"
+    class="bg-white dark:bg-primary-900 py-8 md:py-16 px-10"
+  >
     <div class="pyc-container-section mx-auto">
       <div class="grid sm:grid-cols-2 md:grid-cols-4">
         <!-- bloque de título -->
-        <div class="bg-[#f2f2f2] dark:bg-slate-500 p-4 lg:p-8 flex items-center transition-transform duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl">
+        <div
+          class="bg-[#f2f2f2] dark:[#f2f2f2] dark:text-gray-900 p-4 lg:p-8 flex items-center transition-transform duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl"
+        >
           <SectionTitle
             :hint="t('aboutUs.our_values.hint')"
             :title="t('aboutUs.our_values.title')"
-            class-title="!text-4xl "
-           
+            class-title="!text-4xl dark:text-primary-700 !border-secondary-700"
+            class-hint="dark:text-primary-700"
           />
         </div>
 
@@ -68,9 +73,9 @@ function getCellClass(index: number) {
 
         <!-- bloque message -->
         <div
-          class="bg-primary-700 dark:bg-primary-800 text-white flex items-center justify-center p-6 text-center transition-transform duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl"
+          class="bg-primary-700 dark:bg-primary-700 text-white flex items-center justify-center p-6 text-center transition-transform duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl"
         >
-          <p class="font-semibold ">
+          <p class="font-semibold">
             {{ t('aboutUs.our_values.message') }}
           </p>
         </div>

@@ -1,6 +1,6 @@
 <script lang="ts" setup></script>
 <template>
-  <section id="certification" class="bg-white dark:bg-primary-900">
+  <section id="certification" class="bg-white dark:bg-primary-800">
     <div class="w-full grid grid-cols-1 md:grid-cols-2">
       <div class="flex justify-center items-center py-16 md:py-0">
         <!-- versión light -->

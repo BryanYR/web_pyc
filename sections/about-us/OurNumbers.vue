@@ -95,7 +95,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="our_numbers" class="bg-white dark:bg-primary-900 py-8 md:py-16 px-10">
+  <section id="our_numbers" class="bg-white dark:bg-primary-800 py-8 md:py-16 px-10">
     <div class="pyc-container-section mx-auto gap-6">
       <SectionInformation
         :hint="$t('aboutUs.our_number.hint')"
@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
           v-for="(item, i) in infoNumbers"
           :key="item.key"
           :ref="setItemEl(i)"
-          class="flex flex-col items-center text-center bg-white dark:bg-primary-800  rounded-2xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+          class="flex flex-col items-center text-center bg-white dark:bg-primary-900  rounded-2xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl"
         >
           <!-- imagen -->
           <img

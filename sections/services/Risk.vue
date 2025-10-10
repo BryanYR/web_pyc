@@ -28,7 +28,7 @@ const infoRisk = ref(rawInfo)
 </script>
 
 <template>
-  <section id="prevention" class="bg-primary-700 py-8 md:py-16 px-10">
+  <section id="prevention" class="bg-primary-700 dark:bg-primary-900 py-8 md:py-16 px-10">
     <div class="pyc-container-section mx-auto grid md:grid-cols-2 gap-6">
       <SectionInformation
         :hint="$t('services.risk_management.hint')"

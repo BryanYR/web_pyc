@@ -3,7 +3,7 @@ import SectionInformation from "@/components/utils/SectionInformation.vue";
 </script>
 
 <template>
-  <section id="alliance" class="bg-primary-700  py-8 md:py-16 px-10">
+  <section id="alliance" class="bg-primary-700 dark:bg-primary-900  py-8 md:py-16 px-10">
     <div class="pyc-container-section mx-auto grid md:grid-cols-2 gap-6">
       <SectionInformation
         :hint="$t('aboutUs.alliance.hint')"

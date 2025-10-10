@@ -8,8 +8,9 @@ withDefaults(
 );
 </script>
 <template>
-  <NuxtLink
-    class=" px-6 py-1 rounded-2xl  duration-300 ease-in-out"
+  <component
+    :is="to ? 'NuxtLink' : 'button'"
+    class=" px-6 py-2 rounded-2xl  duration-300 ease-in-out"
     :class="[
       variant === 'solid'
         ? 'bg-secondary-700 hover:shadow-xl transition-shadow text-white'
@@ -17,8 +18,9 @@ withDefaults(
       classes,
     ]"
     @click="$emit('click')"
-    :to="to ?? '/'"
+    :to="to || undefined"
+    type="button"
   >
     <slot />
-  </NuxtLink>
+  </component>
 </template>

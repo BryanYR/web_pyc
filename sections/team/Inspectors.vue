@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SectionInformation from "@/components/utils/SectionInformation.vue";
 import MapInspectors from "@/components/utils/MapInspectors.vue";
+import Map from "@/components/utils/Map.vue";
 import type { InspectorList } from "@/interfaces/general";
 
 const records = ref<InspectorList[]>([]);
@@ -18,7 +19,7 @@ onMounted(async () => {
       </SectionInformation>
       <div class="relative grid md:grid-cols-2">
         <div class="col-span-1 hidden w-full sm:flex justify-center items-center">
-            <MapInspectors class="max-w-[300px] lg:max-w-full"  />
+            <Map class="max-w-[300px] lg:max-w-[400px] lg:h-[650px]" />
         </div>
         <div class="p-4">
           <div class="p-4 rounded-2xl bg-primary-700 max-w-[300px] mx-auto text-white">

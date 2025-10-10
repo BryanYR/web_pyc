@@ -13,5 +13,6 @@ const { data: team } = useLocalizedJson<PersonInfo[]>('team')
     title-key="team.adjusters.title"
     :slice-start="6"
     :show-skeleton="!team"
+    class="bg-white dark:bg-primary-800"
   />
 </template>

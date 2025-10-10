@@ -26,7 +26,7 @@ const infoRecoveries = ref(rawInfo)
 </script>
 
 <template>
-  <section id="prevention" class=" py-8 md:py-16 px-10">
+  <section id="prevention" class=" py-8 md:py-16 px-10 dark:bg-primary-800">
     <div class="pyc-container-section mx-auto grid md:grid-cols-2 gap-6">
       <SectionInformation
         :hint="$t('services.recoveries_salvage.hint')"

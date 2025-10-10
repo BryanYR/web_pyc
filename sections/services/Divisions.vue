@@ -32,7 +32,7 @@ const infoDivisions = ref(rawInfo)
 </script>
 
 <template>
-  <section id="divisions" class="bg-white dark:bg-primary-800 py-8 md:pt-16 px-10">
+  <section id="divisions" class="bg-white dark:bg-primary-900 py-8 md:pt-16 px-10">
     <div class="pyc-container-section mx-auto flex flex-col gap-6">
       <SectionInformation
         :hint="$t('services.operational_divisions.hint')"

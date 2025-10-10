@@ -7,6 +7,14 @@
     "blog": "Blog",
     "contact": "Contacto"
   },
+  "blog": {
+    "banner": {
+      "title": "El Blog de Seguros de Prevención y Control",
+      "subtitle": "Nuestras especialistas comparten sus conocimiento en el mundo de los seguros",
+      "cta": "Ver Artículos"
+    },
+    "readingList": "Tu lista de lectura"
+  },
   "home": {
     "banner": {
       "title": "Prevención y Control",
@@ -84,6 +92,10 @@
       "buttons": {
         "see_policie": "Ver Política de Calidad",
         "see_certification": "Ver Certificado"
+      },
+      "images": {
+        "quality_policy": "Política de Calidad",
+        "iso_certificate": "Certificado ISO 9001:2015"
       }
     },
     "alliance": {
