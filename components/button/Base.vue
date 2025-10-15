@@ -10,16 +10,17 @@ withDefaults(
 <template>
   <component
     :is="to ? 'NuxtLink' : 'button'"
-    class=" px-6 py-2 rounded-2xl  duration-300 ease-in-out"
+    class=" px-6 py-2 rounded-2xl  duration-300 ease-in-out border-2 border-secondary-700"
     :class="[
       variant === 'solid'
         ? 'bg-secondary-700 hover:shadow-xl transition-shadow text-white'
-        : 'border-2 border-secondary-700 text-secondary-700 bg-transparent',
+        : ' text-secondary-700 bg-transparent',
       classes,
+      {'border-slate-500 bg-slate-400 opacity-40 shadow-none': disabled}
     ]"
-    @click="$emit('click')"
     :to="to || undefined"
-    type="button"
+    :type="type || 'button'"
+    :disabled="disabled"
   >
     <slot />
   </component>

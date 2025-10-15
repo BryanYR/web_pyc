@@ -2,6 +2,8 @@ export interface ButtonBaseProps {
   variant?: "solid" | "outline";
   classes?: string;
   to?: string;
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean;
 }
 
 export interface SectionTitleProps {

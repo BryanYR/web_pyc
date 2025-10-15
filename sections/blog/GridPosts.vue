@@ -3,16 +3,13 @@ import PostCard from '@/components/blog/PostCard.vue'
 import PostTabs from '@/components/blog/PostTabs.vue'
 import Pagination from '@/components/blog/Pagination.vue'
 import { onMounted, ref, watch } from 'vue'
-import { useBlogPosts } from '@/composables/useBlogPosts'
+import { useBlogStore } from '@/stores/blogStore'
 
-const { fetchPosts } = useBlogPosts()
+const store = useBlogStore()
 
 const activeTab = ref<'all' | 'week' | 'month'>('all')
 const page = ref(1)
 const perPage = ref(9)
-const total = ref(0)
-const items = ref([] as any[])
-const loading = ref(false)
 
 const tabs = [
   { label: 'Todas', value: 'all' },
@@ -20,19 +17,17 @@ const tabs = [
   { label: 'Del mes', value: 'month' },
 ]
 
+function tabToFilter(tab: 'all' | 'week' | 'month'): number {
+  // all=0, week=1, month=2
+  return tab === 'all' ? 0 : tab === 'week' ? 1 : 2
+}
+
 async function load() {
-  loading.value = true
-  try {
-    const { items: data, total: tot } = await fetchPosts({
-      tab: activeTab.value,
-      page: page.value,
-      perPage: perPage.value,
-    })
-    items.value = data
-    total.value = tot
-  } finally {
-    loading.value = false
-  }
+  await store.fetch({
+    filter: tabToFilter(activeTab.value),
+    page: page.value,
+    perPage: perPage.value,
+  })
 }
 
 onMounted(load)
@@ -51,18 +46,18 @@ watch([page, perPage], () => {
     <div class="mx-auto max-w-6xl">
       <PostTabs v-model="activeTab" :tabs="tabs" class="mb-6" />
 
-      <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60">
+      <div v-if="store.loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60">
         <div v-for="n in perPage" :key="n as number" class="h-64 rounded-md bg-gray-200 animate-pulse"></div>
       </div>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <PostCard v-for="post in items" :key="post.id" :post="post" />
+        <PostCard v-for="post in store.items" :key="post.postId" :post="post" />
       </div>
 
       <Pagination
         class="mt-6"
         :page="page"
-        :total="total"
+        :total="store.total || 0"
         :perPage="perPage"
         @update:page="(p: number)=> page = p"
       />

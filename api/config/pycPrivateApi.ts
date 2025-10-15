@@ -1,13 +1,10 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/authStore'
-
-const baseURL =
-  (import.meta as any).env?.VITE_API_PLATFORM ||
-  process.env.VITE_API_PLATFORM ||
-  'https://api.example.com'
+import { useCookie } from '#app'
+const { VITE_API_BASE_URL } = import.meta.env;
 
 export const pycPrivateApi = axios.create({
-  baseURL,
+  baseURL: `${VITE_API_BASE_URL}/api`,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -17,9 +14,12 @@ export const pycPrivateApi = axios.create({
 pycPrivateApi.interceptors.request.use((config) => {
   try {
     const auth = useAuthStore()
-    if (auth.token) {
+    // prefer cookie to survive refresh; fallback to store
+    const cookie = useCookie('pyc_token')
+    const token = cookie.value || (auth as any).token || (auth as any).user?.token
+    if (token) {
       config.headers = config.headers || {}
-      config.headers.Authorization = `Bearer ${auth.token}`
+      config.headers.Authorization = `Bearer ${token}`
     }
   } catch (e) {
     console.error('ERROR IN AXIOS INTERCEPTOR', e)
