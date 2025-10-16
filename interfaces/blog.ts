@@ -8,8 +8,11 @@ export interface ApiEnvelope<T> {
 export interface BlogEntity {
   postId: number
   title: string
+  title_en: string
   shortDescription: string
-  content: string // HTML string
+  shortDescription_en: string
+  content: string
+  content_en: string
   fileBlog: string | null
   imageUrl: string | null
   authorId: number | string
@@ -49,7 +52,10 @@ export interface BlogListParams {
 export interface BlogListItem {
   postId: number
   title: string
+  title_en: string
   shortDescription: string
+  shortDescription_en: string
+  fileBlog?: string | null
   imageUrl: string | null
   isPublished: '0' | '1'
   created_at: string
@@ -71,13 +77,4 @@ export interface BlogFormData {
   content: string
   fileBlog: File | null
   imageUrl: File | null
-}
-
-export interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  image: string
-  date: string
-  category: string
 }

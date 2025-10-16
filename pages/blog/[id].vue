@@ -3,16 +3,40 @@ definePageMeta({
   layout: 'default',
   headerBg: 'primary',
 })
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import PostHero from '@/sections/blog/PostHero.vue'
 import PostContent from '@/components/blog/detail/PostContent.vue'
 import { getPost } from '@/api/blogs'
 import type { BlogEntity } from '@/interfaces/blog'
+import { useI18n } from 'vue-i18n'
 
 const route = useRoute()
 const blog = ref<BlogEntity | null>(null)
 const loading = ref(false)
+const { locale } = useI18n()
+
+const isSpanish = computed(() => locale.value?.startsWith('es'))
+const displayTitle = computed(() => {
+  const b = blog.value
+  if (!b) return ''
+  if (isSpanish.value) return b.title
+  return b.title_en ?? b.title
+})
+
+const displayShortDescription = computed(() => {
+  const b = blog.value
+  if (!b) return ''
+  if (isSpanish.value) return b.shortDescription
+  return b.shortDescription_en ?? b.shortDescription
+})
+
+const displayContent = computed(() => {
+  const b = blog.value
+  if (!b) return ''
+  if (isSpanish.value) return b.content
+  return b.content_en ?? b.content
+})
 
 function estimateReadTime(text: string) {
   const words = (text || '').trim().split(/\s+/).filter(Boolean).length
@@ -63,29 +87,30 @@ watch(
     <PostHero
       v-else-if="blog"
       :post="{
-        title: blog.title,
-        shortDescription: blog.shortDescription,
+        title: displayTitle,
+        shortDescription: displayShortDescription,
         imageUrl: blog.imageUrl,
         created_at: blog.datePublished || blog.created_at
       }"
-      :readTime="estimateReadTime(blog.content)"
+      :readTime="estimateReadTime(displayContent)"
+      :fullContent="displayContent"
       :author="{ name: 'PYC', avatar: '' }"
       :breadcrumbs="[
         { label: 'Blog', to: '/blog' },
-        { label: blog.title }
+        { label: displayTitle }
       ]"
     />
 
     <section class="container mx-auto px-6 py-8 lg:pb-16">
-      <div class="mx-auto max-w-6xl grid lg:grid-cols-12 gap-8">
-        <div class="lg:col-span-8">
+      <div class="mx-auto max-w-6xl grid gap-8">
+        <div class="w-full">
           <div v-if="loading" class="space-y-3 animate-pulse">
             <div class="h-4 bg-gray-200 rounded w-5/6"></div>
             <div class="h-4 bg-gray-200 rounded w-11/12"></div>
             <div class="h-4 bg-gray-200 rounded w-4/5"></div>
             <div class="h-4 bg-gray-200 rounded w-2/3"></div>
           </div>
-          <PostContent v-else-if="blog" :content="blog.content" />
+          <PostContent v-else-if="blog" :content="displayContent" />
         </div>
       </div>
     </section>

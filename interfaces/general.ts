@@ -20,13 +20,3 @@ export interface InspectorList {
     specialty: string;
     qty: number;
 }
-
-
-// BLOG
-
-export interface BlogPost {
-  id: string
-  title: string
-  body: string
-  publishedAt: string
-}

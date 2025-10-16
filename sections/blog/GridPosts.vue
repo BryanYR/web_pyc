@@ -19,15 +19,25 @@ const tabs = [
 
 function tabToFilter(tab: 'all' | 'week' | 'month'): number {
   // all=0, week=1, month=2
-  return tab === 'all' ? 0 : tab === 'week' ? 1 : 2
+  let result: number
+  if (tab === 'all') {
+    result = 0
+  } else if (tab === 'week') {
+    result = 1
+  } else {
+    result = 2
+  }
+  return result
 }
 
 async function load() {
-  await store.fetch({
-    filter: tabToFilter(activeTab.value),
-    page: page.value,
-    perPage: perPage.value,
-  })
+  await store.fetch(
+    {
+      filter: tabToFilter(activeTab.value),
+      page: page.value,
+      perPage: perPage.value,
+    }
+  )
 }
 
 onMounted(load)
@@ -46,8 +56,15 @@ watch([page, perPage], () => {
     <div class="mx-auto max-w-6xl">
       <PostTabs v-model="activeTab" :tabs="tabs" class="mb-6" />
 
-      <div v-if="store.loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60">
-        <div v-for="n in perPage" :key="n as number" class="h-64 rounded-md bg-gray-200 animate-pulse"></div>
+      <div
+        v-if="store.loading"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60"
+      >
+        <div
+          v-for="n in perPage"
+          :key="n as number"
+          class="h-64 rounded-md bg-gray-200 animate-pulse"
+        ></div>
       </div>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

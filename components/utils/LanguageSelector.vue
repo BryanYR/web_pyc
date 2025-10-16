@@ -57,7 +57,7 @@ if (nuxtApp.$i18n && nuxtApp.$i18n.locale && typeof nuxtApp.$i18n.locale !== 'st
       >
         <div>
           <button
-            class="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+            class="w-full text-left px-4 py-2 hover:bg-gray-100 transition hover:rounded-none"
             @click="setLocale('es')"
             role="menuitem"
           >
@@ -66,7 +66,7 @@ if (nuxtApp.$i18n && nuxtApp.$i18n.locale && typeof nuxtApp.$i18n.locale !== 'st
         </div>
         <div>
           <button
-            class="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+            class="w-full text-left px-4 py-2 hover:bg-gray-100 transition hover:rounded-none"
             @click="setLocale('en')"
             role="menuitem"
           >

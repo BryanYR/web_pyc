@@ -10,7 +10,7 @@ const { browser, node } = globals
 export default [
   js.configs.recommended,
   {
-    ignores: ['node_modules/**', 'dist/**'],
+    ignores: ['node_modules/**', 'dist/**', 'tools/**'],
   },
   {
     files: ['**/*.{js,ts,vue}'],

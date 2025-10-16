@@ -1,7 +1,29 @@
 <script setup lang="ts">
 import type { BlogListItem } from '@/interfaces/blog';
 import { isValidUrlFormat } from '@/utils/general'
+import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
+
 const props = defineProps<{ post: BlogListItem }>()
+
+const { locale } = useI18n()
+const isSpanish = computed(() => locale.value?.startsWith('es'))
+
+const displayTitle = computed(() => {
+  // Prefer localized field when available, fallback to default title
+  return isSpanish.value
+    ? props.post.title
+    : props.post.title_en ?? props.post.title
+})
+
+const displayShortDescription = computed(() => {
+  // Prefer localized field when available, fallback to default shortDescription
+  return isSpanish.value
+    ? props.post.shortDescription
+    : props.post.shortDescription_en ?? props.post.shortDescription
+})
+
+// Reverted: always link to blog detail page
 </script>
 <template>
   <NuxtLink
@@ -19,10 +41,10 @@ const props = defineProps<{ post: BlogListItem }>()
     </div>
     <div class="p-5">
       <h3 class="text-primary-700 dark:text-white font-semibold text-lg">
-        {{ post.title }}
+        {{ displayTitle }}
       </h3>
       <p class="mt-2 text-sm text-gray-600 dark:text-white line-clamp-4">
-        {{ post.shortDescription }}
+        {{ displayShortDescription }}
       </p>
       <div class="mt-4">
         <span
