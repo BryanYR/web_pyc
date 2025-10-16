@@ -78,12 +78,6 @@ async function onSubmit() {
         <p v-if="auth.error" class="mt-3 text-sm text-red-600">
           {{ auth.error }}
         </p>
-        <p class="mt-4 text-sm text-gray-600">
-          ¿No tienes cuenta?
-          <NuxtLink to="/register" class="text-secondary-700 hover:underline"
-            >Crear una</NuxtLink
-          >
-        </p>
       </div>
     </div>
   </div>
