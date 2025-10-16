@@ -19,11 +19,6 @@
           <p class="mt-4 text-white/90 max-w-xl">
             {{ $t('blog.banner.subtitle') }}
           </p>
-          <button
-            class="mt-8 inline-flex items-center gap-2 rounded-full border duration-300 ease-in-out border-white/30 bg-white/10 px-5 py-2.5 text-white hover:bg-white/20 transition"
-          >
-            {{ $t('blog.banner.cta') }}
-          </button>
         </div>
       </div>
     </div>
