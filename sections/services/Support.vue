@@ -47,10 +47,10 @@ const infoSupport = rawInfo
           <div
             v-for="(item, i) in infoSupport.slice(0,4)"
             :key="item.key"
-            :class="['flex flex-col items-center gap-4 p-4  rounded-lg shadow-sm', (i % 2 === 0) ? 'bg-primary-700 text-white' : 'bg-[#f2f2f2] dark:bg-primary-900']"
+            :class="['flex flex-col items-center gap-4 p-4  rounded-lg shadow-sm', (i % 2 === 0) ? 'bg-[#f2f2f2] dark:bg-primary-900' : 'bg-primary-700 text-white']"
           >
-            <component :is="item.icon" :class="(i % 2 === 0) ? 'w-12 h-12 md:w-16 md:h-16 text-white' : 'w-12 h-12 md:w-16 md:h-16 text-primary-700 dark:text-white'" />
-            <div class="text-sm font-medium lg:text-base text-center md:px-4" :class="(i % 2 === 0) ? 'text-white' : 'text-gray-800 dark:text-white'">{{ item.title }}</div>
+            <component :is="item.icon" :class="(i % 2 === 0) ? 'w-12 h-12 md:w-16 md:h-16 text-primary-700 dark:text-white' : 'w-12 h-12 md:w-16 md:h-16 text-white'" />
+            <div class="text-sm font-medium lg:text-base text-center md:px-4" :class="(i % 2 === 0) ? 'text-gray-800 dark:text-white' : 'text-white'">{{ item.title }}</div>
           </div>
         </div>
 
@@ -59,10 +59,10 @@ const infoSupport = rawInfo
             <div
               v-for="(item, i) in infoSupport.slice(4,9)"
               :key="item.key"
-              :class="['flex flex-col items-center gap-4 p-4 rounded-lg shadow-sm', ((i + 4) % 2 === 0) ? 'bg-primary-700 text-white' : 'bg-[#f2f2f2] dark:bg-primary-900']"
+              :class="['flex flex-col items-center gap-4 p-4 rounded-lg shadow-sm', ((i + 4) % 2 === 0) ? 'bg-[#f2f2f2] dark:bg-primary-900' : 'bg-primary-700 text-white']"
             >
-              <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16" :class="((i + 4) % 2 === 0) ? ' text-white' : ' text-primary-700 dark:text-white'" />
-              <div class="text-sm font-medium lg:text-base text-center md:px-4" :class="((i + 4) % 2 === 0) ? ' text-white' : ' text-gray-800 dark:text-white'">{{ item.title }}</div>
+              <component :is="item.icon" class="w-12 h-12 md:w-16 md:h-16" :class="((i + 4) % 2 === 0) ? ' text-primary-700 dark:text-white' : 'text-white'" />
+              <div class="text-sm font-medium lg:text-base text-center md:px-4" :class="((i + 4) % 2 === 0) ? ' text-gray-800 dark:text-white' : 'text-white'">{{ item.title }}</div>
             </div>
           </div>
         <!-- duplicate block removed -->

@@ -8,8 +8,8 @@ const router = useRouter()
 
 <template>
   <div
-    class="h-screen w-full flex items-center justify-start bg-cover bg-top relative"
-    :style="{ backgroundImage: `url(${BgBanner})` }"
+    class="h-screen w-full flex items-center justify-start bg-cover bg-center relative"
+    :style="{ backgroundImage: `url(${BgBanner})`, backgroundPosition: 'center 25%' }"
   >
   <div class="absolute top-0 left-0 right-0 bg-black/40 h-full w-full"></div>
     <div class="text-white px-4 py-10 pyc-container mx-auto z-10 gap-4 flex flex-col">
