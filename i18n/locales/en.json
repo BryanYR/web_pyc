@@ -15,6 +15,24 @@
     },
     "readingList": "Your Reading List"
   },
+  "contactUs": {
+    "banner": {
+      "title": "Contact Us"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send_button": "Send Message"
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "working_hours": "Working Hours"
+    }
+  },
   "home": {
     "banner": {
       "title": "Prevention and Control",

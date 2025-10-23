@@ -15,6 +15,27 @@
     },
     "readingList": "Tu lista de lectura"
   },
+  "contactUs": {
+    "banner": {
+      "title": "Contáctanos"
+    },
+    "info_contact": {
+      "main_office": "Sede Principal",
+      "phone_center": "Central Telefónica",
+      "office": "Oficina",
+      "center": "Central",
+      "admin_center": "Central Administrativa",
+      "email": "Correo",
+      "emergency": "Emergencia 24 Horas"
+    },
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send_button": "Enviar Mensaje"
+    }
+  },
   "home": {
     "banner": {
       "title": "Prevención y Control",

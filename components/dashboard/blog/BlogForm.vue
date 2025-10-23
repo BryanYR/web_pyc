@@ -138,6 +138,7 @@ function onCancel() {
         type="button"
         variant="outline"
         @click="onCancel"
+        :disabled="loading"
         >Cancelar</Base
       >
       <Base

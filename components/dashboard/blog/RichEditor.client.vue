@@ -33,6 +33,7 @@ onMounted(async () => {
       contentType="html"
       theme="snow"
       class="bg-white "
+      toolbar="full"
     />
   </ClientOnly>
 </template>
