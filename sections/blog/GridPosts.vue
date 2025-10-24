@@ -9,7 +9,7 @@ const store = useBlogStore()
 
 const activeTab = ref<'all' | 'week' | 'month'>('all')
 const page = ref(1)
-const perPage = ref(9)
+const perPage = ref(6)
 
 const tabs = [
   { label: 'Todas', value: 'all' },

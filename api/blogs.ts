@@ -1,13 +1,14 @@
 import pycPrivateApi from '@/api/config/pycPrivateApi'
 import { safeRequest } from '@/utils/handleResponse'
 import type { ApiResult } from '@/interfaces/response'
-import type { ApiEnvelope, BlogCreatePayload, BlogUpdatePayload, BlogEntity, BlogListParams, BlogListData } from '@/interfaces/blog'
+import type { ApiEnvelope, BlogCreatePayload, BlogUpdatePayload, BlogEntity, BlogListParams, BlogListData, UploadImageMessage, UploadImageResponse } from '@/interfaces/blog'
 
 function toFormData(payload: BlogCreatePayload | BlogUpdatePayload) {
   const fd = new FormData()
   if (payload.title !== undefined) fd.append('title', payload.title)
   if (payload.shortDescription !== undefined)
     fd.append('shortDescription', payload.shortDescription)
+  if (payload.author !== undefined) fd.append('author', payload.author)
   if (payload.content !== undefined) fd.append('content', payload.content)
   if (payload.isPublished !== undefined) fd.append('isPublished', payload.isPublished)
   if (payload.fileBlog) {
@@ -102,5 +103,17 @@ export async function getPost(id: number | string, isAdmin?: boolean): Promise<A
   return safeRequest(async () => {
     const { data, status } = await pycPrivateApi.get<ApiEnvelope<BlogEntity>>(`${basePath(isAdmin)}/${id}`)
     return { status, data: data.data }
+  })
+}
+
+export async function uploadImage(file: File): Promise<ApiResult<UploadImageMessage>> {
+  return safeRequest(async () => {
+    console.log('Uploading image file:', file)
+    const fd = new FormData()
+    fd.append('image', file)
+    const { data, status } = await pycPrivateApi.post<UploadImageResponse>(`/blogs/upload-image`, fd, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    return { status, data: data.message }
   })
 }

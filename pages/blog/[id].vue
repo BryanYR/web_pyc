@@ -102,7 +102,7 @@ watch(
     />
 
     <section class="container mx-auto px-6 py-8 lg:pb-16">
-      <div class="mx-auto max-w-6xl grid gap-8">
+      <div class="mx-auto max-w-5xl 2xl:max-w-6xl grid gap-8">
         <div class="w-full">
           <div v-if="loading" class="space-y-3 animate-pulse">
             <div class="h-4 bg-gray-200 rounded w-5/6"></div>

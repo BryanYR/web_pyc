@@ -20,7 +20,7 @@ const navLinks = [
   { key: "team", id: "team", path: "/equipo" },
   { key: "services", id: "services", path: "/servicios" },
   { key: "blog", id: "blog", path: "/blog" },
-  { key: "contact", id: "contactUs", path: "/contactanos" }
+  { key: "contact", id: "contactUs", path: "" }
 ];
 
 

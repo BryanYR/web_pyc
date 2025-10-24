@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
   plugins: [
-    '~/plugins/pinia'
+    '~/plugins/pinia',
   ],
   i18n: {
     strategy: "no_prefix",

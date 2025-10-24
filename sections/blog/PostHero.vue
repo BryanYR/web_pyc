@@ -196,30 +196,9 @@ onBeforeUnmount(() => {
 
 <template>
   <section>
-    <!-- Mobile: full-bleed image on top -->
-    <div class="w-full">
-      <template v-if="validImage">
-        <img
-          :src="post.imageUrl as string"
-          :alt="post.title"
-          class="h-56 w-full object-cover"
-        />
-      </template>
-      <div
-        v-else
-        class="h-56 w-full bg-primary-800 flex items-center justify-center"
-      >
-        <img
-          src="/images/logos/pyc_logo.svg"
-          alt="PYC"
-          class="h-10 opacity-90"
-        />
-      </div>
-    </div>
-
     <div class="container mx-auto px-6">
       <!-- Title and meta -->
-      <div class="mx-auto max-w-3xl sm:max-w-4xl lg:max-w-6xl">
+      <div class="mx-auto max-w-3xl sm:max-w-4xl lg:max-w-5xl 2xl:max-w-6xl">
         <div class="py-6 sm:pt-8 sm:pb-0">
           <div v-if="breadcrumbs && breadcrumbs.length" class="mb-2 border-b border-slate-300 pb-4">
             <Breadcrumb :items="breadcrumbs" />

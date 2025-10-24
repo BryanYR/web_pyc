@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import InputField from '@/components/form/InputField.vue'
 import FileUploader from '@/components/form/FileUploader.vue'
 import Base from '@/components/button/Base.vue'
@@ -10,7 +10,8 @@ import type { BlogFormData } from '@/interfaces/blog'
 interface Props {
   heading?: string
   submitText?: string
-  initial?: Partial<BlogFormData>
+  // Allow fileBlog to be a server path string or null when editing
+  initial?: Partial<BlogFormData & { fileBlog?: string | null }>
   loading?: boolean
 }
 
@@ -30,6 +31,8 @@ const emit = defineEmits<{
       isPublished: '0' | '1'
       content: string
       fileBlog?: File
+      imageUrl?: string
+      author?: string
     }
   ): void
   (e: 'cancel'): void
@@ -40,7 +43,18 @@ const shortDescription = ref(props.initial.shortDescription ?? '')
 const isPublished = ref<'0' | '1'>(props.initial.isPublished ?? '0')
 const content = ref(props.initial.content ?? '')
 const fileBlog = ref<File | null>(null)
-const imageUrl = ref<File | null>(null)
+const imageUrl = ref<string>(props.initial.imageUrl ?? "")
+const author = ref<string>(props.initial.author ?? "")
+
+// Build absolute URL for existing server file if provided like "/blogs/123.pdf"
+const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL as string | undefined
+const existingFileUrl = computed(() => {
+  const raw = (props.initial?.fileBlog as unknown as string | null | undefined) || null
+  if (!raw || !API_BASE) return ''
+  const base = API_BASE.replace(/\/$/, '')
+  const clean = raw.replace(/^\/+/, '')
+  return `${base}/${clean}`
+})
 
 watch(
   () => props.initial,
@@ -50,7 +64,8 @@ watch(
     isPublished.value = (val.isPublished as '0' | '1') ?? '0'
     content.value = val.content ?? ''
     fileBlog.value = null
-    imageUrl.value = null
+    imageUrl.value = val.imageUrl ?? ""
+    author.value = val.author ?? ""
   }
 )
 
@@ -60,8 +75,9 @@ function onSubmit() {
     shortDescription: shortDescription.value,
     isPublished: isPublished.value,
     content: content.value,
+    author: author.value,
     ...(fileBlog.value ? { fileBlog: fileBlog.value } : {}),
-    ...(imageUrl.value ? { imageUrl: imageUrl.value } : {}),
+    ...(imageUrl.value ? { imageUrl: imageUrl.value } : ""),
   })
 }
 
@@ -108,21 +124,43 @@ function onCancel() {
         />
       </div>
       <div class="md:col-span-6 col-span-12">
+        <InputField
+          v-model="imageUrl"
+          label="Url imagen (Banner principal)"
+          id="imageUrl"
+          type="text"
+          placeholder="Url de la imagen"
+        />
+      </div>
+      <div class="md:col-span-6 col-span-12">
+        <InputField
+          v-model="author"
+          label="Autor"
+          id="author"
+          type="text"
+          placeholder="Nombre del autor"
+        />
+      </div>
+      <div class="col-span-12">
+        <label for="current-file" class="block text-sm font-medium mb-1">Archivo actual</label>
+        <div v-if="existingFileUrl" class="text-sm">
+          <a :href="existingFileUrl" target="_blank" rel="noopener" class="text-primary-700 underline">
+            Ver archivo (se abrirá en una nueva pestaña)
+          </a>
+          <p class="text-xs text-gray-500 mt-1">Si adjuntas un nuevo archivo, se reemplazará el existente.</p>
+        </div>
+        <div v-else class="text-sm text-gray-500">No hay archivo adjunto.</div>
+      </div>
+      <div class="col-span-12">
         <FileUploader
           v-model="fileBlog"
           label="Archivo (opcional)"
           id="fileBlog"
           accept=".pdf"
+          aria-describedby="current-file"
         />
       </div>
-      <div class="md:col-span-6 col-span-12">
-        <FileUploader
-          v-model="imageUrl"
-          label="Banner Principal"
-          id="fileBlog"
-          accept="image/*"
-        />
-      </div>
+      
       <div class="md:col-span-12 col-span-12 space-y-2">
         <label class="block text-sm font-medium mb-1" for="blog-content"
           >Contenido</label

@@ -17,12 +17,16 @@ const loadingLocal = ref(true)
 onMounted(async () => {
   const id = route.params.id as string
   const res = await getPost(id)
+  console.log('res', res)
   if (res.ok) {
     initial.value = {
       title: res.data.title,
       shortDescription: res.data.shortDescription,
       isPublished: res.data.isPublished,
       content: res.data.content,
+      author: res.data.author,
+      imageUrl: res.data.imageUrl,
+      fileBlog: res.data.fileBlog,
     }
   } else {
     toast.error(res.message || 'No se pudo cargar el post')

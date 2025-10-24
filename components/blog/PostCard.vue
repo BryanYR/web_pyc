@@ -23,35 +23,61 @@ const displayShortDescription = computed(() => {
     : props.post.shortDescription_en ?? props.post.shortDescription
 })
 
+// Build a safe PDF URL when fileBlog is present
+const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL as string | undefined
+const pdfUrl = computed(() => {
+  const f = props.post.fileBlog
+  const base = API_BASE
+  if (!f || !base) return ''
+  const cleanBase = base.replace(/\/$/, '')
+  const cleanFile = String(f).replace(/^\/+/, '')
+  return `${cleanBase}/${cleanFile}`
+})
+const pdfFileName = computed(() => (props.post.fileBlog ? String(props.post.fileBlog).split('/').pop() || 'archivo.pdf' : undefined))
+
 // Reverted: always link to blog detail page
 </script>
 <template>
-  <NuxtLink
-    :to="`/blog/${post.postId}`"
-    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group"
-  >
-    <img
-      v-if="isValidUrlFormat(post.imageUrl)"
-      :src="post.imageUrl as string"
-      :alt="post.title"
-      class="h-44 w-full object-cover group-hover:brightness-95 transition"
-    />
-    <div v-else class="h-44 w-full bg-primary-700 flex items-center justify-center">
-      <img src="/images/logos/pyc_logo.svg" alt="PYC" class="h-10 opacity-90" />
-    </div>
+  <article class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group">
+    <NuxtLink :to="`/blog/${post.postId}`" class="block">
+      <img
+        v-if="isValidUrlFormat(post.imageUrl)"
+        :src="post.imageUrl as string"
+        :alt="post.title"
+        class="h-44 w-full object-cover group-hover:brightness-95 transition"
+      />
+      <div v-else class="h-44 w-full bg-primary-700 flex items-center justify-center">
+        <img src="/images/logos/pyc_logo.svg" alt="PYC" class="h-10 opacity-90" />
+      </div>
+    </NuxtLink>
     <div class="p-5">
-      <h3 class="text-primary-700 dark:text-white font-semibold text-lg">
-        {{ displayTitle }}
-      </h3>
+      <NuxtLink :to="`/blog/${post.postId}`" class="block">
+        <h3 class="text-primary-700 dark:text-white font-semibold text-lg">
+          {{ displayTitle }}
+        </h3>
+      </NuxtLink>
       <p class="mt-2 text-sm text-gray-600 dark:text-white line-clamp-4">
         {{ displayShortDescription }}
       </p>
-      <div class="mt-4">
-        <span
-          class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white group-hover:bg-primary-100 dark:group-hover:bg-primary-600 transition"
-          >Leer Nota</span
+      <div class="mt-4 flex items-center gap-3">
+        <NuxtLink
+          :to="`/blog/${post.postId}`"
+          class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white hover:bg-primary-100 dark:hover:bg-primary-600 transition"
         >
+          Leer Nota
+        </NuxtLink>
+        <a
+          v-if="pdfUrl"
+          :href="pdfUrl"
+          target="_blank"
+          rel="noopener"
+          :download="pdfFileName"
+          class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white hover:bg-primary-100 dark:hover:bg-primary-600 transition"
+          @click.stop
+        >
+          Descargar PDF
+        </a>
       </div>
     </div>
-  </NuxtLink>
+  </article>
 </template>

@@ -16,6 +16,7 @@ export interface BlogEntity {
   fileBlog: string | null
   imageUrl: string | null
   authorId: number | string
+  author: string
   isPublished: '0' | '1'
   datePublished?: string
   created_at: string
@@ -31,6 +32,7 @@ export interface BlogCreatePayload {
   isPublished: '0' | '1'
   fileBlog?: File | null
   imageUrl: File | null
+  author: string
 }
 
 export type BlogUpdatePayload = {
@@ -40,6 +42,7 @@ export type BlogUpdatePayload = {
   isPublished?: '0' | '1'
   fileBlog?: File | null
   imageUrl?: File | null
+  author: string
 }
 
 export interface BlogListParams {
@@ -60,6 +63,7 @@ export interface BlogListItem {
   isPublished: '0' | '1'
   created_at: string
   updated_at: string
+  author: string
 }
 
 export interface BlogListData {
@@ -76,5 +80,19 @@ export interface BlogFormData {
   isPublished: '0' | '1'
   content: string
   fileBlog: File | null
-  imageUrl: File | null
+  imageUrl: string | null
+  author: string
+}
+
+// Image upload response typing
+export interface UploadImageMessage {
+  url: string
+  filename: string
+}
+
+export interface UploadImageResponse {
+  success: boolean
+  message: UploadImageMessage
+  data: string
+  errors: any[]
 }

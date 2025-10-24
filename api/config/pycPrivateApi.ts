@@ -6,7 +6,6 @@ const { VITE_API_BASE_URL } = import.meta.env;
 export const pycPrivateApi = axios.create({
   baseURL: `${VITE_API_BASE_URL}/api`,
   headers: {
-    'Content-Type': 'application/json',
     Accept: 'application/json',
   },
 })
