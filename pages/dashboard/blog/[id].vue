@@ -17,7 +17,6 @@ const loadingLocal = ref(true)
 onMounted(async () => {
   const id = route.params.id as string
   const res = await getPost(id)
-  console.log('res', res)
   if (res.ok) {
     initial.value = {
       title: res.data.title,

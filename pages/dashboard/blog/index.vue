@@ -16,7 +16,6 @@ const initial = ref<{
 }>({ title: '', shortDescription: '', isPublished: '0', content: '' })
 
 async function onSubmit(payload: any) {
-  console.log('payload', payload)
   const res = await blog.create(payload)
   if (res.ok) {
     toast.success('Post creado correctamente')

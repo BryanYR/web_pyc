@@ -108,7 +108,6 @@ export async function getPost(id: number | string, isAdmin?: boolean): Promise<A
 
 export async function uploadImage(file: File): Promise<ApiResult<UploadImageMessage>> {
   return safeRequest(async () => {
-    console.log('Uploading image file:', file)
     const fd = new FormData()
     fd.append('image', file)
     const { data, status } = await pycPrivateApi.post<UploadImageResponse>(`/blogs/upload-image`, fd, {

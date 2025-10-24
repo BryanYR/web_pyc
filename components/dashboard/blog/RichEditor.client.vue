@@ -67,7 +67,6 @@ const imageUploaderConfig = {
       // Subir como archivo
       const url = await uploadImage(file);
       if (url.ok) {
-        console.log('✅ Imagen subida, URL:', url);
         return url.data.url;
       }
     } catch (err) {
@@ -97,8 +96,6 @@ onMounted(async () => {
       { name: 'tableUI', module: tableUI, options: {} },
       { name: 'imageUploader', module: imageUploader, options: imageUploaderConfig },
     ];
-
-    console.log('✅ Módulos de Quill registrados:', modules.value);
   }
 });
 
