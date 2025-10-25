@@ -37,6 +37,7 @@ const props = defineProps<{ content: string }>()
 }
 .post-content :deep(li) {
   margin: 0.25rem 0; /* space between items */
+  font-size: 18px;
 }
 /* Nested list types for better readability */
 .post-content :deep(ul ul) { list-style-type: circle; }
@@ -50,5 +51,9 @@ const props = defineProps<{ content: string }>()
 .post-content :deep(p span .ql-size-huge) {
   font-size: clamp(2rem, 6vw, 3rem);
   line-height: 1.2;
+}
+.post-content :deep(p),
+.post-content :deep(p span) {
+  font-size: 18px;
 }
 </style>

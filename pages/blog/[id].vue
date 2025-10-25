@@ -94,7 +94,7 @@ watch(
       }"
       :readTime="estimateReadTime(displayContent)"
       :fullContent="displayContent"
-      :author="{ name: 'PYC', avatar: '' }"
+      :author="{ name: blog.author ?? 'PYC', avatar: '' }"
       :breadcrumbs="[
         { label: 'Blog', to: '/blog' },
         { label: displayTitle }

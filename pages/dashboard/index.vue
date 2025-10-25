@@ -28,6 +28,7 @@ const targetId = ref<number | null>(null)
 const currentPublished = ref<'0' | '1' | null>(null)
 const currentTitle = ref<string | null>(null)
 const currentShortDescription = ref<string | null>(null)
+const currentAuthor = ref<string | null>(null)
 const toggleLoadingId = ref<number | null>(null)
 const isToggling = computed(() => toggleLoadingId.value !== null)
 
@@ -36,6 +37,8 @@ function askDeactivate(row: any) {
   currentPublished.value = row.isPublished
   currentTitle.value = row.title || null
   currentShortDescription.value = row.shortDescription || null
+  currentAuthor.value = row.author || null
+
   confirmOpen.value = true
 }
 
@@ -48,9 +51,9 @@ async function onDeactivate() {
     const nextStatus = currentPublished.value === '1' ? '0' : '1'
     const res = await updateBlog(targetId.value, {
       isPublished: nextStatus,
-      // Backend requires title and shortDescription on update
       title: currentTitle.value || '',
       shortDescription: currentShortDescription.value || '',
+      author: currentAuthor.value || '',
     })
     if (res.ok) {
       await blog.fetch({
