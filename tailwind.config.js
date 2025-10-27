@@ -12,6 +12,9 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        '3xl': '1650px',
+      },
       colors: {
         primary: {
           100: "#e6f1fb",

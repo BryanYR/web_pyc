@@ -14,7 +14,7 @@ const hasSubtitle2 = computed(() => {
 })
 </script>
 <template>
-  <section class="relative overflow-hidden bg-[#0B5DA7] lg:h-[18rem] 2xl:h-[24rem] py-8 lg:py-0">
+  <section class="relative overflow-hidden bg-[#0B5DA7] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem] py-8 lg:py-0">
     <div
       class="pointer-events-none hidden lg:block absolute left-0 top-0 z-10 h-full w-[68%] -skew-x-[25deg] origin-top-right bg-primary-800"
     ></div>
@@ -22,20 +22,20 @@ const hasSubtitle2 = computed(() => {
       <img
         :src="imageSrc"
         alt="banner"
-        class="w-full h-auto max-h-[18rem] 2xl:max-h-[28rem] rounded-md object-cover origin-center"
+        class="w-full h-auto max-h-[18.9rem] xl:max-h-[22rem] 2xl:max-h-[24rem] 3xl:max-h-[27.5rem] rounded-md object-cover origin-center 2xl:-mt-4 3xl:-mt-10"
       />
     </div>
     <div class="pyc-container-section mx-auto px-6 h-full flex justify-center z-20 relative">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left max-w-6xl h-full">
         <div class="text-white w-full">
           <div class="max-w-xl mx-auto lg:mx-0">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight my-0">
               {{ $t('blog.banner.title') }}
             </h1>
-            <span class="mt-4 text-white/90 text-xl lg:text-2xl w-full block">
+            <span class="mt-4 text-white/90 text-base md:text-xl xl:text-2xl w-full block">
               {{ $t('blog.banner.subtitle') }}
             </span>
-            <span v-if="hasSubtitle2" class="text-white/90 text-xl lg:text-2xl w-full block">
+            <span v-if="hasSubtitle2" class="text-white/90 text-base md:text-xl xl:text-2xl w-full block">
               {{ $t('blog.banner.subtitle2') }}
             </span>
           </div>

@@ -45,7 +45,7 @@ const pdfFileName = computed(() =>
 </script>
 <template>
   <article
-    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group"
+    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group h-auto"
   >
     <NuxtLink :to="`/blog/${post.postId}`" class="block">
       <img
@@ -65,7 +65,7 @@ const pdfFileName = computed(() =>
         />
       </div>
     </NuxtLink>
-    <div class="p-5 flex flex-col justify-between gap-4 h-full">
+    <div class="p-5 flex flex-col gap-4 h-auto">
       <div class="flex flex-col gap-2">
         <NuxtLink :to="`/blog/${post.postId}`" class="block">
           <h3 class="text-primary-700 dark:text-white font-semibold text-lg">
@@ -76,7 +76,7 @@ const pdfFileName = computed(() =>
           {{ displayShortDescription }}
         </p>
       </div>
-      <div class="mt-auto flex items-center gap-3">
+      <div class="flex items-center gap-3">
         <NuxtLink
           :to="`/blog/${post.postId}`"
           class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white hover:bg-primary-100 dark:hover:bg-primary-600 transition"
