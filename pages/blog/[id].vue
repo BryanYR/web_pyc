@@ -74,7 +74,7 @@ watch(
   <div class="w-full pt-20">
     <template v-if="loading">
       <section class="container mx-auto px-6">
-        <div class="mx-auto max-w-3xl sm:max-w-4xl lg:max-w-6xl py-6 sm:py-8">
+        <div class="mx-auto max-w-3xl 2xl:max-w-4xl py-6 sm:py-8">
           <div class="h-4 w-40 bg-gray-200 rounded mb-2 animate-pulse"></div>
           <div class="h-8 w-3/4 bg-gray-200 rounded mb-3 animate-pulse"></div>
           <div class="h-4 w-56 bg-gray-200 rounded animate-pulse"></div>
@@ -102,7 +102,7 @@ watch(
     />
 
     <section class="container mx-auto px-6 py-8 lg:pb-16">
-      <div class="mx-auto max-w-5xl 2xl:max-w-6xl grid gap-8">
+      <div class="mx-auto max-w-3xl 2xl:max-w-4xl grid gap-8">
         <div class="w-full">
           <div v-if="loading" class="space-y-3 animate-pulse">
             <div class="h-4 bg-gray-200 rounded w-5/6"></div>

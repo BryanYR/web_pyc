@@ -135,16 +135,18 @@ function onCancel() {
           type="text"
           placeholder="Título del post"
           required
+          :length="60"
         />
           </div>
           <div class="md:col-span-8 col-span-12">
         <InputField
           v-model="shortDescription"
-          label="Descripción corta"
+          label="Subtítulo"
           id="shortDescription"
           type="text"
           placeholder="Resumen del post"
           required
+          :length="80"
         />
           </div>
           <div class="md:col-span-4 col-span-12">

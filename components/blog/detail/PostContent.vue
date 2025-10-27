@@ -28,6 +28,7 @@ const props = defineProps<{ content: string }>()
   height: auto;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 20px;
 }
 .post-content :deep(ol) {
   list-style-type: decimal;
@@ -38,22 +39,15 @@ const props = defineProps<{ content: string }>()
 .post-content :deep(li) {
   margin: 0.25rem 0; /* space between items */
   font-size: 18px;
+  color: #00224c !important;
 }
 /* Nested list types for better readability */
 .post-content :deep(ul ul) { list-style-type: circle; }
 .post-content :deep(ul ul ul) { list-style-type: square; }
 
-/* Quill large text size: bigger and responsive */
-.post-content :deep(p .ql-size-huge) {
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1.2;
-}
-.post-content :deep(p span .ql-size-huge) {
-  font-size: clamp(2rem, 6vw, 3rem);
-  line-height: 1.2;
-}
 .post-content :deep(p),
 .post-content :deep(p span) {
   font-size: 18px;
+  color: #00224c !important;
 }
 </style>

@@ -13,6 +13,7 @@ interface Props {
   toggleVisibility?: boolean // only applies when type === 'password'
   containerClass?: string
   inputClass?: string
+  length?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -59,6 +60,7 @@ function onInput(e: Event) {
         :disabled="disabled"
         :autocomplete="autocomplete"
         :value="modelValue"
+        :maxlength="length"
         @input="onInput"
         @blur="(e) => $emit('blur', e)"
         @focus="(e) => $emit('focus', e)"
