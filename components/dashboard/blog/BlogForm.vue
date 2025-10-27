@@ -75,6 +75,8 @@ const previewPost = computed(() => ({
 }))
 const previewAuthor = computed(() => ({ name: author.value || 'PYC', avatar: '' }))
 const previewBreadcrumbs = computed(() => ([{ label: 'Blog', to: '/blog' }, { label: title.value || 'Previsualización' }]))
+const readTime = computed(() => estimateReadTime(content.value))
+const previewKey = computed(() => `${title.value}::${author.value}::${imageUrl.value}::${content.value.length}`)
 
 watch(
   () => props.initial,
@@ -109,7 +111,7 @@ function onCancel() {
 <template>
   <div class="w-full">
     <div class="flex items-center justify-between mb-3">
-      <h2 class="text-lg font-semibold">{{ heading }}</h2>
+      <h2 class="text-lg font-semibold text-black">{{ heading }}</h2>
       <Base
         :classes="'px-3 py-1.5'"
         type="button"
@@ -229,14 +231,16 @@ function onCancel() {
       <div v-if="showPreview" class="hidden lg:block lg:col-span-6">
         <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
           <PostHero
+            :key="previewKey"
             :post="previewPost"
-            :readTime="estimateReadTime(content)"
+            :readTime="readTime"
             :fullContent="content"
             :author="previewAuthor"
             :breadcrumbs="previewBreadcrumbs"
+            :show-buttons="false"
           />
           <div class="px-6 py-8">
-            <PostContent :content="content" />
+            <PostContent :key="previewKey + ':content'" :content="content" />
           </div>
         </div>
       </div>
@@ -250,14 +254,15 @@ function onCancel() {
           <button class="text-sm px-3 py-1 rounded border" @click="togglePreview">Cerrar</button>
         </div>
         <PostHero
+          :key="previewKey + ':mobile'"
           :post="previewPost"
-          :readTime="estimateReadTime(content)"
+          :readTime="readTime"
           :fullContent="content"
           :author="previewAuthor"
           :breadcrumbs="previewBreadcrumbs"
         />
         <div class="px-4 pb-8">
-          <PostContent :content="content" />
+          <PostContent :key="previewKey + ':mobile:content'" :content="content" />
         </div>
       </div>
     </div>

@@ -14,16 +14,25 @@ import Breadcrumb from '@/components/utils/Breadcrumb.vue'
 import type { BlogListItem } from '@/interfaces/blog'
 import { useI18n } from 'vue-i18n'
 
-const { post, readTime, author, breadcrumbs, fullContent } = defineProps<{
-  post: Pick<
+const { post, readTime, author, breadcrumbs, fullContent } = withDefaults(
+  defineProps<{
+    post: Pick<
     BlogListItem,
     'title' | 'shortDescription' | 'imageUrl' | 'created_at'
   >
-  readTime: number
-  author: { name: string; avatar: string }
-  breadcrumbs?: Array<{ label: string; to?: string }>
-  fullContent?: string
-}>()
+    readTime: number
+    author: { name: string; avatar: string }
+    breadcrumbs?: { label: string; to?: string }[]
+    fullContent?: string
+    showButtons?: boolean
+  }>(),
+  {
+    readTime: 0,
+    author: () => ({ name: "", avatar: "" }),
+    fullContent: "",
+    showButtons: true,
+  }
+)
 
 const validImage = computed(() => isValidUrlFormat(post.imageUrl))
 
@@ -222,7 +231,7 @@ onBeforeUnmount(() => {
             />
           </div>
           <!-- Actions: Listen and Share -->
-          <div class="mt-4 flex items-center gap-3 relative">
+          <div v-if="showButtons" class="mt-4 flex items-center gap-3 relative">
             <button
               type="button"
               class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-700 text-primary-700 hover:bg-primary-50 hover:bg-primary-700 hover:text-white transition-colors duration-300 ease-in-out dark:border-white dark:text-white dark:hover:bg-primary-600/40 disabled:opacity-60"

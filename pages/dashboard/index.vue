@@ -98,7 +98,7 @@ onMounted(() => {
       class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-white rounded-2xl my-4"
     >
       <div class="flex items-center justify-between mb-4">
-        <h1 class="text-xl font-semibold">Gestión de posts</h1>
+        <h1 class="text-xl font-semibold text-black">Gestión de posts</h1>
         <Base :classes="'px-4 py-2'" @click="openCreate">Nuevo Post</Base>
       </div>
 

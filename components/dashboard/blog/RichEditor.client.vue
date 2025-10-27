@@ -129,5 +129,6 @@ const onEditorReady = (quill) => {
 <style>
 .ql-editor {
   min-height: 400px;
+  color: #000;
 }
 </style>

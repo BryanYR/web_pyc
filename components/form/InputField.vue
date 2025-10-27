@@ -47,12 +47,12 @@ function onInput(e: Event) {
 
 <template>
   <div :class="['w-full', containerClass]">
-    <label :for="inputId" class="block text-sm font-medium mb-1">{{ label }}</label>
+    <label :for="inputId" class="block text-sm font-medium mb-1 text-black">{{ label }}</label>
     <div class="relative">
       <input
         :id="inputId"
         :type="resolvedType"
-        class="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-secondary-700 disabled:opacity-60 disabled:cursor-not-allowed"
+        class="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-secondary-700 disabled:opacity-60 disabled:cursor-not-allowed !text-black"
         :class="inputClass"
         :placeholder="placeholder"
         :required="required"
