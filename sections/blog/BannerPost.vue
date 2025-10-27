@@ -18,13 +18,14 @@ const hasSubtitle2 = computed(() => {
     <div
       class="pointer-events-none hidden lg:block absolute left-0 top-0 z-10 h-full w-[68%] -skew-x-[25deg] origin-top-right bg-primary-800"
     ></div>
-    <div class="hidden lg:block absolute top-0 right-0 z-0">
-      <img
-        :src="imageSrc"
-        alt="banner"
-        class="w-full h-auto max-h-[18.9rem] xl:max-h-[22rem] 2xl:max-h-[24rem] 3xl:max-h-[27.5rem] rounded-md object-cover origin-center 2xl:-mt-4 3xl:-mt-10"
-      />
-    </div>
+      <!-- Image area constrained to right half for consistent cross-browser sizing -->
+      <div class="hidden lg:block absolute inset-y-0 right-0 w-1/2 z-0">
+        <img
+          :src="imageSrc"
+          alt="banner"
+          class="w-full h-full rounded-md object-cover"
+        />
+      </div>
     <div class="pyc-container-section mx-auto px-6 h-full flex justify-center z-20 relative">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left max-w-6xl h-full">
         <div class="text-white w-full">

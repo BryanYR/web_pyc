@@ -9,7 +9,7 @@ import GridPosts from '@/sections/blog/GridPosts.vue'
 
 <template>
   <div class="w-full pt-20">
-    <BannerPost image-src="/images/home/banner_blog_2.webp" />
+    <BannerPost image-src="/images/home/banner_blog_4.webp" />
     <GridPosts />
   </div>
 </template>

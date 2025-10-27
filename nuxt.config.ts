@@ -36,7 +36,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  css: ["~/assets/css/main.css"],
+  css: [
+    "~/assets/css/main.css",
+    // Swiper styles (ensure proper rendering in Safari and all browsers)
+    'swiper/css',
+    'swiper/css/navigation',
+    'swiper/css/pagination',
+  ],
   build: {
     transpile: ["vue-toastification"],
   },
