@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BlogListItem } from '@/interfaces/blog';
+import type { BlogListItem } from '@/interfaces/blog'
 import { isValidUrlFormat } from '@/utils/general'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
@@ -24,7 +24,9 @@ const displayShortDescription = computed(() => {
 })
 
 // Build a safe PDF URL when fileBlog is present
-const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL as string | undefined
+const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL as
+  | string
+  | undefined
 const pdfUrl = computed(() => {
   const f = props.post.fileBlog
   const base = API_BASE
@@ -33,12 +35,18 @@ const pdfUrl = computed(() => {
   const cleanFile = String(f).replace(/^\/+/, '')
   return `${cleanBase}/${cleanFile}`
 })
-const pdfFileName = computed(() => (props.post.fileBlog ? String(props.post.fileBlog).split('/').pop() || 'archivo.pdf' : undefined))
+const pdfFileName = computed(() =>
+  props.post.fileBlog
+    ? String(props.post.fileBlog).split('/').pop() || 'archivo.pdf'
+    : undefined
+)
 
 // Reverted: always link to blog detail page
 </script>
 <template>
-  <article class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group">
+  <article
+    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group"
+  >
     <NuxtLink :to="`/blog/${post.postId}`" class="block">
       <img
         v-if="isValidUrlFormat(post.imageUrl)"
@@ -46,20 +54,29 @@ const pdfFileName = computed(() => (props.post.fileBlog ? String(props.post.file
         :alt="post.title"
         class="h-44 w-full object-cover group-hover:brightness-95 transition"
       />
-      <div v-else class="h-44 w-full bg-primary-700 flex items-center justify-center">
-        <img src="/images/logos/pyc_logo.svg" alt="PYC" class="h-10 opacity-90" />
+      <div
+        v-else
+        class="h-44 w-full bg-primary-700 flex items-center justify-center"
+      >
+        <img
+          src="/images/logos/pyc_logo.svg"
+          alt="PYC"
+          class="h-10 opacity-90"
+        />
       </div>
     </NuxtLink>
-    <div class="p-5">
-      <NuxtLink :to="`/blog/${post.postId}`" class="block">
-        <h3 class="text-primary-700 dark:text-white font-semibold text-lg">
-          {{ displayTitle }}
-        </h3>
-      </NuxtLink>
-      <p class="mt-2 text-sm text-gray-600 dark:text-white line-clamp-4">
-        {{ displayShortDescription }}
-      </p>
-      <div class="mt-4 flex items-center gap-3">
+    <div class="p-5 flex flex-col justify-between gap-4 h-full">
+      <div class="flex flex-col gap-2">
+        <NuxtLink :to="`/blog/${post.postId}`" class="block">
+          <h3 class="text-primary-700 dark:text-white font-semibold text-lg">
+            {{ displayTitle }}
+          </h3>
+        </NuxtLink>
+        <p class="text-sm text-gray-600 dark:text-white line-clamp-2">
+          {{ displayShortDescription }}
+        </p>
+      </div>
+      <div class="mt-auto flex items-center gap-3">
         <NuxtLink
           :to="`/blog/${post.postId}`"
           class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white hover:bg-primary-100 dark:hover:bg-primary-600 transition"

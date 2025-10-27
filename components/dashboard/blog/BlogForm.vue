@@ -5,6 +5,8 @@ import FileUploader from '@/components/form/FileUploader.vue'
 import Base from '@/components/button/Base.vue'
 import RichEditor from '@/components/dashboard/blog/RichEditor.client.vue'
 import Select from '@/components/form/Select.vue'
+import PostHero from '@/sections/blog/PostHero.vue'
+import PostContent from '@/components/blog/detail/PostContent.vue'
 import type { BlogFormData } from '@/interfaces/blog'
 
 interface Props {
@@ -56,6 +58,24 @@ const existingFileUrl = computed(() => {
   return `${base}/${clean}`
 })
 
+// Preview state and helpers
+const showPreview = ref(false)
+const togglePreview = () => { showPreview.value = !showPreview.value }
+
+function estimateReadTime(text: string) {
+  const words = (text || '').replace(/<[^>]+>/g, ' ').trim().split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.ceil(words / 200))
+}
+
+const previewPost = computed(() => ({
+  title: title.value || 'Sin título',
+  shortDescription: shortDescription.value || '',
+  imageUrl: imageUrl.value || null,
+  created_at: new Date().toISOString(),
+}))
+const previewAuthor = computed(() => ({ name: author.value || 'PYC', avatar: '' }))
+const previewBreadcrumbs = computed(() => ([{ label: 'Blog', to: '/blog' }, { label: title.value || 'Previsualización' }]))
+
 watch(
   () => props.initial,
   (val) => {
@@ -90,9 +110,22 @@ function onCancel() {
   <div class="w-full">
     <div class="flex items-center justify-between mb-3">
       <h2 class="text-lg font-semibold">{{ heading }}</h2>
+      <Base
+        :classes="'px-3 py-1.5'"
+        type="button"
+        variant="outline"
+        @click="togglePreview"
+      >
+        <span v-if="showPreview">Ocultar previsualización</span>
+        <span v-else>Previsualizar</span>
+      </Base>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
-      <div class="col-span-12">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Form column -->
+      <div :class="showPreview ? 'lg:col-span-6' : 'lg:col-span-12'">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+          <div class="col-span-12">
         <InputField
           v-model="title"
           label="Título"
@@ -101,8 +134,8 @@ function onCancel() {
           placeholder="Título del post"
           required
         />
-      </div>
-      <div class="md:col-span-8 col-span-12">
+          </div>
+          <div class="md:col-span-8 col-span-12">
         <InputField
           v-model="shortDescription"
           label="Descripción corta"
@@ -111,8 +144,8 @@ function onCancel() {
           placeholder="Resumen del post"
           required
         />
-      </div>
-      <div class="md:col-span-4 col-span-12">
+          </div>
+          <div class="md:col-span-4 col-span-12">
         <Select
           id="isPublished"
           label="Publicado"
@@ -122,8 +155,8 @@ function onCancel() {
             { label: 'Publicado', value: '1' }
           ]"
         />
-      </div>
-      <div class="md:col-span-6 col-span-12">
+          </div>
+          <div class="md:col-span-6 col-span-12">
         <InputField
           v-model="imageUrl"
           label="Url imagen (Banner principal)"
@@ -131,8 +164,8 @@ function onCancel() {
           type="text"
           placeholder="Url de la imagen"
         />
-      </div>
-      <div class="md:col-span-6 col-span-12">
+          </div>
+          <div class="md:col-span-6 col-span-12">
         <InputField
           v-model="author"
           label="Autor"
@@ -140,8 +173,8 @@ function onCancel() {
           type="text"
           placeholder="Nombre del autor"
         />
-      </div>
-      <div class="col-span-12">
+          </div>
+          <div class="col-span-12">
         <label for="current-file" class="block text-sm font-medium mb-1">Archivo actual</label>
         <div v-if="existingFileUrl" class="text-sm">
           <a :href="existingFileUrl" target="_blank" rel="noopener" class="text-primary-700 underline">
@@ -150,8 +183,8 @@ function onCancel() {
           <p class="text-xs text-gray-500 mt-1">Si adjuntas un nuevo archivo, se reemplazará el existente.</p>
         </div>
         <div v-else class="text-sm text-gray-500">No hay archivo adjunto.</div>
-      </div>
-      <div class="col-span-12">
+          </div>
+          <div class="col-span-12">
         <FileUploader
           v-model="fileBlog"
           label="Archivo (opcional)"
@@ -159,19 +192,20 @@ function onCancel() {
           accept=".pdf"
           aria-describedby="current-file"
         />
-      </div>
-      
-      <div class="md:col-span-12 col-span-12 space-y-2">
+          </div>
+          
+          <div class="md:col-span-12 col-span-12 space-y-2">
         <label class="block text-sm font-medium mb-1" for="blog-content"
           >Contenido</label
         >
         <div id="blog-content">
           <RichEditor v-model="content" />
         </div>
-      </div>
-    </div>
-    <div class="mt-4 pt-3 border-t flex items-center justify-end gap-2">
-      <Base
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t flex items-center justify-end gap-2">
+          <Base
         :classes="'px-4 py-2'"
         type="button"
         variant="outline"
@@ -179,7 +213,7 @@ function onCancel() {
         :disabled="loading"
         >Cancelar</Base
       >
-      <Base
+          <Base
         :classes="'px-4 py-2'"
         type="button"
         :disabled="loading"
@@ -187,7 +221,45 @@ function onCancel() {
       >
         <span v-if="loading">Guardando…</span>
         <span v-else>{{ submitText }}</span>
-      </Base>
+          </Base>
+        </div>
+      </div>
+
+      <!-- Preview column (desktop) -->
+      <div v-if="showPreview" class="hidden lg:block lg:col-span-6">
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
+          <PostHero
+            :post="previewPost"
+            :readTime="estimateReadTime(content)"
+            :fullContent="content"
+            :author="previewAuthor"
+            :breadcrumbs="previewBreadcrumbs"
+          />
+          <div class="px-6 py-8">
+            <PostContent :content="content" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview modal (mobile) -->
+    <div v-if="showPreview" class="fixed inset-0 z-50 bg-black/50 flex lg:hidden">
+      <div class="bg-white w-full h-full overflow-y-auto">
+        <div class="flex items-center justify-between p-4 border-b">
+          <h3 class="text-base font-semibold">Previsualización</h3>
+          <button class="text-sm px-3 py-1 rounded border" @click="togglePreview">Cerrar</button>
+        </div>
+        <PostHero
+          :post="previewPost"
+          :readTime="estimateReadTime(content)"
+          :fullContent="content"
+          :author="previewAuthor"
+          :breadcrumbs="previewBreadcrumbs"
+        />
+        <div class="px-4 pb-8">
+          <PostContent :content="content" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
