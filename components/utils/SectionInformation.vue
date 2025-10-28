@@ -29,7 +29,7 @@ const defaultDescriptionClass = computed(() => {
 
 <template>
   <div
-    class="w-full h-full"
+    class="w-full"
     :class="
       mode === 'inline' ? 'flex flex-col gap-4 md:grid md:grid-cols-3' : 'flex flex-col gap-4'
     "
