@@ -3,6 +3,7 @@ import Facebook from "@/assets/icons/Facebook.vue";
 import Instagram from "@/assets/icons/Instagram.vue";
 import Linkedin from "@/assets/icons/Linkedin.vue";
 import PycTexto from "/images/logos/pyc_text.webp";
+import LogoWhite from "@/assets/icons/LogoWhite.vue";
 import { contactInfo } from "@/constants/contact";
 </script>
 
@@ -11,9 +12,9 @@ import { contactInfo } from "@/constants/contact";
     <div class="pyc-container mx-auto flex flex-col lg:flex-row items-center">
       <div class="h-full w-full lg:max-w-[350px]">
         <div
-          class="bg-white flex flex-col justify-center items-center h-full gap-4 px-8 py-8 lg:py-0 text-center"
+          class="flex flex-col justify-center items-center h-full gap-4 px-8 py-8 lg:py-0 text-center"
         >
-          <img :src="PycTexto" alt="Logo PYC" class="w-60" />
+          <LogoWhite class="h-12 text-white" />
           <p class="text-primary-700 text-sm md:text-base font-semibold">
             Ajustadores y Peritos de Seguros
           </p>

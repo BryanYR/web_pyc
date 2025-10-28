@@ -1,21 +1,20 @@
 <template>
   <ClientOnly>
-    <QuillEditor
-      v-model:content="content"
-      content-type="html"
-      theme="snow"
-      :toolbar="toolbarOptions"
-      :modules="modules"
-      @ready="onEditorReady"
-    />
+    <div v-if="isReady">
+      <Toolbar :editor="editor" :defaultConfig="toolbarConfig" />
+      <Editor
+        v-model="content"
+        :defaultConfig="editorConfig"
+        @onCreated="onCreated"
+        style="height: 500px"
+      />
+    </div>
   </ClientOnly>
 </template>
 
-<script setup>
-import { ref, onMounted, watch } from 'vue';
-import { QuillEditor } from '@vueup/vue-quill';
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { uploadImage } from '@/api/blogs'
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 const props = defineProps({
   modelValue: { type: String, default: '' }
@@ -26,109 +25,74 @@ const content = ref(props.modelValue)
 watch(() => props.modelValue, (v) => { if (v !== content.value) content.value = v })
 watch(content, (v) => emit('update:modelValue', v))
 
-const modules = ref([]);
 
-const toolbarOptions = [
-  ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote', 'code-block'],
-  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-  [{ 'indent': '-1' }, { 'indent': '+1' }],
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-  [{ 'color': [] }, { 'background': [] }],
-  [{ 'font': [] }],
-  [{ 'align': [] }],
-  ['clean'],
-  ['image', 'link', 'video'],
-  ['table'],
-];
+const editor = ref<any>(null)
+const isReady = ref(false)
 
-function base64ToFile(base64, filename) {
-  const arr = base64.split(',');
-  const mime = arr[0].match(/:(.*?);/)[1];
-  const bstr = atob(arr[1]);
-  let n = bstr.length;
-  const u8arr = new Uint8Array(n);
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
-  }
-  return new File([u8arr], filename, { type: mime });
-}
-
-const imageUploaderConfig = {
-  upload: async (fileOrBase64) => {
-    try {
-      let file = fileOrBase64;
-
-      // Si viene en base64 (string), convertirlo a File
-      if (typeof fileOrBase64 === 'string' && fileOrBase64.startsWith('data:image')) {
-        file = base64ToFile(fileOrBase64, `image-${Date.now()}.png`);
-      }
-
-      // Subir como archivo
-      const url = await uploadImage(file);
-      if (url.ok) {
-        return url.data.url;
-      }
-    } catch (err) {
-      console.error('❌ Error subiendo imagen:', err);
-      throw new Error('Upload failed');
-    }
-  },
-};
+let Editor: any, Toolbar: any
+let editorInstance: any = null
 
 onMounted(async () => {
-  if (process.client) {
-    const Quill = (await import('quill')).default;
-    
-    const betterTable = (await import('quill-better-table')).default;
-    const tableUI = (await import('quill-table-ui')).default;
-    const imageUploader = (await import('quill-image-uploader')).default;
+  const core = await import('@wangeditor/editor')
+  const vueEditor = await import('@wangeditor/editor-for-vue')
 
-    // Registrar módulos antes de pasarlos a vue-quill
-    Quill.register({
-      'modules/better-table': betterTable,
-      'modules/tableUI': tableUI,
-      'modules/imageUploader': imageUploader,
-    }, true);
+  const { i18nChangeLanguage } = core
+  i18nChangeLanguage('en') // idioma (es-ES aún da error en algunos builds)
 
-    modules.value = [
-      { name: 'better-table', module: betterTable },
-      { name: 'tableUI', module: tableUI, options: {} },
-      { name: 'imageUploader', module: imageUploader, options: imageUploaderConfig },
-    ];
-  }
-});
+  Editor = vueEditor.Editor
+  Toolbar = vueEditor.Toolbar
 
-const onEditorReady = (quill) => {
-  // Asignar el handler para el botón de imagen
-  quill.getModule('toolbar').addHandler('image', () => {
-    const range = quill.getSelection(true);
-    
-    const fileInput = document.createElement('input');
-    fileInput.setAttribute('type', 'file');
-    fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
-    
-    fileInput.addEventListener('change', async () => {
-      const file = fileInput.files[0];
-      
-      if (file) {
-        try {
-          const url = await imageUploaderConfig.upload(file);
-          quill.insertEmbed(range.index, 'image', url);
-        } catch (error) {
-          console.error("Error inserting image", error);
+  isReady.value = true
+})
+
+const toolbarConfig = {
+  excludeKeys: ['insertVideo', 'insertImage', 'fullScreen', 'uploadVideo', 'group-video'],
+}
+
+const editorConfig = {
+  placeholder: 'Escribe tu contenido aquí...',
+  MENU_CONF: {
+    uploadImage: {
+      customUpload: async (file: File, insertFn: (url: string, alt: string, href: string) => void) => {
+        console.log('Subiendo imagen:', file)
+        const res = await uploadImage(file);
+        if(res.ok){
+          // ✅ Inserta manualmente la imagen en el editor
+          insertFn(res.data.url, 'Imagen subida', res.data.url)
+        } else {
+          console.error('Error al subir la imagen:', res);
         }
-      }
-    });
+      },
+    },
+  },
+}
 
-    fileInput.click();
-  });
-};
+const onCreated = (instance: any) => {
+  editorInstance = instance
+  editor.value = instance
+  console.log('Editor creado ✅')
+}
+
+onBeforeUnmount(() => {
+  if (editorInstance) {
+    editorInstance.destroy()
+    editorInstance = null
+  }
+})
 </script>
 
+
 <style>
-.ql-editor {
-  min-height: 400px;
-  color: #000;
+@import '@wangeditor/editor/dist/css/style.css';
+#blog-content{
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+.w-e-toolbar{
+  border-radius: 5px;
+  border-bottom: 1px solid #dddddd;
+}
+.w-e-text-container{
+border-radius: 5px;
 }
 </style>

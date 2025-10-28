@@ -29,6 +29,7 @@ const props = defineProps<{ content: string }>()
   margin-left: auto;
   margin-right: auto;
   border-radius: 20px;
+  padding: 10px 0;
 }
 .post-content :deep(ol) {
   list-style-type: decimal;
@@ -49,5 +50,25 @@ const props = defineProps<{ content: string }>()
 .post-content :deep(p span) {
   font-size: 18px;
   color: #00224c !important;
+  margin-bottom: 1em;
+}
+.post-content :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+/* Table cell borders and spacing */
+.post-content :deep(th),
+.post-content :deep(td) {
+  border: 1px solid #d3d4d8; /* slate-200 */
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+}
+
+/* Optional: subtle header background */
+.post-content :deep(thead th) {
+  background-color: #f8fafc; /* slate-50 */
+  font-weight: 600;
 }
 </style>

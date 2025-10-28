@@ -7,7 +7,7 @@
       "@/*": ["./*"],
       "#app": ["./node_modules/nuxt/dist/app/index"]
     },
-    "types": ["@types/node"]
+    "types": ["@types/node", "@types/wangeditor"]
   },
   "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.vue", ".nuxt/**/*"],
   "exclude": ["node_modules"]
