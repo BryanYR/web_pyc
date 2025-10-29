@@ -14,7 +14,7 @@ const hasSubtitle2 = computed(() => {
 })
 </script>
 <template>
-  <section class="relative overflow-hidden bg-[#0B5DA7] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem] py-8 lg:py-0">
+  <section class="relative overflow-hidden bg-[#0B5DA7] lg:h-[18rem] xl:h-[19rem] py-8 lg:py-0 mt-2">
     <div
       class="pointer-events-none hidden lg:block absolute left-0 top-0 z-10 h-full w-[68%] -skew-x-[25deg] origin-top-right bg-primary-700"
     ></div>
