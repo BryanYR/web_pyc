@@ -65,7 +65,7 @@ const pdfFileName = computed(() =>
         />
       </div>
     </NuxtLink>
-    <div class="p-5 flex flex-col gap-4 h-auto">
+    <div class="p-5 flex flex-col gap-4 h-full justify-between">
       <div class="flex flex-col gap-2">
         <NuxtLink :to="`/blog/${post.postId}`" class="block">
           <h3 class="text-primary-700 dark:text-white font-semibold text-lg">

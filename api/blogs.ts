@@ -59,7 +59,7 @@ export async function listPosts(params: BlogListParams, isAdmin?: boolean): Prom
   if (params.filter != null) query.set('filter', String(params.filter))
   if (params.page != null) query.set('page', String(params.page))
   if (params.perPage != null) query.set('per_page', String(params.perPage))
-  if (params.published != null && isAdmin) query.set('published', String(params.published))
+  if (params.published != null) query.set('published', String(params.published))
   return safeRequest(async () => {
     const { data, status } = await pycPrivateApi.get<ApiEnvelope<any>>(`${basePath(isAdmin)}?${query.toString()}`)
     // Normalize backend pagination shape to BlogListData

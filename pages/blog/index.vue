@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'default',
-  headerBg: 'primary',
+  headerBg: 'white',
 })
 import BannerPost from '@/sections/blog/BannerPost.vue'
 import GridPosts from '@/sections/blog/GridPosts.vue'

@@ -27,24 +27,28 @@ const navLinks = [
 const hasPrimaryBg = computed(() => {
   return route.meta.headerBg === "primary";
 });
+
+const hasWhiteBg = computed(() => {
+  return route.meta.headerBg === "white";
+});
 </script>
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 py-5 transition-colors duration-300 ease-in-out z-[100]"
-    :class="hasPrimaryBg ? 'bg-primary-700' : (isScrolled ? 'bg-primary-700' : 'bg-transparent')"
+    class="fixed top-0 left-0 right-0 py-5 transition-colors duration-300 ease-in-out z-[100] text-white"
+    :class="[hasPrimaryBg ? 'bg-primary-700' : (isScrolled ? 'bg-primary-700 ' : 'bg-transparent'), hasWhiteBg ? 'bg-white !text-primary-700' : '']"
   >
     <div class="pyc-container mx-auto px-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <NuxtLink to="/">
-          <LogoWhite class="h-12 text-white" />
+          <LogoWhite class="h-12 " />
         </NuxtLink>
         <LanguageSelector />
       </div>
 
       <!-- NAV DESKTOP -->
       <nav class="hidden md:block">
-        <ul class="flex gap-4 md:gap-8 items-center text-white text-sm lg:text-lg">
+        <ul class="flex gap-4 md:gap-8 items-center  text-sm lg:text-lg">
           <li v-for="link in navLinks" :key="link.key">
             <button
               class="hover:opacity-75 transition-opacity duration-300 ease-in-out"

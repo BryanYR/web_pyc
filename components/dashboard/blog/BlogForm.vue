@@ -193,7 +193,7 @@ onBeforeUnmount(() => {
               type="text"
               placeholder="Título del post"
               required
-              :length="60"
+              :length="70"
             />
           </div>
           <div class="md:col-span-8 col-span-12">

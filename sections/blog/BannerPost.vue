@@ -16,7 +16,7 @@ const hasSubtitle2 = computed(() => {
 <template>
   <section class="relative overflow-hidden bg-[#0B5DA7] lg:h-[18rem] xl:h-[20rem] 2xl:h-[22rem] py-8 lg:py-0">
     <div
-      class="pointer-events-none hidden lg:block absolute left-0 top-0 z-10 h-full w-[68%] -skew-x-[25deg] origin-top-right bg-primary-800"
+      class="pointer-events-none hidden lg:block absolute left-0 top-0 z-10 h-full w-[68%] -skew-x-[25deg] origin-top-right bg-primary-700"
     ></div>
       <!-- Image area constrained to right half for consistent cross-browser sizing -->
       <div class="hidden lg:block absolute inset-y-0 right-0 w-1/2 z-0">

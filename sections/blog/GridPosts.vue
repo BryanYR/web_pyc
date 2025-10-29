@@ -36,6 +36,7 @@ async function load() {
       filter: tabToFilter(activeTab.value),
       page: page.value,
       perPage: perPage.value,
+      published: 1,
     }
   )
 }

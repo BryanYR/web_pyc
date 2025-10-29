@@ -38,6 +38,7 @@ export const useBlogStore = defineStore('blog', () => {
       ...merged,
       perPage: merged.perPage ?? perPage.value,
     }
+    console.log('effective', effective)
     const admin = typeof isAdmin === 'boolean' ? isAdmin : detectAdmin()
     const res = await listPosts(effective, admin)
     if (res.ok) {

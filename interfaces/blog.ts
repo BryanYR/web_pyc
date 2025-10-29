@@ -49,7 +49,7 @@ export interface BlogListParams {
   filter?: number | string
   page?: number
   perPage?: number
-  published?: string // optional: e.g., 'all' | '1' | '0'
+  published?: number
 }
 
 export interface BlogListItem {
