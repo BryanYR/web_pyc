@@ -23,7 +23,7 @@ const hasSubtitle2 = computed(() => {
         <img
           :src="imageSrc"
           alt="banner"
-          class="w-full h-full rounded-md object-cover"
+          class="w-full h-full rounded-md object-cover scale-x-[-1]"
         />
       </div>
     <div class="pyc-container-section mx-auto px-6 h-full flex justify-center z-20 relative">

@@ -46,10 +46,9 @@ const props = defineProps<{ content: string }>()
 .post-content :deep(ul ul) { list-style-type: circle; }
 .post-content :deep(ul ul ul) { list-style-type: square; }
 
-.post-content :deep(p),
-.post-content :deep(p span) {
+.post-content :deep(p){
   font-size: 18px;
-  color: #00224c !important;
+  color: #191d22 !important;
   margin-bottom: 1em;
 }
 .post-content :deep(table) {
