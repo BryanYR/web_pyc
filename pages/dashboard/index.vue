@@ -12,12 +12,7 @@ const blog = useBlogStore()
 // modal/form moved to /dashboard/blog and /dashboard/blog/[id]
 
 const page = ref(1)
-const perPage = ref(10)
-const totalPages = computed(() => {
-  if (blog.total && perPage.value)
-    return Math.max(1, Math.ceil(blog.total / perPage.value))
-  return undefined
-})
+const perPage = ref(5)
 
 const hasItems = computed(
   () => Array.isArray(blog.items) && blog.items.length > 0
@@ -60,7 +55,6 @@ async function onDeactivate() {
         filter: 0,
         page: page.value,
         perPage: perPage.value,
-        published: 'all',
       })
     }
   } finally {
@@ -87,7 +81,6 @@ onMounted(() => {
     filter: 0,
     page: page.value,
     perPage: perPage.value,
-    published: 'all',
   })
 })
 </script>
@@ -112,14 +105,14 @@ onMounted(() => {
         @update:page="
           (p) => {
             page = p
-            blog.fetch({ filter: 0, page: page, perPage, published: 'all' })
+            blog.fetch({ filter: 0, page: page, perPage })
           }
         "
         @update:perPage="
           (pp) => {
             perPage = pp
             page = 1
-            blog.fetch({ filter: 0, page: page, perPage, published: 'all' })
+            blog.fetch({ filter: 0, page: page, perPage })
           }
         "
       >

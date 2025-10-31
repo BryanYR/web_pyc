@@ -40,7 +40,7 @@ const props = defineProps<{ content: string }>()
 .post-content :deep(li) {
   margin: 0.25rem 0; /* space between items */
   font-size: 18px;
-  color: #00224c !important;
+  color: #191d22 !important;
 }
 /* Nested list types for better readability */
 .post-content :deep(ul ul) { list-style-type: circle; }
