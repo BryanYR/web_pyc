@@ -31,7 +31,7 @@ const hasSubtitle2 = computed(() => {
     <!-- Overlay diagonal azul por encima de la imagen -->
     <div
       class="absolute inset-0 w-full h-full bg-[#0B5DA7] origin-top-right"
-      style="clip-path: polygon(0 0, 65% 0, 48% 100%, 0% 100%)"
+      style="clip-path: polygon(0 0, 60% 0, 52% 100%, 0% 100%)"
     ></div>
 
     <!-- Contenido de texto -->
