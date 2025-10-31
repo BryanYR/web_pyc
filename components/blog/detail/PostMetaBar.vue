@@ -1,25 +1,27 @@
 <template>
   <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-white/80">
-    <template v-if="author.avatar">
-      <img
-        :src="author.avatar"
-        :alt="author.name"
-        class="h-8 w-8 rounded-full object-cover ring-1 ring-black/5"
-      />
-    </template>
-    <template v-else>
-      <div
-        class="h-8 w-8 rounded-full bg-primary-700 text-white flex items-center justify-center ring-1 ring-black/5 uppercase"
-      >
-        {{ initial }}
-      </div>
+    <template v-if="showAvatar">
+      <template v-if="author.avatar">
+        <img
+          :src="author.avatar"
+          :alt="author.name"
+          class="h-8 w-8 rounded-full object-cover ring-1 ring-black/5"
+        />
+      </template>
+      <template v-else>
+        <div
+          class="h-8 w-8 rounded-full bg-primary-700 text-white flex items-center justify-center ring-1 ring-black/5 uppercase"
+        >
+          {{ initial }}
+        </div>
+      </template>
     </template>
     <div class="w-full flex flex-col gap-1">
-      <span class="font-medium">{{ author.name }}</span>
+      <span v-if="showAvatar" class="font-medium">{{ author.name }}</span>
       <div class="w-full flex gap-2">
-        <span>Lectura de: {{ readTime }} min</span>
+        <span class="text-gray-400 dark:text-white/80">Lectura de: {{ readTime }} min</span>
         <span>•</span>
-        <time :datetime="dateISO">{{ prettyDate }}</time>
+        <time class="text-gray-400 dark:text-white/80" :datetime="dateISO">{{ prettyDate }}</time>
       </div>
     </div>
   </div>
@@ -27,11 +29,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-const props = defineProps<{
-  author: { name: string; avatar?: string | null }
-  dateISO: string
-  readTime: number
-}>()
+const props = withDefaults(
+  defineProps<{
+    author: { name: string; avatar?: string | null }
+    dateISO: string
+    readTime: number
+    showAvatar?: boolean
+  }>(),
+  {
+    showAvatar: true
+  }
+)
 
 const prettyDate = computed(() => {
   const d = new Date(props.dateISO)

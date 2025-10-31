@@ -46,15 +46,14 @@ const hasSubtitle2 = computed(() => {
             {{ $t('blog.banner.title') }}
           </h1>
           <p
-            class="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed"
+            class="text-white/90 text-2xl md:text-3xl lg:text-4xl leading-relaxed "
           >
             {{ $t('blog.banner.subtitle') }}
           </p>
           <p
-            v-if="hasSubtitle2"
             class="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed mt-2"
           >
-            {{ $t('blog.banner.subtitle2') }}
+            {{ $t('blog.banner.body') }}
           </p>
         </div>
       </div>

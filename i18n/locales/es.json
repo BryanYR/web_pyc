@@ -10,8 +10,8 @@
   "blog": {
     "banner": {
       "title": "Blog de Seguros PyC",
-      "subtitle": "Nuestros directores comparten sus conocimientos",
-      "subtitle2": "en el mercado asegurador",
+      "subtitle": "Coberturas de Miércoles",
+      "body": "Nuestros directores comparten su conocimiento",
       "cta": "Ver Artículos"
     },
     "readingList": "Tu lista de lectura"

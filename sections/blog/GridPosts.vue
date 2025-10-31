@@ -69,7 +69,7 @@ watch([page, perPage], () => {
       </div>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-16">
-        <PostCard v-for="post in store.items" :key="post.postId" :post="post" />
+        <PostCard v-for="(post, index) in store.items" :key="post.postId" :post="post" :index="index" />
       </div>
 
       <Pagination

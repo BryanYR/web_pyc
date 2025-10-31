@@ -10,7 +10,8 @@
   "blog": {
     "banner": {
       "title": "PyC Insurance Blog",
-      "subtitle": "Our directors share their knowledge of the insurance market",
+      "subtitle": "Wednesday Coverage",
+      "body": "Our directors share their knowledge",
       "cta": "View Articles"
     },
     "readingList": "Your Reading List"

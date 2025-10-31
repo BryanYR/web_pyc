@@ -3,17 +3,36 @@ import type { BlogListItem } from '@/interfaces/blog'
 import { isValidUrlFormat } from '@/utils/general'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import PostMetaBar from '@/components/blog/detail/PostMetaBar.vue'
 
-const props = defineProps<{ post: BlogListItem }>()
+const props = defineProps<{
+  post: BlogListItem
+  readTime?: number
+  index?: number
+}>()
+
+const estimatedReadTime = computed(() => {
+  if (props.readTime) return props.readTime
+  // Default estimate when content not available in list view
+  return 5
+})
+
+const author = computed(() => ({
+  name: props.post.author || 'PYC',
+  avatar: '',
+}))
 
 const { locale } = useI18n()
 const isSpanish = computed(() => locale.value?.startsWith('es'))
 
 const displayTitle = computed(() => {
   // Prefer localized field when available, fallback to default title
-  return isSpanish.value
+  const title = isSpanish.value
     ? props.post.title
     : props.post.title_en ?? props.post.title
+
+  // Add index number if provided
+  return title
 })
 
 const displayShortDescription = computed(() => {
@@ -68,7 +87,9 @@ const pdfFileName = computed(() =>
     <div class="p-5 flex flex-col gap-4 h-full justify-between">
       <div class="flex flex-col gap-2">
         <NuxtLink :to="`/blog/${post.postId}`" class="block">
-          <h3 class="text-primary-700 dark:text-white font-semibold text-lg line-clamp-2">
+          <h3
+            class="text-primary-700 dark:text-white font-semibold text-lg line-clamp-2"
+          >
             {{ displayTitle }}
           </h3>
         </NuxtLink>
@@ -76,24 +97,32 @@ const pdfFileName = computed(() =>
           {{ displayShortDescription }}
         </p>
       </div>
-      <div class="flex items-center gap-3">
-        <NuxtLink
-          :to="`/blog/${post.postId}`"
-          class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white hover:bg-primary-100 dark:hover:bg-primary-600 transition"
-        >
-          Leer Nota
-        </NuxtLink>
-        <a
-          v-if="pdfUrl"
-          :href="pdfUrl"
-          target="_blank"
-          rel="noopener"
-          :download="pdfFileName"
-          class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:text-white hover:bg-primary-100 dark:hover:bg-primary-600 transition"
-          @click.stop
-        >
-          Descargar PDF
-        </a>
+      <div class="flex flex-col gap-2">
+        <PostMetaBar
+          :author="author"
+          :dateISO="post.created_at"
+          :readTime="estimatedReadTime"
+          :show-avatar="false"
+        />
+        <div class="flex items-center gap-3">
+          <NuxtLink
+            :to="`/blog/${post.postId}`"
+            class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:bg-white hover:bg-primary-100 dark:hover:bg-white/70 transition"
+          >
+            Leer Nota
+          </NuxtLink>
+          <a
+            v-if="pdfUrl"
+            :href="pdfUrl"
+            target="_blank"
+            rel="noopener"
+            :download="pdfFileName"
+            class="inline-block rounded-full border border-primary-700/30 dark:border-white px-4 py-1.5 text-sm text-primary-700 dark:bg-white hover:bg-primary-100 dark:hover:bg-white/70 transition"
+            @click.stop
+          >
+            Descargar PDF
+          </a>
+        </div>
       </div>
     </div>
   </article>
