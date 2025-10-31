@@ -204,7 +204,7 @@ onBeforeUnmount(() => {
               type="text"
               placeholder="Resumen del post"
               required
-              :length="150"
+              :length="200"
             />
           </div>
           <div class="md:col-span-4 col-span-12">
