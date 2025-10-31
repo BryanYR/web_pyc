@@ -193,7 +193,7 @@ onBeforeUnmount(() => {
               type="text"
               placeholder="Título del post"
               required
-              :length="70"
+              :length="150"
             />
           </div>
           <div class="md:col-span-8 col-span-12">
@@ -204,7 +204,7 @@ onBeforeUnmount(() => {
               type="text"
               placeholder="Resumen del post"
               required
-              :length="80"
+              :length="100"
             />
           </div>
           <div class="md:col-span-4 col-span-12">
