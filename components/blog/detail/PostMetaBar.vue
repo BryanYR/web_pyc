@@ -18,9 +18,9 @@
     </template>
     <div class="w-full flex flex-col gap-1">
       <span v-if="showAvatar" class="font-medium">{{ author.name }}</span>
-      <div class="w-full flex gap-2">
+      <div class="w-full flex gap-2 items-center">
         <span class="text-gray-400 dark:text-white/80">Lectura de: {{ readTime }} min</span>
-        <span>•</span>
+        <span class="text-gray-400 dark:text-white/80 text-[8px]">•</span>
         <time class="text-gray-400 dark:text-white/80" :datetime="dateISO">{{ prettyDate }}</time>
       </div>
     </div>
