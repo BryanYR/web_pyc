@@ -12,7 +12,7 @@ const blog = useBlogStore()
 // modal/form moved to /dashboard/blog and /dashboard/blog/[id]
 
 const page = ref(1)
-const perPage = ref(5)
+const perPage = ref(6)
 
 const hasItems = computed(
   () => Array.isArray(blog.items) && blog.items.length > 0

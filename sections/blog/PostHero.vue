@@ -91,8 +91,8 @@ function handleSpeakToggle() {
     
     utterance = new SpeechSynthesisUtterance(finalText)
     utterance.lang = lang
-    utterance.rate = 1
-    utterance.pitch = 1
+    utterance.rate = 1.3
+    utterance.pitch = 1.1
     utterance.volume = 1
     
     utterance.onstart = () => {

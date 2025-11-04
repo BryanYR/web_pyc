@@ -14,7 +14,7 @@ interface Props<T = any> {
 
 const props = withDefaults(defineProps<Props>(), {
   loading: false,
-  perPageOptions: () => [5, 10, 25],
+  perPageOptions: () => [6, 15, 25],
   columns: 1,
 })
 
