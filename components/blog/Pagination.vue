@@ -13,7 +13,7 @@ const totalPages = computed(() => Math.max(1, Math.ceil(props.total / props.perP
       <Arrow left />
     </button>
 
-    <span class="px-2 text-sm text-gray-600">{{ page }} / {{ totalPages }}</span>
+    <span class="px-2 text-sm text-black/90 font-semibold ">{{ page }} / {{ totalPages }}</span>
 
     <button
       class="rounded-full border px-2 py-2 text-sm hover:bg-gray-50 disabled:opacity-50 disabled:bg-slate-300"

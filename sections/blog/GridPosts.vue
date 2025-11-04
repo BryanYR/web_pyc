@@ -7,9 +7,38 @@ import { useBlogStore } from '@/stores/blogStore'
 
 const store = useBlogStore()
 
-const activeTab = ref<'all' | 'week' | 'month'>('all')
-const page = ref(1)
-const perPage = ref(6)
+const STORAGE_KEY = 'blog_grid_state'
+
+// Try to restore state from sessionStorage
+function restoreState() {
+  if (globalThis.window === undefined) return null
+  try {
+    const saved = sessionStorage.getItem(STORAGE_KEY)
+    return saved ? JSON.parse(saved) : null
+  } catch {
+    return null
+  }
+}
+
+// Save state to sessionStorage
+function saveState() {
+  if (globalThis.window === undefined) return
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+      activeTab: activeTab.value,
+      page: page.value,
+      perPage: perPage.value
+    }))
+  } catch {
+    // ignore
+  }
+}
+
+const savedState = restoreState()
+
+const activeTab = ref<'all' | 'week' | 'month'>(savedState?.activeTab || 'all')
+const page = ref(savedState?.page || 1)
+const perPage = ref(savedState?.perPage || 6)
 
 const tabs = [
   { label: 'Todas', value: 'all' },
@@ -46,10 +75,12 @@ onMounted(load)
 watch(activeTab, () => {
   page.value = 1
   load()
+  saveState()
 })
 // When page or perPage changes, just reload
 watch([page, perPage], () => {
   load()
+  saveState()
 })
 </script>
 <template>

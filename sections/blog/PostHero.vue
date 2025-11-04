@@ -14,25 +14,24 @@ import Breadcrumb from '@/components/utils/Breadcrumb.vue'
 import type { BlogListItem } from '@/interfaces/blog'
 import { useI18n } from 'vue-i18n'
 
-const { post, readTime, author, breadcrumbs, fullContent } = withDefaults(
-  defineProps<{
-    post: Pick<
+const { 
+  post, 
+  readTime = 0, 
+  author = { name: "", avatar: "" }, 
+  breadcrumbs, 
+  fullContent = "", 
+  showButtons = true 
+} = defineProps<{
+  post: Pick<
     BlogListItem,
     'title' | 'shortDescription' | 'imageUrl' | 'created_at'
   >
-    readTime: number
-    author: { name: string; avatar: string }
-    breadcrumbs?: { label: string; to?: string }[]
-    fullContent?: string
-    showButtons?: boolean
-  }>(),
-  {
-    readTime: 0,
-    author: () => ({ name: "", avatar: "" }),
-    fullContent: "",
-    showButtons: true,
-  }
-)
+  readTime?: number
+  author?: { name: string; avatar: string }
+  breadcrumbs?: { label: string; to?: string }[]
+  fullContent?: string
+  showButtons?: boolean
+}>()
 
 const validImage = computed(() => isValidUrlFormat(post.imageUrl))
 
@@ -43,12 +42,11 @@ const { locale } = useI18n()
 type TtsState = 'idle' | 'playing' | 'paused'
 const ttsState = ref<TtsState>('idle')
 let utterance: SpeechSynthesisUtterance | null = null
-const canSpeak = computed(
-  () =>
-    typeof globalThis !== 'undefined' &&
-    !!globalThis.window &&
-    'speechSynthesis' in globalThis.window
-)
+const canSpeak = computed(() => {
+  if (typeof globalThis === 'undefined' || !globalThis.window) return false
+  // Check if speechSynthesis is available
+  return 'speechSynthesis' in globalThis.window && 'SpeechSynthesisUtterance' in globalThis.window
+})
 
 function stripHtml(html: string | undefined | null): string {
   if (!html) return ''
@@ -64,8 +62,9 @@ function stripHtml(html: string | undefined | null): string {
 }
 
 function handleSpeakToggle() {
-  if (!canSpeak.value) return
-  const synth = globalThis.window!.speechSynthesis
+  if (!canSpeak.value || !globalThis.window) return
+  const synth = globalThis.window.speechSynthesis
+  
   // Toggle: playing -> pause; paused -> resume; idle -> start
   if (ttsState.value === 'playing') {
     synth.pause()
@@ -77,25 +76,62 @@ function handleSpeakToggle() {
     ttsState.value = 'playing'
     return
   }
-  const lang = locale.value?.startsWith('es') ? 'es-ES' : 'en-US'
-  const text = `${post.title}\n\n${stripHtml(fullContent)}`.trim()
-  utterance = new SpeechSynthesisUtterance(text)
-  utterance.lang = lang
-  utterance.onstart = () => {
-    ttsState.value = 'playing'
-  }
-  utterance.onpause = () => {
-    ttsState.value = 'paused'
-  }
-  utterance.onresume = () => {
-    ttsState.value = 'playing'
-  }
-  utterance.onend = () => {
-    ttsState.value = 'idle'
-  }
+  
+  // Cancel any ongoing speech
   synth.cancel()
-  ttsState.value = 'playing'
-  synth.speak(utterance)
+  
+  // Wait a bit after cancel for iOS compatibility
+  setTimeout(() => {
+    const lang = locale.value?.startsWith('es') ? 'es-ES' : 'en-US'
+    const text = `${post.title}\n\n${stripHtml(fullContent)}`.trim()
+    
+    // Limit text length for mobile compatibility (some browsers have limits)
+    const maxLength = 32000
+    const finalText = text.length > maxLength ? text.substring(0, maxLength) : text
+    
+    utterance = new SpeechSynthesisUtterance(finalText)
+    utterance.lang = lang
+    utterance.rate = 1
+    utterance.pitch = 1
+    utterance.volume = 1
+    
+    utterance.onstart = () => {
+      ttsState.value = 'playing'
+    }
+    utterance.onpause = () => {
+      ttsState.value = 'paused'
+    }
+    utterance.onresume = () => {
+      ttsState.value = 'playing'
+    }
+    utterance.onend = () => {
+      ttsState.value = 'idle'
+      // Resume audio session on iOS
+      if (synth.speaking === false && ttsState.value === 'idle') {
+        synth.cancel()
+      }
+    }
+    utterance.onerror = (event) => {
+      console.error('Speech synthesis error:', event)
+      ttsState.value = 'idle'
+      synth.cancel()
+    }
+    
+    // For iOS: ensure voices are loaded
+    const voices = synth.getVoices()
+    if (voices.length === 0) {
+      // Wait for voices to load on iOS
+      const voicesChangedHandler = () => {
+        synth.removeEventListener('voiceschanged', voicesChangedHandler)
+        ttsState.value = 'playing'
+        synth.speak(utterance!)
+      }
+      synth.addEventListener('voiceschanged', voicesChangedHandler)
+    } else {
+      ttsState.value = 'playing'
+      synth.speak(utterance)
+    }
+  }, 100)
 }
 
 onBeforeUnmount(() => {
@@ -208,7 +244,7 @@ onBeforeUnmount(() => {
     <div class="container mx-auto px-6">
       <!-- Title and meta -->
       <div class="mx-auto max-w-3xl 2xl:max-w-4xl">
-        <div class="py-6 sm:pt-8 sm:pb-0">
+        <div class="pt6 sm:pt-8 sm:pb-0">
           <div v-if="breadcrumbs && breadcrumbs.length" class="mb-2 border-b border-slate-300 pb-4">
             <Breadcrumb :items="breadcrumbs" />
           </div>
@@ -231,15 +267,15 @@ onBeforeUnmount(() => {
             />
           </div>
           <!-- Actions: Listen and Share -->
-          <div v-if="showButtons" class="mt-4 flex items-center gap-3 relative">
+          <div v-if="showButtons" class="mt-4 flex flex-col sm:flex-row items-center justify-start gap-3 relative">
             <button
               type="button"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-700 text-primary-700 hover:bg-primary-50 hover:bg-primary-700 hover:text-white transition-colors duration-300 ease-in-out dark:border-white dark:text-white dark:hover:bg-primary-600/40 disabled:opacity-60"
+              class="inline-flex items-center gap-2 px-4 py-2  justify-center rounded-full border border-primary-700 text-primary-700 hover:bg-primary-50 hover:bg-primary-700 hover:text-white transition-colors duration-300 ease-in-out dark:border-white dark:text-white dark:hover:bg-primary-600/40 disabled:opacity-60"
               :disabled="!canSpeak"
               @click="handleSpeakToggle"
             >
               <span v-if="ttsState !== 'playing'" class="flex gap-2 items-center">
-                <Play class="h-6 w-6" />
+                <Play class="h-6 w-6 shrink-0" />
                 {{ ttsState === 'paused' ? 'Reanudar' : 'Escuchar artículo' }}
               </span>
               <span v-else class="flex gap-2 items-center">
@@ -247,11 +283,11 @@ onBeforeUnmount(() => {
                 Pausar
               </span>
             </button>
-            <div class="relative">
+            <div class="relative ">
               <button
                 ref="shareBtnRef"
                 type="button"
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white transition-colors duration-300 ease-in-out hover:bg-primary-50 dark:border-white dark:text-white dark:hover:bg-primary-600/40"
+                class="inline-flex items-center gap-2 px-4 py-2 w-full justify-center rounded-full border border-primary-700 text-primary-700 hover:bg-primary-700 hover:text-white transition-colors duration-300 ease-in-out hover:bg-primary-50 dark:border-white dark:text-white dark:hover:bg-primary-600/40"
                 @click="shareOpen = !shareOpen"
               >
                 <Share class="h-6 w-6" />

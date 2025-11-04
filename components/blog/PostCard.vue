@@ -64,7 +64,7 @@ const pdfFileName = computed(() =>
 </script>
 <template>
   <article
-    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group h-auto"
+    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-primary-700 shadow-sm ring-1 ring-black/5 group h-[400px] max-h-full"
   >
     <NuxtLink :to="`/blog/${post.postId}`" class="block">
       <img
