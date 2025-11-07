@@ -18,4 +18,6 @@ export interface SectionInformationProps extends SectionTitleProps {
   description?: string;
   mode?: 'inline' | 'block'
   classDescription?: string;
+  classTitleWrapper?: string;
+  classDescriptionWrapper?: string;
 }

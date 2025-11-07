@@ -11,7 +11,9 @@ const props = withDefaults(defineProps<SectionInformationProps>(), {
   mode: "inline",
   classTitle: '',
   classHint: '',
-  classDescription: ''
+  classDescription: '',
+  classTitleWrapper: '',
+  classDescriptionWrapper: ''
 })
 
 
@@ -38,6 +40,7 @@ const defaultDescriptionClass = computed(() => {
     <div
       v-if="mode === 'inline'"
       class="row-start-1 md:col-start-1 flex items-start justify-start"
+      :class="[classTitleWrapper]"
     >
       <SectionTitle :title="title" :hint="hint" :type="type" :class-hint="classHint" :class-title="classTitle" />
     </div>
@@ -47,7 +50,7 @@ const defaultDescriptionClass = computed(() => {
       v-if="mode === 'inline'"
       class="row-start-2 md:col-span-2 md:!col-start-2 flex items-start justify-start"
     >
-      <div :class="inlineDescriptionClass">
+      <div :class="[classDescriptionWrapper, inlineDescriptionClass]">
         <slot>
             {{ description }}
         </slot>

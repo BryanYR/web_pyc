@@ -255,7 +255,7 @@ onBeforeUnmount(() => {
           </h1>
           <p
             v-if="post.shortDescription"
-            class="mt-3 text-gray-600 dark:text-white/80"
+            class="mt-3 text-gray-600 dark:text-white/80 text-xl"
           >
             {{ post.shortDescription }}
           </p>

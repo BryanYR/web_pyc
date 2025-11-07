@@ -13,7 +13,6 @@ const { data: team, loading } = useLocalizedJson<PersonInfo[]>('team')
     :items="team"
     hint-key="home.team.hint"
     title-key="home.team.title"
-    description-key="home.team.description"
     :show-skeleton="loading"
     show-see-all-button
     see-all-to="/equipo"

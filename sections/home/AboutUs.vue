@@ -24,13 +24,14 @@ const imgClasses = "w-full h-[15rem] object-cover lg:w-80 lg:h-60 rounded-tr-2xl
       <SectionInformation
         :hint="$t('home.about.hint')"
         :title="$t('home.about.title')"
+        classDescriptionWrapper="!max-w-full !pr-1"
       >
         <p>{{ $t("home.about.description.p1") }}</p>
         <p class="mt-4">{{ $t("home.about.description.p2") }}</p>
       </SectionInformation>
 
       <!-- Imágenes -->
-      <div class="grid md:grid-cols-3 gap-4">
+      <div class="grid md:grid-cols-3 gap-5">
         <figure
           v-for="(img, i) in aboutImages"
           :key="i"

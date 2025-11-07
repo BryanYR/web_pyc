@@ -56,6 +56,8 @@ export interface BlogListItem {
   postId: number
   title: string
   title_en: string
+  content: string
+  content_en: string
   shortDescription: string
   shortDescription_en: string
   fileBlog?: string | null

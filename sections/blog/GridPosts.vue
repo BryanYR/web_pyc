@@ -82,6 +82,15 @@ watch([page, perPage], () => {
   load()
   saveState()
 })
+
+function estimateReadTime(text: string) {
+  const words = (text || '')
+    .replaceAll(/<[^>]+>/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length
+  return Math.max(1, Math.ceil(words / 200))
+}
 </script>
 <template>
   <section class="container mx-auto px-6 py-10">
@@ -100,7 +109,7 @@ watch([page, perPage], () => {
       </div>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-16">
-        <PostCard v-for="(post, index) in store.items" :key="post.postId" :post="post" :index="index" />
+        <PostCard v-for="(post, index) in store.items" :key="post.postId" :post="post" :index="index" :readTime="estimateReadTime(post.content)" />
       </div>
 
       <Pagination
