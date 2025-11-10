@@ -11,15 +11,15 @@ import { contactInfo } from "@/constants/contact";
     <div class="pyc-container mx-auto flex flex-col lg:flex-row items-center">
       <div class="h-full w-full lg:max-w-[350px]">
         <div
-          class="flex flex-col justify-center items-center h-full gap-4 px-8 py-8 lg:py-0 text-center"
+          class="flex flex-col justify-center items-center h-full gap-4 px-8 pt-8 sm:pb-4 lg:py-0 text-center"
         >
           <img :src="PycTexto" alt="Logo PYC" class="w-60" />
-          <p class="text-primary-700 text-sm md:text-base font-semibold">
+          <p class="text-white text-sm md:text-base font-semibold">
             Ajustadores y Peritos de Seguros
           </p>
         </div>
       </div>
-      <div class="w-full flex flex-col sm:flex-row gap-2 justify-between items-start p-8 lg:p-16">
+      <div class="w-full flex flex-col sm:flex-row gap-2 justify-between items-start pb-8 sm:p-8 lg:p-16">
         <div
           v-for="(item, i) in contactInfo"
           :key="i"

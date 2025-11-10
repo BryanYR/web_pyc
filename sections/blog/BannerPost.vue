@@ -41,7 +41,7 @@ const hasSubtitle2 = computed(() => {
       <div class="w-full max-w-6xl mx-auto">
         <div class="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
           <p
-            class="text-white/90 text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-2"
+            class="text-white/90 text-2xl md:text-3xl lg:text-4xl leading-relaxed sm:mb-2"
           >
             {{ $t('blog.banner.title') }}
           </p>
@@ -52,7 +52,7 @@ const hasSubtitle2 = computed(() => {
           </h1>
           
           <p
-            class="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed mt-2"
+            class="text-white/90 text-sm sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:mt-2"
           >
             {{ $t('blog.banner.body') }}
           </p>

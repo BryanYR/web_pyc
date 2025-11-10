@@ -1,10 +1,10 @@
 <template>
-  <div class="flex items-center justify-between text-center gap-8 border-b border-gray-200" >
+  <div class="flex items-center justify-between text-center gap-4 sm:gap-8 border-b border-gray-200" >
     <button
       v-for="tab in tabs"
       :key="tab.value"
       @click="$emit('update:modelValue', tab.value)"
-      class="relative -mb-px pb-3 text-lg font-medium transition w-full"
+      class="relative -mb-px pb-3 text-sm sm:text-lg font-medium transition w-full"
       :class="modelValue === tab.value ? 'text-sky-700 dark:text-white' : 'text-gray-500 dark:text-white/80 hover:text-gray-700'"
     >
       {{ tab.label }}
