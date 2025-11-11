@@ -8,7 +8,7 @@ import PostMetaBar from '@/components/blog/detail/PostMetaBar.vue'
 const props = defineProps<{
   post: BlogListItem
   readTime?: number
-  index?: number
+  globalIndex?: number
 }>()
 
 const estimatedReadTime = computed(() => {
@@ -27,12 +27,15 @@ const isSpanish = computed(() => locale.value?.startsWith('es'))
 
 const displayTitle = computed(() => {
   // Prefer localized field when available, fallback to default title
-  const title = isSpanish.value
+  let title = isSpanish.value
     ? props.post.title
     : props.post.title_en ?? props.post.title
 
-  // Add index number if provided
-  return title
+  // Remove existing numbering pattern: "1. ", "10. ", etc.
+  title = title.replace(/^\d+\.\s*/, '')
+
+  // Add descending global index number if provided
+  return typeof props.globalIndex === 'number' ? `${props.globalIndex}. ${title}` : title
 })
 
 const displayShortDescription = computed(() => {

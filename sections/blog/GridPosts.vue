@@ -109,7 +109,13 @@ function estimateReadTime(text: string) {
       </div>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-16">
-        <PostCard v-for="(post, index) in store.items" :key="post.postId" :post="post" :index="index" :readTime="estimateReadTime(post.content)" />
+        <PostCard 
+          v-for="(post, index) in store.items" 
+          :key="post.postId" 
+          :post="post" 
+          :global-index="(store.total || 0) - ((page - 1) * perPage + index)"
+          :readTime="estimateReadTime(post.content)" 
+        />
       </div>
 
       <Pagination
