@@ -61,6 +61,56 @@ function stripHtml(html: string | undefined | null): string {
   }
 }
 
+// Filtro de palabras/frases para TTS
+function filterTextForSpeech(text: string): string {
+  // Diccionario de reemplazos: [búsqueda, reemplazo]
+  const replacements: Array<[string | RegExp, string]> = [
+    // Omitir líneas completas que empiezan con "Fuente:"
+    // Captura desde el inicio de línea o después de \n, "Fuente:" + cualquier texto hasta el final de línea
+    [/^Fuente:.*$/gmi, ''],
+    [/\nFuente:.*$/gi, ''],
+    
+    // Reemplazar "vs" o "vs." por "versus"
+    [/\bvs\.?\b/gi, 'versus'],
+    
+    // Omitir palabras específicas (reemplazar por vacío)
+    [/\bPYC\b/gi, 'P I C'],  // Deletrea siglas
+    [/\bCOVID-19\b/gi, 'covid diecinueve'],
+    
+    // Reemplazar frases completas
+    ['Prevención y Control', 'Prevención i Control'],
+    
+    // Omitir URLs
+    [/https?:\/\/[^\s]+/gi, ''],
+    
+    // Omitir emails
+    [/\S+@\S+\.\S+/gi, ''],
+    
+    // Omitir números de teléfono (ejemplo: +52 123 456 7890)
+    [/\+?\d{1,3}[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{4}/gi, ''],
+    
+    // Reemplazar símbolos comunes
+    ['&', 'y'],
+    ['@', 'arroba'],
+    ['#', 'numeral'],
+    
+    // Omitir contenido entre corchetes [notas al pie]
+    [/\[.*?\]/g, ''],
+  ]
+
+  let result = text
+  
+  // Aplicar cada reemplazo
+  for (const [search, replace] of replacements) {
+    result = result.replace(search, replace)
+  }
+  
+  // Limpiar espacios múltiples
+  result = result.replaceAll(/\s+/g, ' ').trim()
+  
+  return result
+}
+
 function handleSpeakToggle() {
   if (!canSpeak.value || !globalThis.window) return
   const synth = globalThis.window.speechSynthesis
@@ -83,16 +133,30 @@ function handleSpeakToggle() {
   // Wait a bit after cancel for iOS compatibility
   setTimeout(() => {
     const lang = locale.value?.startsWith('es') ? 'es-ES' : 'en-US'
-    const text = `${post.title}\n\n${stripHtml(fullContent)}`.trim()
     
-    // Limit text length for mobile compatibility (some browsers have limits)
+    // Preprocesar fullContent para separar líneas de "Fuente:" con saltos de línea
+    let processedContent = stripHtml(fullContent)
+    // Agregar \n antes y después de "Fuente: ..." 
+    // Captura "Fuente:" + texto + opcionalmente (punto + 3 caracteres)
+    // Ejemplos: "Fuente: injury-attorneys.com" o "Fuente: Banco de imágenes Freepik.com"
+    processedContent = processedContent.replaceAll(/(Fuente:\s*[^.\n]+(?:\.\w{3})?)/gi, '\n$1\n')
+    
+    const rawText = `${post.title}\n\n${processedContent}`.trim()
+
+    // Aplicar filtros de palabras/frases
+    const text = filterTextForSpeech(rawText)
+    
+    // Limitar longitud del texto para compatibilidad móvil 
+    // (algunos navegadores tienen límite de ~32000 caracteres para TTS)
     const maxLength = 32000
     const finalText = text.length > maxLength ? text.substring(0, maxLength) : text
     
     utterance = new SpeechSynthesisUtterance(finalText)
     utterance.lang = lang
-    utterance.rate = 1.3
-    utterance.pitch = 1.1
+    // rate: velocidad de lectura (0.1 - 10)
+    // 1 = normal, < 1 = más lento, > 1 = más rápido
+    utterance.rate = 0.7
+    utterance.pitch = 1
     utterance.volume = 1
     
     utterance.onstart = () => {
