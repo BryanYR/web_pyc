@@ -17,7 +17,7 @@ const hasSubtitle2 = computed(() => {
 </script>
 <template>
   <section
-    class="relative overflow-hidden bg-[#0B5DA7] h-[320px] md:h-[280px] lg:h-[320px] xl:h-[340px]"
+    class="relative overflow-hidden bg-[#0B5DA7] h-[200px] md:h-[280px] lg:h-[320px] xl:h-[340px]"
   >
     <!-- Imagen de fondo a la derecha (visible solo en md+) -->
     <div v-if="imageSrc" class="hidden lg:block absolute inset-0 w-full h-full">
