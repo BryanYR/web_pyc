@@ -44,13 +44,13 @@ import { contactInfo } from "@/constants/contact";
             </template>
             <template v-if="i == contactInfo.length - 1">
                 <div class="w-full flex gap-2 mt-4">
-                    <a class="rounded-full border border-white p-2 hover:bg-white hover:text-primary-700 transition duration-300 ease-in-out" target="_blank" href="https://www.facebook.com/PrevencionControlPe?mibextid=wwXIfr">
+                    <a aria-label="facebook" class="rounded-full border border-white p-2 hover:bg-white hover:text-primary-700 transition duration-300 ease-in-out" target="_blank" href="https://www.facebook.com/PrevencionControlPe?mibextid=wwXIfr">
                         <Facebook class="h-4 w-4" />
                     </a>
-                    <a class="rounded-full border border-white p-2 hover:bg-white hover:text-primary-700 transition duration-300 ease-in-out" target="_blank" href="https://www.instagram.com/pyc.peru/?igsh=ajRoNGg3YmtzcGgw#">
+                    <a aria-label="instagram" class="rounded-full border border-white p-2 hover:bg-white hover:text-primary-700 transition duration-300 ease-in-out" target="_blank" href="https://www.instagram.com/pyc.peru/?igsh=ajRoNGg3YmtzcGgw#">
                         <Instagram class="h-4 w-4" />
                     </a>
-                    <a class="rounded-full border border-white p-2 hover:bg-white hover:text-primary-700 transition duration-300 ease-in-out" target="_blank" href="https://www.linkedin.com/company/pyc-pe/">
+                    <a aria-label="linkedin" class="rounded-full border border-white p-2 hover:bg-white hover:text-primary-700 transition duration-300 ease-in-out" target="_blank" href="https://www.linkedin.com/company/pyc-pe/">
                         <Linkedin class="h-4 w-4" />
                     </a>
                 </div>

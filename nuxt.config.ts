@@ -6,6 +6,10 @@ export default defineNuxtConfig({
     head: {
       title: 'PYC',
       script: [{ src: '/theme-preflight.js', defer: true }],
+      link: [
+        // Preload critical CSS
+        { rel: 'preload', as: 'style', href: '/css/critical.css' }
+      ]
     },
   },
   modules: ['@nuxt/eslint', '@nuxtjs/i18n'],
@@ -33,9 +37,35 @@ export default defineNuxtConfig({
     'swiper/css',
     'swiper/css/navigation',
     'swiper/css/pagination',
-    '@wangeditor/editor/dist/css/style.css'
   ],
   build: {
     transpile: ['vue-toastification'],
   },
+  vite: {
+    build: {
+      cssMinify: 'esbuild',
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'swiper': ['swiper'],
+          }
+        }
+      }
+    },
+    css: {
+      devSourcemap: false,
+    }
+  },
+  experimental: {
+    payloadExtraction: false,
+  },
+  nitro: {
+    compressPublicAssets: true,
+    routeRules: {
+      '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/fonts/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+    }
+  }
 })

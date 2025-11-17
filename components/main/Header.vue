@@ -40,8 +40,8 @@ const hasWhiteBg = computed(() => {
   >
     <div class="pyc-container mx-auto px-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <NuxtLink to="/">
-          <LogoWhite class="h-12 " />
+        <NuxtLink to="/" aria-label="logo_pyc">
+          <LogoWhite class="h-12" />
         </NuxtLink>
         <LanguageSelector />
       </div>

@@ -8,6 +8,7 @@ const totalPages = computed(() => Math.max(1, Math.ceil(props.total / props.perP
     <button
       class="rounded-full border px-2 py-2 text-sm hover:bg-gray-50 disabled:opacity-50 disabled:bg-slate-300"
       :disabled="page <= 1"
+      aria-label="button_left"
       @click="$emit('update:page', page - 1)"
     >
       <Arrow left />
@@ -18,6 +19,7 @@ const totalPages = computed(() => Math.max(1, Math.ceil(props.total / props.perP
     <button
       class="rounded-full border px-2 py-2 text-sm hover:bg-gray-50 disabled:opacity-50 disabled:bg-slate-300"
       :disabled="page >= totalPages"
+      aria-label="button_right"
       @click="$emit('update:page', page + 1)"
     >
       <Arrow right />
