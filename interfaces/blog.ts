@@ -14,7 +14,7 @@ export interface BlogEntity {
   content: string
   content_en: string
   fileBlog: string | null
-  imageUrl: string | null
+  imageUrl?: string
   authorId: number | string
   author: string
   isPublished: '0' | '1'
@@ -61,7 +61,7 @@ export interface BlogListItem {
   shortDescription: string
   shortDescription_en: string
   fileBlog?: string | null
-  imageUrl: string | null
+  imageUrl?: string
   isPublished: '0' | '1'
   created_at: string
   updated_at: string

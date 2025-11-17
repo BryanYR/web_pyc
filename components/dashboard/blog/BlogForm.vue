@@ -99,7 +99,7 @@ function estimateReadTime(text: string) {
 const previewPost = computed(() => ({
   title: title.value || 'Sin título',
   shortDescription: shortDescription.value || '',
-  imageUrl: imageUrl.value || null,
+  imageUrl: imageUrl.value || undefined,
   created_at: new Date().toISOString(),
 }))
 const previewAuthor = computed(() => ({
