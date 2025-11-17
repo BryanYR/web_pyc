@@ -95,7 +95,7 @@ watch(
 </script>
 
 <template>
-  <div class="w-full pt-20">
+  <div class="w-full pt-28 sm:pt-20">
     <template v-if="loading">
       <section class="container mx-auto px-6">
         <div class="mx-auto max-w-3xl 2xl:max-w-4xl py-6 sm:py-8">
