@@ -1,12 +1,41 @@
 <template>
   <div class="post-content max-w-none leading-relaxed">
-    <div v-html="content"></div>
+    <div ref="contentRef" v-html="content"></div>
   </div>
   
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, watch, nextTick } from 'vue'
+
 const props = defineProps<{ content: string }>()
+const contentRef = ref<HTMLElement | null>(null)
+
+function wrapTables() {
+  if (!contentRef.value) return
+  
+  const tables = contentRef.value.querySelectorAll('table')
+  tables.forEach((table) => {
+    // Check if already wrapped
+    if (table.parentElement?.classList.contains('table-responsive')) return
+    
+    // Create wrapper
+    const wrapper = document.createElement('div')
+    wrapper.className = 'table-responsive'
+    
+    // Wrap the table
+    table.parentNode?.insertBefore(wrapper, table)
+    wrapper.appendChild(table)
+  })
+}
+
+onMounted(() => {
+  nextTick(() => wrapTables())
+})
+
+watch(() => props.content, () => {
+  nextTick(() => wrapTables())
+})
 </script>
 
 <style scoped>
@@ -61,23 +90,67 @@ const props = defineProps<{ content: string }>()
 .post-content :deep(p:has(img)) {
   margin-bottom: 0;
 }
+
+/* Table responsive wrapper */
+.post-content :deep(.table-responsive) {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+}
+
 .post-content :deep(table) {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.5rem 0;
+  margin: 0;
+  display: table;
+  table-layout: auto;
 }
 
 /* Table cell borders and spacing */
 .post-content :deep(th),
 .post-content :deep(td) {
-  border: 1px solid #d3d4d8; /* slate-200 */
-  padding: 0.5rem 0.75rem;
+  border: 1px solid #d3d4d8;
+  padding: 0.75rem .5rem;
   vertical-align: top;
+  font-size: 14px;
+  text-align: left;
+  word-wrap: break-word;
 }
 
 /* Optional: subtle header background */
 .post-content :deep(thead th) {
-  background-color: #f8fafc; /* slate-50 */
+  background-color: #f8fafc;
   font-weight: 600;
+    position: sticky;
+}
+
+/* Dark mode */
+.dark .post-content :deep(.table-responsive) {
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.dark .post-content :deep(table) {
+  background: #1f2937;
+}
+
+.dark .post-content :deep(th),
+.dark .post-content :deep(td) {
+  border-color: #4b5563;
+}
+
+.dark .post-content :deep(thead th) {
+  background-color: #374151;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .post-content :deep(th),
+  .post-content :deep(td) {
+    font-size: 16px;
+    padding: 0.75rem 1rem;
+  }
 }
 </style>

@@ -61,6 +61,26 @@ async function load(id: string) {
   }
 }
 
+// SEO Meta tags
+watch([blog, displayTitle, displayShortDescription], () => {
+  if (blog.value) {
+    useHead({
+      title: displayTitle.value || 'Blog - PYC',
+      meta: [
+        { name: 'description', content: displayShortDescription.value || 'Lee nuestro artículo sobre prevención y control' },
+        { property: 'og:title', content: displayTitle.value || 'Blog - PYC' },
+        { property: 'og:description', content: displayShortDescription.value || 'Lee nuestro artículo sobre prevención y control' },
+        { property: 'og:image', content: blog.value?.imageUrl || '' },
+        { property: 'og:type', content: 'article' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: displayTitle.value || 'Blog - PYC' },
+        { name: 'twitter:description', content: displayShortDescription.value || 'Lee nuestro artículo sobre prevención y control' },
+        { name: 'twitter:image', content: blog.value?.imageUrl || '' },
+      ]
+    })
+  }
+})
+
 onMounted(() => {
   const id = String(route.params.id)
   load(id)

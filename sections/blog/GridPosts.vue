@@ -114,7 +114,8 @@ function estimateReadTime(text: string) {
           :key="post.postId" 
           :post="post" 
           :global-index="(store.total || 0) - ((page - 1) * perPage + index)"
-          :readTime="estimateReadTime(post.content)" 
+          :readTime="estimateReadTime(post.content)"
+          :style="{ 'content-visibility': 'auto', 'contain-intrinsic-size': '400px' }"
         />
       </div>
 

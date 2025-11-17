@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'PYC',
-      script: [{ src: '/theme-preflight.js' }],
+      script: [{ src: '/theme-preflight.js', defer: true }],
     },
   },
   modules: ['@nuxt/eslint', '@nuxtjs/i18n'],

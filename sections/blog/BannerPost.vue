@@ -24,6 +24,9 @@ const hasSubtitle2 = computed(() => {
       <img
         :src="imageSrc"
         alt="Banner background"
+        width="1920"
+        height="340"
+        fetchpriority="high"
         class="w-full h-full object-cover object-center"
       />
     </div>

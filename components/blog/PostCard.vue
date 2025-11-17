@@ -74,6 +74,9 @@ const pdfFileName = computed(() =>
         v-if="isValidUrlFormat(post.imageUrl)"
         :src="post.imageUrl as string"
         :alt="post.title"
+        width="400"
+        height="176"
+        loading="lazy"
         class="h-44 w-full object-cover group-hover:brightness-95 transition"
       />
       <div
@@ -83,6 +86,9 @@ const pdfFileName = computed(() =>
         <img
           src="/images/logos/pyc_logo.svg"
           alt="PYC"
+          width="40"
+          height="40"
+          loading="lazy"
           class="h-10 opacity-90"
         />
       </div>
