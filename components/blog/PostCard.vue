@@ -77,7 +77,7 @@ const pdfFileName = computed(() =>
         width="400"
         height="176"
         loading="lazy"
-        fetchpriority="high"
+        fetchpriority="low"
         quality="70"
         class="h-44 w-full object-cover group-hover:brightness-95 transition"
       />
