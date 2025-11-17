@@ -13,7 +13,7 @@ import { contactInfo } from "@/constants/contact";
         <div
           class="flex flex-col justify-center items-center h-full gap-4 px-8 pt-8 sm:pb-4 lg:py-0 text-center"
         >
-          <img :src="PycTexto" alt="Logo PYC" class="w-60" />
+          <img :src="PycTexto" alt="Logo PYC" class="w-60" width="240" fetchpriority="high" quality="70" height="52" />
           <p class="text-white text-sm md:text-base font-semibold">
             Ajustadores y Peritos de Seguros
           </p>
