@@ -51,6 +51,11 @@ const props = defineProps<{ content: string }>()
   color: #191d22 !important;
   margin-bottom: 1em;
 }
+.dark .post-content :deep(p),
+.dark .post-content :deep(span),
+.dark .post-content :deep(li){
+  color: #e4e6eb !important;
+}
 
 /* Remove margin-bottom from paragraphs containing images */
 .post-content :deep(p:has(img)) {
