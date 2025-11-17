@@ -2,7 +2,7 @@
 import Facebook from "@/assets/icons/Facebook.vue";
 import Instagram from "@/assets/icons/Instagram.vue";
 import Linkedin from "@/assets/icons/Linkedin.vue";
-import PycTexto from "/images/logos/logo_white_text.webp";
+import PycTexto from "/images/logos/logo_white_text_1.webp";
 import { contactInfo } from "@/constants/contact";
 </script>
 
