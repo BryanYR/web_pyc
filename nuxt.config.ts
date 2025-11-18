@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'PYC',
-      script: [{ src: '/theme-preflight.js', defer: true }],
       link: [
       {
         rel: "preload",
@@ -43,10 +42,6 @@ export default defineNuxtConfig({
     ],
     vueI18n: './i18n/i18n.config.ts',
     detectBrowserLanguage: false,
-    compilation: {
-      strictMessage: false,
-      escapeHtml: false
-    }
   },
   postcss: {
     plugins: {
