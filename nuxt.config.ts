@@ -43,6 +43,10 @@ export default defineNuxtConfig({
     ],
     vueI18n: './i18n/i18n.config.ts',
     detectBrowserLanguage: false,
+    compilation: {
+      strictMessage: false,
+      escapeHtml: false
+    }
   },
   postcss: {
     plugins: {
@@ -68,9 +72,20 @@ export default defineNuxtConfig({
       minify: 'esbuild',
       rollupOptions: {
         output: {
-          manualChunks: {
-            'swiper': ['swiper'],
-          }
+          manualChunks: (id) => {
+            // Separate vendor chunks
+            if (id.includes('node_modules')) {
+              if (id.includes('swiper')) return 'swiper'
+              if (id.includes('vue-i18n')) return 'i18n'
+              if (id.includes('pinia')) return 'pinia'
+              if (id.includes('vue-toastification')) return 'toast'
+              if (id.includes('@wangeditor')) return 'editor'
+              return 'vendor'
+            }
+          },
+          chunkFileNames: '_nuxt/[name]-[hash].js',
+          entryFileNames: '_nuxt/[name]-[hash].js',
+          assetFileNames: '_nuxt/[name]-[hash][extname]'
         }
       }
     },
@@ -81,6 +96,7 @@ export default defineNuxtConfig({
   experimental: {
     renderJsonPayloads: true,
     payloadExtraction: false,
+    treeshakeClientOnly: true,
   },
   nitro: {
     compressPublicAssets: true,
