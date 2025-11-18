@@ -6,6 +6,29 @@ export default defineNuxtConfig({
     head: {
       title: 'PYC',
       script: [{ src: '/theme-preflight.js', defer: true }],
+      link: [
+      {
+        rel: "preload",
+        href: "/fonts/sf/SF-Regular.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossorigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        href: "/fonts/sf/SF-Medium.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossorigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        href: "/fonts/sf/SF-Bold.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossorigin: "anonymous",
+      },
+    ],
     },
   },
   modules: ['@nuxt/eslint', '@nuxtjs/i18n'],
