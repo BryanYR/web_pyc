@@ -9,21 +9,21 @@ export default defineNuxtConfig({
       link: [
       {
         rel: "preload",
-        href: "/fonts/SanFrancisco/SF-Regular.woff2",
+        href: "/fonts/sf/SF-Regular.woff2",
         as: "font",
         type: "font/woff2",
         crossorigin: "anonymous",
       },
       {
         rel: "preload",
-        href: "/fonts/SanFrancisco/SF-Medium.woff2",
+        href: "/fonts/sf/SF-Medium.woff2",
         as: "font",
         type: "font/woff2",
         crossorigin: "anonymous",
       },
       {
         rel: "preload",
-        href: "/fonts/SanFrancisco/SF-Bold.woff2",
+        href: "/fonts/sf/SF-Bold.woff2",
         as: "font",
         type: "font/woff2",
         crossorigin: "anonymous",

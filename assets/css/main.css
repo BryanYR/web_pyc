@@ -5,7 +5,7 @@
 @layer base {
   @font-face {
     font-family: SanFrancisco;
-    src: url("/fonts/SanFrancisco/SFPRODISPLAYREGULAR.woff2") format("woff2");
+    src: url("/fonts/sf/SF-Regular.woff2") format("woff2");
     font-weight: 400;
     font-display: swap;
     font-style: optional;
@@ -13,7 +13,7 @@
 
   @font-face {
     font-family: SanFrancisco;
-    src: url("/fonts/SanFrancisco/SFPRODISPLAYMEDIUM.woff2") format("woff2");
+    src: url("/fonts/sf/SF-Medium.woff2") format("woff2");
     font-weight: 500;
     font-display: swap;
     font-style: optional;
@@ -21,7 +21,7 @@
 
   @font-face {
     font-family: SanFrancisco;
-    src: url("/fonts/SanFrancisco/SFPRODISPLAYBOLD.woff2") format("woff2");
+    src: url("/fonts/sf/SF-Bold.woff2") format("woff2");
     font-weight: 700;
     font-display: swap;
     font-style: optional;
