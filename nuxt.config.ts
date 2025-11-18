@@ -46,17 +46,35 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+      ...(process.env.NODE_ENV === 'production' ? { cssnano: { preset: 'default' } } : {})
     },
   },
   css: [
     '~/assets/css/main.css',
-    // Swiper styles (ensure proper rendering in Safari and all browsers)
-    'swiper/css',
-    'swiper/css/navigation',
-    'swiper/css/pagination',
-    '@wangeditor/editor/dist/css/style.css'
   ],
   build: {
     transpile: ['vue-toastification'],
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            // Separate heavy libraries into their own chunks
+            if (id.includes('swiper')) return 'swiper'
+            if (id.includes('vue-toastification')) return 'toast'
+            if (id.includes('@wangeditor')) return 'editor'
+          }
+        }
+      }
+    }
+  },
+  experimental: {
+    treeshakeClientOnly: true,
+  },
+  routeRules: {
+    // Prerender static pages with SWR cache
+    '/blog': { swr: 3600 },
+    '/blog/**': { swr: 3600 }
+  }
 })
