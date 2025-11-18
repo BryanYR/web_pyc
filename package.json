@@ -9,6 +9,12 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not dead",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",

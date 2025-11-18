@@ -6,10 +6,6 @@ export default defineNuxtConfig({
     head: {
       title: 'PYC',
       script: [{ src: '/theme-preflight.js', defer: true }],
-      link: [
-        // Preload critical CSS
-        { rel: 'preload', as: 'style', href: '/css/critical.css' }
-      ]
     },
   },
   modules: ['@nuxt/eslint', '@nuxtjs/i18n'],
@@ -43,6 +39,8 @@ export default defineNuxtConfig({
   },
   vite: {
     build: {
+      target: 'esnext',
+      cssCodeSplit: true,
       cssMinify: 'esbuild',
       minify: 'esbuild',
       rollupOptions: {
@@ -58,6 +56,7 @@ export default defineNuxtConfig({
     }
   },
   experimental: {
+    renderJsonPayloads: true,
     payloadExtraction: false,
   },
   nitro: {
