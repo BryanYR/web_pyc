@@ -11,6 +11,13 @@ import { getPost } from '@/api/blogs'
 import type { BlogEntity } from '@/interfaces/blog'
 import { useI18n } from 'vue-i18n'
 
+// Load post-content CSS only on this page
+useHead({
+  link: [
+    { rel: 'stylesheet', href: '/css/post-content.css', media: 'print', onload: "this.media='all'" }
+  ]
+})
+
 const route = useRoute()
 const blog = ref<BlogEntity | null>(null)
 const loading = ref(false)
