@@ -7,7 +7,7 @@ import { contactInfo } from "@/constants/contact";
 </script>
 
 <template>
-  <footer id="contactUs" class="w-full h-full flex bg-primary-700 text-white">
+  <footer id="contact" class="w-full h-full flex bg-primary-700 text-white">
     <div class="pyc-container mx-auto flex flex-col lg:flex-row items-center">
       <div class="h-full w-full lg:max-w-[350px]">
         <div

@@ -16,12 +16,20 @@ const { t } = useI18n();
 // Items de navegación
 const navLinks = [
   { key: "home", id: "", path: "/" },
-  { key: "about", id: "aboutUs", path: "/nosotros" },
-  { key: "team", id: "team", path: "/equipo" },
-  { key: "services", id: "services", path: "/servicios" },
+  { key: "about", id: "aboutUs", path: "https://pyc.pe/nosotros", external: true },
+  { key: "team", id: "team", path: "https://pyc.pe/equipo", external: true },
+  { key: "services", id: "services", path: "https://pyc.pe/servicios", external: true },
   { key: "blog", id: "blog", path: "/blog" },
-  { key: "contact", id: "contactUs", path: "" }
+  { key: "contact", id: "contact", path: "" }
 ];
+
+function handleNavigation(link: typeof navLinks[0]) {
+  if (link.external) {
+    window.location.href = link.path
+  } else {
+    navigateToSection(link.id, link.path)
+  }
+}
 
 
 const hasPrimaryBg = computed(() => {
@@ -53,7 +61,7 @@ const hasWhiteBg = computed(() => {
             <button
               class="hover:opacity-75 transition-opacity duration-300 ease-in-out"
               :class="[link.key === 'contact' ? 'font-semibold' : 'font-normal']"
-              @click="navigateToSection(link.id, link.path)"
+              @click="handleNavigation(link)"
             >
               {{ t(`header.${link.key}`) }}
             </button>
@@ -109,7 +117,7 @@ const hasWhiteBg = computed(() => {
             class="w-[80%] rounded-xl mx-auto h-full hover:bg-primary-600 transition hover:text-white"
           >
             <button
-              @click="isMenuOpen = false; navigateToSection(link.id, link.path)"
+              @click="isMenuOpen = false; handleNavigation(link)"
               class="py-2 h-full block w-full"
             >
               {{ t(`header.${link.key}`) }}
