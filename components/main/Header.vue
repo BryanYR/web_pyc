@@ -2,10 +2,10 @@
 import { ref } from "vue";
 import LogoWhite from "@/assets/icons/LogoWhite.vue";
 import { scrolling, navigationTo } from "@/composables/index";
-import LanguageSelector from "../utils/LanguageSelector.vue";
 import ButtonBase from "../button/Base.vue";
 import { useRoute } from "vue-router";
 
+const LanguageSelector = defineAsyncComponent(() => import('@/components/utils/LanguageSelector.vue'))
 const route = useRoute();
 const { isScrolled } = scrolling.useScroll(50);
 const { navigateToSection } = navigationTo.useNavigation();

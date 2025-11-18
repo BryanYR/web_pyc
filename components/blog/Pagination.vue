@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Arrow from '@/assets/icons/Arrow.vue';
+const Arrow = defineAsyncComponent(() => import('@/assets/icons/Arrow.vue'))
 const props = defineProps<{ page: number; total: number; perPage: number }>()
 const totalPages = computed(() => Math.max(1, Math.ceil(props.total / props.perPage)))
 </script>
