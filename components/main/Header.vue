@@ -15,7 +15,7 @@ const { t } = useI18n();
 
 // Items de navegación
 const navLinks = [
-  { key: "home", id: "", path: "/" },
+  { key: "home", id: "", path: "https://pyc.pe/", external: true },
   { key: "about", id: "aboutUs", path: "https://pyc.pe/nosotros", external: true },
   { key: "team", id: "team", path: "https://pyc.pe/equipo", external: true },
   { key: "services", id: "services", path: "https://pyc.pe/servicios", external: true },
@@ -48,10 +48,10 @@ const hasWhiteBg = computed(() => {
   >
     <div class="pyc-container mx-auto px-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <NuxtLink to="/" aria-label="logo_pyc">
+        <a href="https://pyc.pe/" aria-label="logo_pyc" target="_self">
           <LogoWhite class="h-12" />
-        </NuxtLink>
-        <LanguageSelector />
+        </a>
+        <LanguageSelector :classes="`${hasWhiteBg ? 'border-primary-700 text-primary-700' : ''}`" />
       </div>
 
       <!-- NAV DESKTOP -->

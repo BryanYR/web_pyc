@@ -1,14 +1,44 @@
 <script setup lang="ts">
 import { useNuxtApp } from '#app'
-import { ref, watch } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const props = withDefaults(
+  defineProps<{
+    classes?: string
+  }>(),
+  {
+    classes: 'border-white text-white',
+  }
+)
 
 type Language = 'es' | 'en'
 const nuxtApp = useNuxtApp()
+const route = useRoute()
+
 // Initialize selector from i18n locale (handle ref or string)
 const rawLocale = nuxtApp.$i18n?.locale
-const initialLocale = (rawLocale && (typeof rawLocale === 'string' ? rawLocale : rawLocale.value)) || 'es'
+const initialLocale =
+  (rawLocale &&
+    (typeof rawLocale === 'string' ? rawLocale : rawLocale.value)) ||
+  'es'
 const selectorLanguage = ref<Language>(initialLocale as Language)
 const open = ref(false)
+const isMounted = ref(false)
+
+// Computed class that reacts to route changes (only after mount)
+const buttonClasses = computed(() => {
+  if (!isMounted.value) {
+    return 'border-white text-white'
+  }
+  const _ = route.path
+  const __ = selectorLanguage.value
+  return props.classes
+})
+
+onMounted(() => {
+  isMounted.value = true
+})
 
 async function setLocale(l: Language) {
   if (selectorLanguage.value === l) {
@@ -25,7 +55,11 @@ function toggle() {
 }
 
 // Keep selector in sync if locale changes elsewhere
-if (nuxtApp.$i18n && nuxtApp.$i18n.locale && typeof nuxtApp.$i18n.locale !== 'string') {
+if (
+  nuxtApp.$i18n &&
+  nuxtApp.$i18n.locale &&
+  typeof nuxtApp.$i18n.locale !== 'string'
+) {
   watch(nuxtApp.$i18n.locale, (v: any) => {
     selectorLanguage.value = v
   })
@@ -37,13 +71,25 @@ if (nuxtApp.$i18n && nuxtApp.$i18n.locale && typeof nuxtApp.$i18n.locale !== 'st
     <button
       type="button"
       @click="toggle"
-      class="flex items-center gap-2 px-3 py-1 rounded-full border border-white bg-transparent text-white hover:bg-white/10 transition"
+      :class="buttonClasses"
+      class="flex items-center gap-2 px-3 py-1 rounded-full border  bg-transparent hover:bg-white/10 transition"
       aria-haspopup="true"
       :aria-expanded="open"
     >
-      <span class="text-sm font-medium">{{ selectorLanguage === 'es' ? 'ES' : 'EN' }}</span>
-      <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd" />
+      <span class="text-sm font-medium">{{
+        selectorLanguage === 'es' ? 'ES' : 'EN'
+      }}</span>
+      <svg
+        class="w-4 h-4"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+          clip-rule="evenodd"
+        />
       </svg>
     </button>
 
@@ -79,6 +125,12 @@ if (nuxtApp.$i18n && nuxtApp.$i18n.locale && typeof nuxtApp.$i18n.locale !== 'st
 </template>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active { transition: opacity .15s ease }
-.fade-enter-from, .fade-leave-to { opacity: 0 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
