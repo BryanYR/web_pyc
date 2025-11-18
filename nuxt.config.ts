@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-06-25',
   devtools: { enabled: true },
@@ -55,50 +54,9 @@ export default defineNuxtConfig({
     'swiper/css',
     'swiper/css/navigation',
     'swiper/css/pagination',
+    '@wangeditor/editor/dist/css/style.css'
   ],
   build: {
     transpile: ['vue-toastification'],
   },
-  vite: {
-    build: {
-      target: 'esnext',
-      cssCodeSplit: true,
-      cssMinify: 'esbuild',
-      minify: 'esbuild',
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            // Separate vendor chunks
-            if (id.includes('node_modules')) {
-              if (id.includes('swiper')) return 'swiper'
-              if (id.includes('vue-i18n')) return 'i18n'
-              if (id.includes('pinia')) return 'pinia'
-              if (id.includes('vue-toastification')) return 'toast'
-              if (id.includes('@wangeditor')) return 'editor'
-              return 'vendor'
-            }
-          },
-          chunkFileNames: '_nuxt/[name]-[hash].js',
-          entryFileNames: '_nuxt/[name]-[hash].js',
-          assetFileNames: '_nuxt/[name]-[hash][extname]'
-        }
-      }
-    },
-    css: {
-      devSourcemap: false,
-    }
-  },
-  experimental: {
-    renderJsonPayloads: true,
-    payloadExtraction: false,
-    treeshakeClientOnly: true,
-  },
-  nitro: {
-    compressPublicAssets: true,
-    routeRules: {
-      '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
-      '/fonts/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
-      '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
-    }
-  }
 })
