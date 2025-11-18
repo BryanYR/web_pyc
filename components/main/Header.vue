@@ -36,7 +36,7 @@ const hasWhiteBg = computed(() => {
 <template>
   <header
     class="fixed top-0 left-0 right-0 py-5 transition-colors duration-300 ease-in-out z-[100] text-white"
-    :class="[hasPrimaryBg ? 'bg-primary-700' : (isScrolled ? 'bg-primary-700 ' : 'bg-transparent'), hasWhiteBg ? 'bg-white !text-primary-700' : '']"
+    :class="[hasPrimaryBg ? 'bg-primary-700' : (isScrolled ? 'bg-primary-700 ' : 'bg-transparent'), hasWhiteBg ? 'bg-white !text-primary-700 dark:bg-primary-900 dark:!text-white' : '']"
   >
     <div class="pyc-container mx-auto px-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
@@ -64,7 +64,9 @@ const hasWhiteBg = computed(() => {
       <!-- HAMBURGER MOBILE -->
       <button
         @click="isMenuOpen = true"
-        class="md:hidden text-white focus:outline-none"
+        class="md:hidden focus:outline-none"
+        aria-label="button_open_menu_mobile"
+        :class="[hasWhiteBg ? 'text-primary-700 dark:text-white' : 'text-white']"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -79,21 +81,28 @@ const hasWhiteBg = computed(() => {
     </div>
 
     <!-- OVERLAY MENU MOBILE -->
-    <transition name="slide-left">
+    <transition
+      enter-active-class="transition-transform duration-300 ease-out"
+      enter-from-class="translate-x-full"
+      enter-to-class="translate-x-0"
+      leave-active-class="transition-transform duration-300 ease-in"
+      leave-from-class="translate-x-0"
+      leave-to-class="translate-x-full"
+    >
       <div
         v-if="isMenuOpen"
-        class="fixed inset-0 bg-white z-[200] flex flex-col items-center justify-center"
+        class="fixed inset-0 bg-white dark:bg-primary-700 e z-[200] flex flex-col items-center justify-center"
       >
         <button
           @click="isMenuOpen = false"
-          class="absolute top-5 right-5 text-gray-800"
+          class="absolute top-5 right-5 text-gray-800 dark:text-white"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
 
-        <ul class="flex flex-col md:gap-6 text-lg text-gray-900 text-center w-full">
+        <ul class="flex flex-col md:gap-6 text-lg text-gray-900 dark:text-white text-center w-full">
           <li
             v-for="link in navLinks"
             :key="link.key"
@@ -115,13 +124,3 @@ const hasWhiteBg = computed(() => {
     </transition>
   </header>
 </template>
-<style scoped>
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: transform 0.3s ease;
-}
-.slide-left-enter-from,
-.slide-left-leave-to {
-  transform: translateX(100%);
-}
-</style>

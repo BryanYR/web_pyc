@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Header from "@/components/main/Header.vue";
-import Footer from "@/components/main/Footer.vue";
-import ThemeToggle from "@/components/utils/ThemeToggle.vue";
-
+const Footer = defineAsyncComponent(() => import('@/components/main/Footer.vue'))
+const ThemeToggle = defineAsyncComponent(() => import('@/components/utils/ThemeToggle.vue'))
 </script>
 
 <template>
