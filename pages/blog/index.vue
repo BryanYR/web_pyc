@@ -3,8 +3,10 @@ definePageMeta({
   layout: 'default',
   headerBg: 'white',
 })
-import BannerPost from '@/sections/blog/BannerPost.vue'
-import GridPosts from '@/sections/blog/GridPosts.vue'
+
+// Lazy load components asynchronously
+const BannerPost = defineAsyncComponent(() => import('@/sections/blog/BannerPost.vue'))
+const GridPosts = defineAsyncComponent(() => import('@/sections/blog/GridPosts.vue'))
 
 // SEO and performance optimization
 useHead({
